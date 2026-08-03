@@ -25,7 +25,8 @@ export function HeroSphere() {
     // ---------- Scene / Camera / Renderer ----------
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
-    camera.position.z = 4.5;
+    // Move camera further back on smaller screens to make the brain appear smaller
+    camera.position.z = w < 600 ? 7.5 : w < 900 ? 6.0 : 4.5;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -543,6 +544,7 @@ export function HeroSphere() {
       const W = mount.clientWidth;
       const H = mount.clientHeight;
       camera.aspect = W / H;
+      camera.position.z = W < 600 ? 7.5 : W < 900 ? 6.0 : 4.5;
       camera.updateProjectionMatrix();
       renderer.setSize(W, H);
       uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2);
