@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Read(//Users/oday/**)",
+      "Read(//usr/local/**)",
+      "Bash(mdfind \"kMDItemFSName == 'node'\")",
+      "Bash(curl -s --max-time 15 https://nodejs.org/dist/index.json -o /private/tmp/claude-501/-Users-oday-Desktop-neon-veil-web-main/a6f0ee85-91f7-4c13-ac22-079475606a4a/scratchpad/node-index.json)",
+      "Bash(python3 -c ' *)",
+      "Bash(mkdir -p ~/.local)",
+      "Bash(curl -s --max-time 120 -o node.tar.gz https://nodejs.org/dist/v24.18.0/node-v24.18.0-darwin-arm64.tar.gz)",
+      "Bash(shasum -a 256 node.tar.gz)",
+      "Bash(curl -s --max-time 30 https://nodejs.org/dist/v24.18.0/SHASUMS256.txt)",
+      "Bash(rm -rf ~/.local/node-v24.18.0)",
+      "Bash(tar -xzf node.tar.gz -C ~/.local/)",
+      "Bash(mv ~/.local/node-v24.18.0-darwin-arm64 ~/.local/node-v24.18.0)",
+      "Bash(rm -f ~/.local/node)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/portfolio)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/dgdf)",
+      "Bash(curl -s http://localhost:8080/dgdf)"
+    ]
+  }
+}

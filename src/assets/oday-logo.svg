@@ -1,0 +1,11 @@
+<svg width="680" height="600" viewBox="0 0 680 600" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Oday Dev logo</title>
+  <desc>An OD monogram: a white circular ring with a wavy inner D shape and a soft grey drop shadow, on a transparent background, with the wordmark ODAY DEV below.</desc>
+  <g transform="translate(-12,12)">
+    <circle cx="340" cy="250" r="157" fill="none" stroke="#a7b3ba" stroke-width="36"/>
+    <path d="M 340 100 C 292 145 292 195 315 250 C 335 298 292 330 340 400 C 398 393 462 335 460 250 C 458 168 398 108 340 100 Z" fill="#a7b3ba"/>
+  </g>
+  <circle cx="340" cy="250" r="157" fill="none" stroke="#ffffff" stroke-width="36"/>
+  <path d="M 340 100 C 292 145 292 195 315 250 C 335 298 292 330 340 400 C 398 393 462 335 460 250 C 458 168 398 108 340 100 Z" fill="#ffffff"/>
+  <text x="343" y="545" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="46" letter-spacing="12" fill="#ffffff"><tspan font-weight="300">ODAY</tspan><tspan font-weight="700">DEV</tspan></text>
+</svg>

@@ -1,0 +1,185 @@
+export type Project = {
+  title: string;
+  category: string;
+  domain: string;
+  url: string;
+  body: string;
+  tags: string[];
+  featured?: boolean;
+};
+
+/**
+ * Single source of truth for portfolio work.
+ * The home page shows the `featured` items; the /portfolio page shows all.
+ */
+export const projects: Project[] = [
+  {
+    title: "Dposphere",
+    category: "Legal & Compliance",
+    domain: "dposphere.com",
+    url: "https://dposphere.com",
+    body: "Corporate site for a data-protection and DPO-as-a-service firm — clear service architecture and GDPR-focused content.",
+    tags: ["WordPress", "Corporate", "SEO"],
+    featured: true,
+  },
+  {
+    title: "Jurcom Academy",
+    category: "E-Learning",
+    domain: "jurcomacademy.com",
+    url: "https://jurcomacademy.com",
+    body: "Online learning system with course catalogues, enrolment flows and a member area for legal and compliance training.",
+    tags: ["LMS", "WordPress", "Membership"],
+    featured: true,
+  },
+  {
+    title: "JurcomGRC",
+    category: "Legal & Compliance",
+    domain: "jurcom.nl",
+    url: "https://jurcom.nl",
+    body: "Governance, risk and compliance consultancy site — structured service pages and a lead-focused layout.",
+    tags: ["WordPress", "Consulting", "UX"],
+    featured: true,
+  },
+  {
+    title: "SoleChem Europe",
+    category: "Industrial",
+    domain: "solechem-eu.vercel.app",
+    url: "https://solechem-eu.vercel.app",
+    body: "Corporate site for a European chemical raw-materials supplier — sector-focused pages, product catalogues and B2B lead funnels.",
+    tags: ["React", "Corporate", "B2B"],
+    featured: true,
+  },
+  {
+    title: "Space and Place",
+    category: "Corporate",
+    domain: "sapdesign.sa",
+    url: "https://sapdesign.sa",
+    body: "Portfolio-style site for a design and architecture studio, letting the visual work lead the page.",
+    tags: ["WordPress", "Portfolio", "Design"],
+  },
+  {
+    title: "SoleChem English",
+    category: "Industrial",
+    domain: "solechem-en.vercel.app",
+    url: "https://solechem-en.vercel.app",
+    body: "English-language version of the SoleChem platform — chemical solutions showcase with R&D services and industry expertise.",
+    tags: ["React", "Multi-language", "Industrial"],
+  },
+  {
+    title: "KVKKOBI",
+    category: "Legal & Compliance",
+    domain: "kvkkobi.com",
+    url: "https://kvkkobi.com",
+    body: "KVKK (Turkish data-protection) compliance platform for SMEs, with guidance and clear service packages.",
+    tags: ["WordPress", "Compliance", "SME"],
+  },
+  {
+    title: "Amal Glass",
+    category: "Industrial",
+    domain: "amalglass.com",
+    url: "https://amalglass.com",
+    body: "Product and capability showcase for a glass & aluminium manufacturer, built to win B2B enquiries.",
+    tags: ["WordPress", "Catalogue", "Responsive"],
+    featured: true,
+  },
+  {
+    title: "Maximum Property",
+    category: "Real Estate",
+    domain: "maximumproperty.com",
+    url: "https://maximumproperty.com",
+    body: "Real-estate agency website with property listings, search and enquiry funnels tuned for conversions.",
+    tags: ["WordPress", "Listings", "SEO"],
+    featured: true,
+  },
+  {
+    title: "Chefs Equipment",
+    category: "E-commerce",
+    domain: "chefsequipment.com.au",
+    url: "https://chefsequipment.com.au",
+    body: "WooCommerce store for professional kitchen equipment with a large catalogue and product filtering.",
+    tags: ["WooCommerce", "Catalogue", "Filtering"],
+  },
+  {
+    title: "Gronhem",
+    category: "Corporate",
+    domain: "gronhem.com",
+    url: "https://gronhem.com",
+    body: "Clean corporate website with a modern, content-driven layout and strong calls to action.",
+    tags: ["WordPress", "Corporate", "Responsive"],
+  },
+  {
+    title: "Lidya Yachting",
+    category: "Marine",
+    domain: "lidyayachting.com",
+    url: "http://www.lidyayachting.com",
+    body: "Yacht charter and marine-leisure site with an immersive gallery and an enquiry-driven booking flow.",
+    tags: ["WordPress", "Booking", "Gallery"],
+  },
+  {
+    title: "Sea Boat Marine",
+    category: "Marine",
+    domain: "seaboatmarine.com",
+    url: "https://seaboatmarine.com",
+    body: "Marine services and boat-sales website with a product-forward layout and clear contact paths.",
+    tags: ["WordPress", "Catalogue", "Marine"],
+  },
+  {
+    title: "Max Gear",
+    category: "E-commerce",
+    domain: "maxgeartr.com",
+    url: "https://www.maxgeartr.com",
+    body: "Retail store for gear and equipment with a conversion-focused product experience.",
+    tags: ["WooCommerce", "Retail", "Responsive"],
+  },
+  {
+    title: "SoleChem Türkiye",
+    category: "Industrial",
+    domain: "solechemtr.vercel.app",
+    url: "https://solechemtr.vercel.app",
+    body: "Turkish localisation of the SoleChem platform — full B2B product catalogue and service pages for the Turkish market.",
+    tags: ["React", "Localisation", "Industrial"],
+  },
+  {
+    title: "Akhadia Holding",
+    category: "Corporate",
+    domain: "akhadia.nl",
+    url: "https://akhadia.nl",
+    body: "Holding-group corporate presence bringing multiple ventures under one clean, credible brand umbrella.",
+    tags: ["WordPress", "Brand", "Multi-brand"],
+    featured: true,
+  },
+  {
+    title: "ESG Platform",
+    category: "Corporate",
+    domain: "esg.jurcom.nl",
+    url: "https://esg.jurcom.nl",
+    body: "ESG and sustainability reporting portal — data-heavy pages made approachable with clear structure and navigation.",
+    tags: ["WordPress", "Platform", "Reporting"],
+    featured: true,
+  },
+  {
+    title: "Özdilek Hukuk",
+    category: "Legal & Compliance",
+    domain: "ozdilekhukuk.com",
+    url: "https://ozdilekhukuk.com",
+    body: "Law-firm website with practice-area pages and a professional, trust-building presentation.",
+    tags: ["WordPress", "Legal", "SEO"],
+  },
+  {
+    title: "Right Hair Clinic",
+    category: "Healthcare",
+    domain: "righthairclinic.com",
+    url: "https://righthairclinic.com",
+    body: "Hair-transplant clinic site with treatment pages, before/after galleries and consultation funnels.",
+    tags: ["WordPress", "Medical", "Booking"],
+  },
+  {
+    title: "Raja Chaabani",
+    category: "Portfolio",
+    domain: "raja-seven-tau.vercel.app",
+    url: "https://raja-seven-tau.vercel.app",
+    body: "Personal portfolio for a journalist and writer, featuring an elegant design to showcase published articles, essays, and literary work.",
+    tags: ["React", "Journalism", "Portfolio"],
+    featured: true,
+  },
+];
