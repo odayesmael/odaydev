@@ -1468,7 +1468,7 @@ html, body, #root {
 @media (max-width: 880px) {
   .hero-desc { display: none; }
   .label-tag { top: 20%; }
-  .headline .row { font-size: 14vw; }
+  .headline .row { font-size: clamp(2rem, 9vw, 4rem); }
   .bento-header { grid-template-columns: 1fr; }
   .bento-sub { justify-self: start; }
   .bento-grid { grid-template-columns: 1fr; }
