@@ -53,10 +53,10 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Oday Ismail — Full-Stack Web Developer" },
+      { title: "Oday — Full-Stack Web Developer" },
       { name: "description", content: "Full-Stack Web Developer with 9 years of experience building fast, custom websites of every kind — corporate sites, web apps, online stores and platforms, with an AI-assisted workflow." },
       { name: "author", content: "Oday Ismail" },
-      { property: "og:title", content: "Oday Ismail — Full-Stack Web Developer" },
+      { property: "og:title", content: "Oday — Full-Stack Web Developer" },
       { property: "og:description", content: "9 years crafting fast, custom websites of every kind — front-end, back-end, SEO and UI/UX, with an AI-assisted workflow." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

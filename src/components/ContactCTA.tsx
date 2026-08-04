@@ -360,7 +360,7 @@ export function ContactCTA() {
           Have a website or web app in mind, or a site that needs care and speed? Available for freelance work and long-term collaborations.
         </p>
         <a className="cta-button cta-reveal" href="mailto:odaiesmael303@gmail.com">
-          Hire me <span className="cta-button-dot" />
+          Let&apos;s Talk <span className="cta-button-dot" />
         </a>
 
         <div className="cta-details cta-reveal">

@@ -67,8 +67,8 @@ function PortfolioRoute() {
             <img className="icon" src={logoMark} alt="" />
             <span>ODAY</span>
           </Link>
-          <a className="contact-btn" href="mailto:odaiesmael303@gmail.com">
-            Hire me <span className="arrow">↗</span>
+          <a className="contact-btn p-reveal" href="mailto:odaiesmael303@gmail.com">
+            Let&apos;s Talk <span className="arrow">↗</span>
           </a>
         </header>
 

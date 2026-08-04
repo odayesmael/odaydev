@@ -35,7 +35,7 @@ export function Hero({ play }: { play: boolean }) {
             <span>ODAY</span>
           </div>
           <a className="contact-btn js-reveal" href="mailto:odaiesmael303@gmail.com">
-            Hire me <span className="arrow">↗</span>
+            Let&apos;s Talk <span className="arrow">↗</span>
           </a>
         </div>
 
