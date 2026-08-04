@@ -55,7 +55,7 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Oday — Full-Stack Web Developer" },
       { name: "description", content: "Full-Stack Web Developer with 9 years of experience building fast, custom websites of every kind — corporate sites, web apps, online stores and platforms, with an AI-assisted workflow." },
-      { name: "author", content: "Oday Ismail" },
+      { name: "author", content: "Oday" },
       { property: "og:title", content: "Oday — Full-Stack Web Developer" },
       { property: "og:description", content: "9 years crafting fast, custom websites of every kind — front-end, back-end, SEO and UI/UX, with an AI-assisted workflow." },
       { property: "og:type", content: "website" },

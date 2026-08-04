@@ -13,13 +13,13 @@ export const Route = createFileRoute("/portfolio")({
   component: PortfolioRoute,
   head: () => ({
     meta: [
-      { title: "Portfolio — Oday Ismail" },
+      { title: "Portfolio — Oday" },
       {
         name: "description",
         content:
-          "The full portfolio of Oday Ismail — corporate websites, platforms, web apps and online stores designed, built and maintained end to end.",
+          "The full portfolio of Oday — corporate websites, platforms, web apps and online stores designed, built and maintained end to end.",
       },
-      { property: "og:title", content: "Portfolio — Oday Ismail" },
+      { property: "og:title", content: "Portfolio — Oday" },
       {
         property: "og:description",
         content: "Corporate websites, platforms, web apps and online stores built end to end.",

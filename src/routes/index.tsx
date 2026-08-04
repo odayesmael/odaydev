@@ -16,9 +16,9 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Oday Ismail — Full-Stack Web Developer" },
-      { name: "description", content: "Oday Ismail — Full-Stack Web Developer with 9 years of experience building websites of every kind: corporate sites, web apps, online stores and custom platforms, with an AI-assisted workflow. Based in the Netherlands, working worldwide." },
-      { property: "og:title", content: "Oday Ismail — Full-Stack Web Developer" },
+      { title: "Oday — Full-Stack Web Developer" },
+      { name: "description", content: "Oday — Full-Stack Web Developer with 9 years of experience building websites of every kind: corporate sites, web apps, online stores and custom platforms, with an AI-assisted workflow. Based in the Netherlands, working worldwide." },
+      { property: "og:title", content: "Oday — Full-Stack Web Developer" },
       { property: "og:description", content: "9 years crafting fast, custom websites of every kind — front-end, back-end, SEO and UI/UX, with an AI-assisted workflow." },
     ],
   }),
