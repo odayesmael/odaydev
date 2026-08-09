@@ -26,7 +26,7 @@ export function SiteFooter() {
           <div className="sf-label">[ CONNECT ]</div>
           <ul>
             <li>
-              <a href="mailto:odaiesmael303@gmail.com" className="sf-icon-link" aria-label="Email">
+              <a href="mailto:info@oday.dev" className="sf-icon-link" aria-label="Email">
                 <Mail size={24} />
               </a>
             </li>

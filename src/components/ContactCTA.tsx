@@ -359,14 +359,14 @@ export function ContactCTA() {
         <p className="cta-sub cta-reveal">
           Have a website or web app in mind, or a site that needs care and speed? Available for freelance work and long-term collaborations.
         </p>
-        <a className="cta-button cta-reveal" href="mailto:odaiesmael303@gmail.com">
+        <a className="cta-button cta-reveal" href="mailto:info@oday.dev">
           Let&apos;s Talk <span className="cta-button-dot" />
         </a>
 
         <div className="cta-details cta-reveal">
-          <a className="cta-detail" href="mailto:odaiesmael303@gmail.com">
+          <a className="cta-detail" href="mailto:info@oday.dev">
             <span className="cta-detail-label">[ EMAIL ]</span>
-            <span className="cta-detail-value">odaiesmael303@gmail.com</span>
+            <span className="cta-detail-value">info@oday.dev</span>
           </a>
           <div className="cta-detail">
             <span className="cta-detail-label">[ LOCATION ]</span>

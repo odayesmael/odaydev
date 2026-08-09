@@ -34,7 +34,7 @@ export function Hero({ play }: { play: boolean }) {
             <img className="icon" src={logoMark} alt="" />
             <span>ODAY</span>
           </div>
-          <a className="contact-btn js-reveal" href="mailto:odaiesmael303@gmail.com">
+          <a className="contact-btn js-reveal" href="mailto:info@oday.dev">
             Let&apos;s Talk <span className="arrow">↗</span>
           </a>
         </div>
