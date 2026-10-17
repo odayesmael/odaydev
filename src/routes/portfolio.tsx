@@ -5,7 +5,6 @@ import { ContactCTA } from "@/components/ContactCTA";
 import { BottomNav } from "@/components/BottomNav";
 import { Starfield } from "@/components/Starfield";
 import { SiteFooter } from "@/components/SiteFooter";
-import { GlobalGlow } from "@/components/GlobalGlow";
 import { projects } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import logoMark from "@/assets/oday-mark.svg";
@@ -62,7 +61,6 @@ function PortfolioRoute() {
 
   return (
     <>
-      <GlobalGlow />
       <div className="grain-overlay" />
       <div className="dr-page">
         <Starfield />

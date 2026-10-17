@@ -175,16 +175,6 @@ export const projects: Project[] = [
     tags: ["WordPress", "Corporate", "Responsive"],
   },
   {
-    slug: "lidya-yachting",
-    title: "Lidya Yachting",
-    category: "Marine",
-    domain: "lidyayachting.com",
-    url: "http://www.lidyayachting.com",
-    body: "Yacht charter and marine-leisure site with an immersive gallery and an enquiry-driven booking flow.",
-    tags: ["WordPress", "Booking", "Gallery"],
-    offline: true,
-  },
-  {
     slug: "sea-boat-marine",
     title: "Sea Boat Marine",
     category: "Marine",

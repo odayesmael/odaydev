@@ -2,7 +2,9 @@ import { useEffect, useRef } from "react";
 
 /**
  * Animated space starfield background — slowly drifting dots with subtle twinkle.
- * Renders into a full-bleed canvas; intended to be placed inside a `position: relative` wrapper.
+ * The canvas is viewport-sized and sticks to the top of its wrapper (it must be the
+ * wrapper's first child), so a tall page never allocates a page-tall canvas.
+ * Animation pauses while the wrapper is off screen.
  */
 export function Starfield() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -33,7 +35,7 @@ export function Starfield() {
     const resize = () => {
       const parent = canvas.parentElement!;
       width = parent.clientWidth;
-      height = parent.clientHeight;
+      height = window.innerHeight;
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       canvas.style.width = `${width}px`;
@@ -41,7 +43,7 @@ export function Starfield() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       // Higher density + faster upward drift
-      const target = Math.min(1100, Math.floor((width * height) / 1600));
+      const target = Math.min(700, Math.floor((width * height) / 1800));
       stars = new Array(target).fill(0).map(() => {
         const z = Math.pow(Math.random(), 1.6); // bias toward distant
         return {
@@ -59,8 +61,31 @@ export function Starfield() {
     };
 
     resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(canvas.parentElement!);
+    let lastW = width;
+    let lastH = height;
+    const onResize = () => {
+      const w = canvas.parentElement!.clientWidth;
+      // Ignore height-only jitter from mobile browser toolbars
+      if (w !== lastW || Math.abs(window.innerHeight - lastH) > 120) {
+        resize();
+        lastW = width;
+        lastH = height;
+      }
+    };
+    window.addEventListener("resize", onResize);
+
+    let visible = true;
+    const io = new IntersectionObserver(([entry]) => {
+      const wasVisible = visible;
+      visible = entry.isIntersecting;
+      if (visible && !wasVisible) {
+        last = performance.now();
+        raf = requestAnimationFrame(loop);
+      }
+    });
+    io.observe(canvas.parentElement!);
+
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
     let last = performance.now();
     const loop = (now: number) => {
@@ -105,13 +130,14 @@ export function Starfield() {
         }
       }
 
-      raf = requestAnimationFrame(loop);
+      if (visible && !reduceMotion) raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);
-      ro.disconnect();
+      io.disconnect();
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 

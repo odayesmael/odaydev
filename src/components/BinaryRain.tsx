@@ -93,12 +93,20 @@ export function BinaryRain() {
         }
       }
 
-      raf = requestAnimationFrame(loop);
+      raf = onScreen ? requestAnimationFrame(loop) : 0;
     };
+    // Pause while scrolled out of view.
+    let onScreen = true;
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      if (onScreen && !raf) raf = requestAnimationFrame(loop);
+    });
+    io.observe(canvas);
     raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
       ro.disconnect();
       window.removeEventListener("resize", resize);
     };

@@ -6,14 +6,14 @@
     "desktop": {
       "status": 200,
       "finalUrl": "https://www.solechem.eu/",
-      "title": "SoleChem Europe — Trusted Chemical Supplier | 4,500+ Products",
+      "title": "SoleChem Europe \u2014 Trusted Chemical Supplier | 4,500+ Products",
       "error": null,
       "flags": []
     },
     "mobile": {
       "status": 200,
       "finalUrl": "https://www.solechem.eu/",
-      "title": "SoleChem Europe — Trusted Chemical Supplier | 4,500+ Products",
+      "title": "SoleChem Europe \u2014 Trusted Chemical Supplier | 4,500+ Products",
       "error": null,
       "flags": []
     }
@@ -25,14 +25,14 @@
     "desktop": {
       "status": 200,
       "finalUrl": "https://jurcomacademy.com/",
-      "title": "Jurcom Academy – Online Eğitim platformu",
+      "title": "Jurcom Academy \u2013 Online E\u011fitim platformu",
       "error": null,
       "flags": []
     },
     "mobile": {
       "status": 200,
       "finalUrl": "https://jurcomacademy.com/",
-      "title": "Jurcom Academy – Online Eğitim platformu",
+      "title": "Jurcom Academy \u2013 Online E\u011fitim platformu",
       "error": null,
       "flags": []
     }
@@ -105,14 +105,14 @@
     "desktop": {
       "status": 200,
       "finalUrl": "https://raja-seven-tau.vercel.app/",
-      "title": "Raja Chaabani | الملاذ الفكري 2026",
+      "title": "Raja Chaabani | \u0627\u0644\u0645\u0644\u0627\u0630 \u0627\u0644\u0641\u0643\u0631\u064a 2026",
       "error": null,
       "flags": []
     },
     "mobile": {
       "status": 200,
       "finalUrl": "https://raja-seven-tau.vercel.app/",
-      "title": "Raja Chaabani | الملاذ الفكري 2026",
+      "title": "Raja Chaabani | \u0627\u0644\u0645\u0644\u0627\u0630 \u0627\u0644\u0641\u0643\u0631\u064a 2026",
       "error": null,
       "flags": []
     }
@@ -200,7 +200,7 @@
     "desktop": {
       "status": 200,
       "finalUrl": "https://sapdesign.sa/",
-      "title": "أفضل شركة تصميم معماري في الرياض | لمسات إبداعية ومشاريع استثنائية - فراغ ومكان",
+      "title": "\u0623\u0641\u0636\u0644 \u0634\u0631\u0643\u0629 \u062a\u0635\u0645\u064a\u0645 \u0645\u0639\u0645\u0627\u0631\u064a \u0641\u064a \u0627\u0644\u0631\u064a\u0627\u0636 | \u0644\u0645\u0633\u0627\u062a \u0625\u0628\u062f\u0627\u0639\u064a\u0629 \u0648\u0645\u0634\u0627\u0631\u064a\u0639 \u0627\u0633\u062a\u062b\u0646\u0627\u0626\u064a\u0629 - \u0641\u0631\u0627\u063a \u0648\u0645\u0643\u0627\u0646",
       "error": null,
       "flags": [
         "under construction"
@@ -209,7 +209,7 @@
     "mobile": {
       "status": 200,
       "finalUrl": "https://sapdesign.sa/",
-      "title": "أفضل شركة تصميم معماري في الرياض | لمسات إبداعية ومشاريع استثنائية - فراغ ومكان",
+      "title": "\u0623\u0641\u0636\u0644 \u0634\u0631\u0643\u0629 \u062a\u0635\u0645\u064a\u0645 \u0645\u0639\u0645\u0627\u0631\u064a \u0641\u064a \u0627\u0644\u0631\u064a\u0627\u0636 | \u0644\u0645\u0633\u0627\u062a \u0625\u0628\u062f\u0627\u0639\u064a\u0629 \u0648\u0645\u0634\u0627\u0631\u064a\u0639 \u0627\u0633\u062a\u062b\u0646\u0627\u0626\u064a\u0629 - \u0641\u0631\u0627\u063a \u0648\u0645\u0643\u0627\u0646",
       "error": null,
       "flags": [
         "under construction"
@@ -223,14 +223,14 @@
     "desktop": {
       "status": 200,
       "finalUrl": "https://kvkkobi.com/",
-      "title": "kvkkobi.com – Kişisel Veri Yönetimi Platformu",
+      "title": "kvkkobi.com \u2013 Ki\u015fisel Veri Y\u00f6netimi Platformu",
       "error": null,
       "flags": []
     },
     "mobile": {
       "status": 200,
       "finalUrl": "https://kvkkobi.com/",
-      "title": "kvkkobi.com – Kişisel Veri Yönetimi Platformu",
+      "title": "kvkkobi.com \u2013 Ki\u015fisel Veri Y\u00f6netimi Platformu",
       "error": null,
       "flags": []
     }
@@ -271,29 +271,6 @@
       "title": "Your Gateway to Best Sustainability Practices - Gronhem",
       "error": null,
       "flags": []
-    }
-  },
-  {
-    "slug": "lidya-yachting",
-    "url": "http://www.lidyayachting.com",
-    "ok": false,
-    "desktop": {
-      "status": 500,
-      "finalUrl": "http://www.lidyayachting.com/",
-      "title": "WordPress › Error",
-      "error": null,
-      "flags": [
-        "there has been a critical error"
-      ]
-    },
-    "mobile": {
-      "status": 500,
-      "finalUrl": "http://www.lidyayachting.com/",
-      "title": "WordPress › Error",
-      "error": null,
-      "flags": [
-        "there has been a critical error"
-      ]
     }
   },
   {
@@ -341,14 +318,14 @@
     "desktop": {
       "status": 200,
       "finalUrl": "https://ozdilekhukuk.com/",
-      "title": "Anasayfa - Özdilek Hukuk",
+      "title": "Anasayfa - \u00d6zdilek Hukuk",
       "error": null,
       "flags": []
     },
     "mobile": {
       "status": 200,
       "finalUrl": "https://ozdilekhukuk.com/",
-      "title": "Anasayfa - Özdilek Hukuk",
+      "title": "Anasayfa - \u00d6zdilek Hukuk",
       "error": null,
       "flags": []
     }
@@ -379,14 +356,14 @@
     "desktop": {
       "status": 200,
       "finalUrl": "https://www.solechem.com.tr/",
-      "title": "SoleChem Kimya | Güvenilir Kimyasal Tedarikçi | 4.500+ Ürün",
+      "title": "SoleChem Kimya | G\u00fcvenilir Kimyasal Tedarik\u00e7i | 4.500+ \u00dcr\u00fcn",
       "error": null,
       "flags": []
     },
     "mobile": {
       "status": 200,
       "finalUrl": "https://www.solechem.com.tr/",
-      "title": "SoleChem Kimya | Güvenilir Kimyasal Tedarikçi | 4.500+ Ürün",
+      "title": "SoleChem Kimya | G\u00fcvenilir Kimyasal Tedarik\u00e7i | 4.500+ \u00dcr\u00fcn",
       "error": null,
       "flags": []
     }

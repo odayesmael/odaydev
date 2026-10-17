@@ -6,7 +6,6 @@ import { ContactCTA } from "@/components/ContactCTA";
 import { BottomNav } from "@/components/BottomNav";
 import { Starfield } from "@/components/Starfield";
 import { SiteFooter } from "@/components/SiteFooter";
-import { GlobalGlow } from "@/components/GlobalGlow";
 import { Phone } from "@/components/Phone";
 import { shustyle as s } from "@/data/shustyle";
 import { SITE_URL } from "@/lib/site";
@@ -125,7 +124,6 @@ function ShuStyleCaseStudy() {
 
   return (
     <>
-      <GlobalGlow />
       <div className="grain-overlay" />
       <div className="dr-page cs-page" ref={ref}>
         <Starfield />

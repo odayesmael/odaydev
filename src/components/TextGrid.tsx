@@ -111,7 +111,9 @@ export function TextGrid() {
       targetMouse.set((e.clientX - r.left) / r.width, 1.0 - (e.clientY - r.top) / r.height);
       hoverRef.current = 1;
     };
-    const onLeave = () => { hoverRef.current = 0; };
+    const onLeave = () => {
+      hoverRef.current = 0;
+    };
     section.addEventListener("pointermove", onMove);
     section.addEventListener("pointerleave", onLeave);
 
@@ -146,12 +148,20 @@ export function TextGrid() {
       uniforms.uMouse.value.lerp(targetMouse, 0.08);
       uniforms.uHoverBoost.value += (hoverRef.current - uniforms.uHoverBoost.value) * 0.06;
       renderer.render(scene, camera);
-      raf = requestAnimationFrame(animate);
+      raf = onScreen ? requestAnimationFrame(animate) : 0;
     };
+    // Pause while scrolled out of view.
+    let onScreen = true;
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      if (onScreen && !raf) raf = requestAnimationFrame(animate);
+    });
+    io.observe(canvas);
     animate();
 
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
       window.removeEventListener("resize", resize);
       section.removeEventListener("pointermove", onMove);
       section.removeEventListener("pointerleave", onLeave);
@@ -167,7 +177,14 @@ export function TextGrid() {
       <div className="text-grid-inner">
         <div className="tg-eyebrow">
           <span className="tg-eyebrow-icon" aria-hidden>
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.4">
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.4"
+            >
               <circle cx="12" cy="12" r="9" strokeDasharray="2 3" />
               <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
             </svg>
@@ -177,9 +194,21 @@ export function TextGrid() {
 
         <div className="tg-grid">
           {[
-            { n: "01", title: "9 years of experience", body: "Nearly a decade building and maintaining products of every size — from single-page brochures to e-commerce, multi-site platforms and a live iOS app handling real users." },
-            { n: "02", title: "Custom, not off-the-shelf", body: "Built to your brand and requirements on whichever stack fits the job — CMS, custom code or headless. Clean, maintainable front-end and back-end, never a bloated template." },
-            { n: "03", title: "Fast & search-ready", body: "Performance, accessibility and SEO baked in from the first line, so your site loads quickly, ranks well and stays easy to grow over time." },
+            {
+              n: "01",
+              title: "9 years of experience",
+              body: "Nearly a decade building and maintaining products of every size — from single-page brochures to e-commerce, multi-site platforms and a live iOS app handling real users.",
+            },
+            {
+              n: "02",
+              title: "Custom, not off-the-shelf",
+              body: "Built to your brand and requirements on whichever stack fits the job — CMS, custom code or headless. Clean, maintainable front-end and back-end, never a bloated template.",
+            },
+            {
+              n: "03",
+              title: "Fast & search-ready",
+              body: "Performance, accessibility and SEO baked in from the first line, so your site loads quickly, ranks well and stays easy to grow over time.",
+            },
           ].map((c) => (
             <div className="tg-col" key={c.n}>
               <div className="tg-num">[ {c.n} ]</div>
