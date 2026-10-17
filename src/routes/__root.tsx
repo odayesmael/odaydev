@@ -5,6 +5,7 @@ import logoMark from "@/assets/oday-mark.svg";
 import { SITE_URL } from "@/lib/site";
 
 import appCss from "../styles.css?url";
+import displayFont from "@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url";
 
 function NotFoundComponent() {
   return (
@@ -80,12 +81,7 @@ export const Route = createRootRoute({
       { rel: "icon", href: "/favicon-32.png", type: "image/png", sizes: "32x32" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "manifest", href: "/site.webmanifest" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap",
-      },
+      { rel: "preload", href: displayFont, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
         href: appCss,

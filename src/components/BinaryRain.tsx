@@ -65,7 +65,7 @@ export function BinaryRain() {
       last = now;
 
       ctx.clearRect(0, 0, width, height);
-      ctx.font = `${FONT}px "Space Mono", ui-monospace, monospace`;
+      ctx.font = `${FONT}px "JetBrains Mono Variable", ui-monospace, monospace`;
       ctx.textAlign = "center";
 
       flip += dt;
