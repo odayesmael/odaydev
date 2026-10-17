@@ -51,10 +51,10 @@ export function Starfield() {
           y: Math.random() * height,
           z,
           r: 0.3 + z * 1.6,
-          vx: (Math.random() - 0.5) * 0.06 * (0.4 + z),
-          vy: -(0.35 + z * 0.9), // faster upward drift
+          vx: (Math.random() - 0.5) * 0.02 * (0.4 + z),
+          vy: -(0.06 + z * 0.16), // slow, calm upward drift
           tw: Math.random() * Math.PI * 2,
-          tws: 0.6 + Math.random() * 1.4,
+          tws: 0.25 + Math.random() * 0.5, // gentle twinkle
           hue: Math.random(),
         };
       });
@@ -108,8 +108,8 @@ export function Starfield() {
         if (s.x < -2) s.x = width + 2;
         else if (s.x > width + 2) s.x = -2;
 
-        const twinkle = 0.55 + 0.45 * Math.sin(s.tw);
-        const alpha = (0.25 + s.z * 0.7) * twinkle;
+        const twinkle = 0.7 + 0.3 * Math.sin(s.tw);
+        const alpha = (0.1 + s.z * 0.35) * twinkle; // kept faint so it never competes with text
 
         // Greenish vs white tint
         const g = 255;
@@ -124,7 +124,7 @@ export function Starfield() {
         // Soft halo for the bigger ones
         if (s.z > 0.75) {
           ctx.beginPath();
-          ctx.fillStyle = `rgba(120,255,170,${alpha * 0.18})`;
+          ctx.fillStyle = `rgba(120,255,170,${alpha * 0.12})`;
           ctx.arc(s.x, s.y, s.r * 3.2, 0, Math.PI * 2);
           ctx.fill();
         }
