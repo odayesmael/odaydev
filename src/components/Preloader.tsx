@@ -46,7 +46,9 @@ export function Preloader({ onDone }: { onDone: () => void }) {
     <div className="preloader" ref={rootRef}>
       <div className="preloader-logo" ref={logoRef}>
         <img className="icon" src={logoMark} alt="" />
-        <span>ODAY</span>
+        <span className="logo-word">
+          oday<span className="logo-dot">.</span>
+        </span>
       </div>
       <div className="preloader-bottom">
         <span>[ LOADING... ]</span>

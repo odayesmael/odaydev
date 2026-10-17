@@ -15,7 +15,9 @@ function NotFoundComponent() {
         <Starfield />
         <Link to="/" className="logo nf-logo">
           <img className="icon" src={logoMark} alt="" />
-          <span>ODAY</span>
+          <span className="logo-word">
+            oday<span className="logo-dot">.</span>
+          </span>
         </Link>
 
         <div className="nf-inner">
@@ -81,7 +83,13 @@ export const Route = createRootRoute({
       { rel: "icon", href: "/favicon-32.png", type: "image/png", sizes: "32x32" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "manifest", href: "/site.webmanifest" },
-      { rel: "preload", href: displayFont, as: "font", type: "font/woff2", crossOrigin: "anonymous" },
+      {
+        rel: "preload",
+        href: displayFont,
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
+      },
       {
         rel: "stylesheet",
         href: appCss,

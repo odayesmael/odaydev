@@ -67,7 +67,9 @@ function PortfolioRoute() {
         <header className="dr-page-top">
           <Link to="/" className="logo dr-logo">
             <img className="icon" src={logoMark} alt="" />
-            <span>ODAY</span>
+            <span className="logo-word">
+              oday<span className="logo-dot">.</span>
+            </span>
           </Link>
           <a className="contact-btn p-reveal" href="mailto:info@oday.dev">
             Let&apos;s Talk <span className="arrow">↗</span>
