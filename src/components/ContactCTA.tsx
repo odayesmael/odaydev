@@ -279,9 +279,16 @@ function Orb({ tint, hoverSignal }: { tint: "green" | "amber"; hoverSignal: { cu
       // Edges dissolve as the points scatter on hover
       lineMat.opacity = 0.22 * (1 - uniforms.uHover.value);
       renderer.render(scene, camera);
-      raf = requestAnimationFrame(animate);
+      raf = visible ? requestAnimationFrame(animate) : 0;
     };
-    animate();
+    // Only animate while the orb is on screen.
+    let visible = false;
+    const io = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible && !raf) raf = requestAnimationFrame(animate);
+    });
+    io.observe(mount);
+    renderer.render(scene, camera);
 
     const onResize = () => {
       const W = mount.clientWidth;
@@ -294,6 +301,7 @@ function Orb({ tint, hoverSignal }: { tint: "green" | "amber"; hoverSignal: { cu
 
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
       window.removeEventListener("resize", onResize);
       geometry.dispose();
       material.dispose();

@@ -342,9 +342,13 @@ export function HeroSphere() {
     const warmB = new THREE.Color(0x4ade80);
     for (let r = 0; r < rays.length; r++) {
       let o = r * 2 * 3;
-      burstCol[o] = warmA.r; burstCol[o + 1] = warmA.g; burstCol[o + 2] = warmA.b;
+      burstCol[o] = warmA.r;
+      burstCol[o + 1] = warmA.g;
+      burstCol[o + 2] = warmA.b;
       o += 3;
-      burstCol[o] = warmB.r; burstCol[o + 1] = warmB.g; burstCol[o + 2] = warmB.b;
+      burstCol[o] = warmB.r;
+      burstCol[o + 1] = warmB.g;
+      burstCol[o + 2] = warmB.b;
     }
     const burstGeo = new THREE.BufferGeometry();
     const burstAttr = new THREE.BufferAttribute(burstPos, 3);
@@ -397,14 +401,14 @@ export function HeroSphere() {
     });
 
     // ---------- Fluid simulation constants ----------
-    const STIFFNESS = 26;    // pull back to rest position
-    const DAMPING = 4.4;     // viscosity — higher = thicker fluid
+    const STIFFNESS = 26; // pull back to rest position
+    const DAMPING = 4.4; // viscosity — higher = thicker fluid
     const PUSH_RADIUS = 1.15;
     const PUSH_FORCE = 26;
 
     // Slow right↔left sway instead of a continuous spin
     const SWAY_SPEED = 0.22; // ~28s for a full right → left → right cycle
-    const SWAY_ANGLE = 0.6;  // ±34° turn
+    const SWAY_ANGLE = 0.6; // ±34° turn
     const SWAY_SHIFT = 0.18; // slight lateral travel so it visibly moves across
 
     // ---------- Animation loop ----------
@@ -535,8 +539,15 @@ export function HeroSphere() {
       burstMat.opacity = (0.35 + 0.15 * Math.sin(t * 1.4)) * fade;
 
       renderer.render(scene, camera);
-      raf = requestAnimationFrame(animate);
+      raf = onScreen ? requestAnimationFrame(animate) : 0;
     };
+    // Pause while scrolled out of view.
+    let onScreen = true;
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      if (onScreen && !raf) raf = requestAnimationFrame(animate);
+    });
+    io.observe(mount);
     animate();
 
     // ---------- Resize ----------
@@ -553,6 +564,7 @@ export function HeroSphere() {
 
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerleave", onPointerLeave);
       window.removeEventListener("resize", onResize);

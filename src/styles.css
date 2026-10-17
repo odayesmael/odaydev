@@ -176,8 +176,9 @@ html, body, #root {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.04;
-  mix-blend-mode: overlay;
+  /* No blend mode: a blended fixed layer forces the whole page to re-composite
+     on every animation frame. */
+  opacity: 0.025;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
@@ -638,8 +639,6 @@ html, body, #root {
   position: relative;
   background:
     linear-gradient(180deg, rgba(15, 25, 18, 0.28) 0%, rgba(5, 12, 7, 0.45) 100%);
-  backdrop-filter: blur(22px) saturate(1.1);
-  -webkit-backdrop-filter: blur(22px) saturate(1.1);
   border: 1px solid rgba(74, 222, 128, 0.16);
   border-radius: 22px;
   padding: 24px;
@@ -975,8 +974,6 @@ html, body, #root {
   border: 1px solid rgba(74, 222, 128, 0.16);
   border-radius: 20px;
   background: linear-gradient(180deg, rgba(15, 25, 18, 0.28) 0%, rgba(5, 12, 7, 0.45) 100%);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
   transition: border-color 0.4s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .sk-group:hover {
@@ -1153,8 +1150,6 @@ html, body, #root {
   border: 1px solid rgba(74, 222, 128, 0.16);
   border-radius: 22px;
   background: linear-gradient(180deg, rgba(15, 25, 18, 0.28) 0%, rgba(5, 12, 7, 0.45) 100%);
-  backdrop-filter: blur(22px) saturate(1.1);
-  -webkit-backdrop-filter: blur(22px) saturate(1.1);
   text-decoration: none;
   overflow: hidden;
   isolation: isolate;
@@ -1773,7 +1768,6 @@ html, body, #root {
   padding: 8px 14px;
   border-radius: 999px;
   margin: 0 auto 80px;
-  backdrop-filter: blur(8px);
 }
 .text-grid-section .tg-eyebrow {
   display: flex;
@@ -1852,10 +1846,12 @@ html, body, #root {
   isolation: isolate;
 }
 .starfield-canvas {
-  position: absolute;
-  inset: 0;
+  /* Viewport-sized and pinned while its section scrolls; takes no layout space */
+  position: sticky;
+  top: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  margin-bottom: -100vh;
   z-index: -1;
   pointer-events: none;
   display: block;
@@ -1940,7 +1936,6 @@ html, body, #root {
   font-size: 13px;
   letter-spacing: 0.05em;
   text-decoration: none;
-  backdrop-filter: blur(8px);
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 .cta-button:hover {
@@ -1972,7 +1967,6 @@ html, body, #root {
   border: 1px solid var(--border-green);
   border-radius: 14px;
   background: rgba(13, 31, 13, 0.4);
-  backdrop-filter: blur(10px);
   text-decoration: none;
   transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
 }
@@ -2020,7 +2014,7 @@ a.cta-detail:hover {
 .bn-btn.active, .bn-btn:hover { color: #fff; }
 
 /* Standalone page header (portfolio, case studies) */
-.dr-page { position: relative; min-height: 100vh; }
+.dr-page { position: relative; min-height: 100vh; isolation: isolate; }
 .dr-page-top {
   display: flex;
   justify-content: space-between;
@@ -2087,8 +2081,6 @@ a.cta-detail:hover {
     radial-gradient(60% 80% at 85% 60%, rgba(123, 30, 58, 0.45), transparent 70%),
     radial-gradient(50% 60% at 0% 0%, rgba(74, 222, 128, 0.1), transparent 70%),
     linear-gradient(180deg, rgba(15, 25, 18, 0.5), rgba(5, 10, 7, 0.75));
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 40px 100px -50px rgba(0, 0, 0, 0.9);
 }
 .as-eyebrow, .cs-eyebrow, .cs-label {
@@ -2363,8 +2355,6 @@ a.cta-detail:hover {
   border: 1px solid rgba(74, 222, 128, 0.16);
   border-radius: 22px;
   background: linear-gradient(180deg, rgba(15, 25, 18, 0.3), rgba(5, 12, 7, 0.5));
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
 }
 .cs-step-n {
   display: block;
@@ -2613,8 +2603,6 @@ a.cta-detail:hover {
   border: 1px solid var(--border-green);
   border-radius: 22px;
   background: rgba(8, 20, 10, 0.55);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   text-align: left;
 }
 .cb-types {
@@ -2826,3 +2814,13 @@ a.cta-detail:hover {
 .pr-card.is-offline { cursor: default; }
 .pr-card.is-offline:hover { transform: none; }
 .pr-visit.is-offline { color: var(--white-muted); }
+
+/* ============ PERFORMANCE ============
+   Cards sit on an animated starfield. Backdrop blur re-renders every frame for
+   every visible card, so cards use a near-opaque fill instead. */
+.pr-card, .pr-card:hover,
+.bento-card, .bento-card:hover, .bento-card.is-active,
+.sk-group, .cs-step, .cs-feature, .cs-plan, .cb-form, .cta-detail, a.cta-detail:hover {
+  background-color: rgba(6, 14, 9, 0.9);
+}
+.as-card { background-color: rgba(5, 11, 7, 0.92); }

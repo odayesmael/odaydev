@@ -57,8 +57,9 @@ export function GlobalGlow() {
 
   useEffect(() => {
     const canvas = canvasRef.current!;
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
+    // A soft glow needs no retina resolution; 1x keeps the fullscreen shader cheap.
+    renderer.setPixelRatio(1);
 
     const scene = new THREE.Scene();
     const camera = new THREE.Camera();
@@ -93,18 +94,24 @@ export function GlobalGlow() {
     };
     window.addEventListener("pointermove", onMove, { passive: true });
 
+    // Render on demand: only while the glow is still easing toward the pointer.
     let raf = 0;
-    const clock = new THREE.Clock();
     const animate = () => {
-      uniforms.uTime.value = clock.getElapsedTime();
       uniforms.uMouse.value.lerp(target, 0.06); // elastic damping
       renderer.render(scene, camera);
-      raf = requestAnimationFrame(animate);
+      raf = uniforms.uMouse.value.distanceTo(target) > 0.0008 ? requestAnimationFrame(animate) : 0;
+    };
+    const kick = () => {
+      if (!raf) raf = requestAnimationFrame(animate);
     };
     animate();
+    window.addEventListener("pointermove", kick, { passive: true });
+    window.addEventListener("resize", kick);
 
     return () => {
       cancelAnimationFrame(raf);
+      window.removeEventListener("pointermove", kick);
+      window.removeEventListener("resize", kick);
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onMove);
       geo.dispose();
