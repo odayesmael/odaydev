@@ -2826,15 +2826,3 @@ a.cta-detail:hover {
 .pr-card.is-offline { cursor: default; }
 .pr-card.is-offline:hover { transform: none; }
 .pr-visit.is-offline { color: var(--white-muted); }
-.app-stage {
-  background:
-    radial-gradient(70% 90% at 50% 115%, rgba(123, 30, 58, 0.9), transparent 70%),
-    radial-gradient(60% 60% at 0% 0%, rgba(74, 222, 128, 0.12), transparent 70%),
-    linear-gradient(165deg, #1a0a10 0%, #07050a 100%);
-}
-.app-stage .dm-glow { background: radial-gradient(closest-side, rgba(200, 60, 100, 0.45), transparent); }
-.app-stage .dm-phone { bottom: auto; top: 12%; width: 23%; }
-.app-stage .app-phone-0 { right: auto; left: 30%; transform: rotate(-6deg); }
-.app-stage .app-phone-1 { right: 28%; top: 8%; z-index: 3; transform: rotate(5deg); }
-.pr-card:hover .app-stage .app-phone-0 { transform: translate(-6%, -5%) rotate(-8deg); }
-.pr-card:hover .app-stage .app-phone-1 { transform: translate(6%, -7%) rotate(7deg); }
