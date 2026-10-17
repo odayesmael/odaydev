@@ -124,10 +124,23 @@ async function shoot(browser, p, kind) {
   return info;
 }
 
+const MODE = process.env.MODE || "projects";
 const browser = await chromium.launch({
   args: ["--disable-blink-features=AutomationControlled"],
 });
 const report = [];
+if (MODE === "gallery") {
+  // Desktop shots of key inner pages, for case-study galleries
+  const gallery = JSON.parse(fs.readFileSync(path.join(root, "scripts/gallery-pages.json"), "utf8"));
+  for (const [slug, pages] of Object.entries(gallery)) {
+    for (const [i, page] of pages.entries()) {
+      const info = await shoot(browser, { slug: `${slug}-page-${i + 1}`, url: page.url }, "desktop");
+      console.log(`${info.error || info.flags.length ? "FAIL" : "OK  "} ${slug} ${page.url} ${info.error ?? info.flags.join(",")}`);
+    }
+  }
+  await browser.close();
+  process.exit(0);
+}
 for (const p of projects) {
   const desktop = await shoot(browser, p, "desktop");
   const mobile = await shoot(browser, p, "mobile");

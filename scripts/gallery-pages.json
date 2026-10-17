@@ -1,0 +1,20 @@
+{
+  "solechem-europe": [
+    { "url": "https://www.solechem.eu/products/", "label": "Product catalogue" },
+    { "url": "https://www.solechem.eu/products/cas-514-10-3/", "label": "Product page" },
+    { "url": "https://www.solechem.eu/industries/food-nutrition/", "label": "Industry page" },
+    { "url": "https://www.solechem.eu/manufacturing/", "label": "Manufacturing" }
+  ],
+  "jurcom-academy": [
+    { "url": "https://jurcomacademy.com/egitimler/", "label": "Course catalogue" },
+    { "url": "https://jurcomacademy.com/egitimler/kvkk-farkindalik-egitimi/", "label": "Course page" },
+    { "url": "https://jurcomacademy.com/hakkimizda/", "label": "About" },
+    { "url": "https://jurcomacademy.com/login/", "label": "Member login" }
+  ],
+  "space-and-place": [
+    { "url": "https://sapdesign.sa/project-category/residential/", "label": "Residential projects" },
+    { "url": "https://sapdesign.sa/our-services/", "label": "Services" },
+    { "url": "https://sapdesign.sa/about-us/", "label": "About" },
+    { "url": "https://sapdesign.sa/our-team/", "label": "Team" }
+  ]
+}
