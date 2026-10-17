@@ -9,18 +9,24 @@ export function Preloader({ onDone }: { onDone: () => void }) {
   const logoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Respect reduced-motion users: skip the intro entirely.
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+      sessionStorage.setItem("preloaded", "1");
+      onDone();
+      return;
+    }
     const obj = { v: 0 };
     gsap.to(obj, {
       v: 100,
-      duration: 2.4,
+      duration: 1.2,
       ease: "cubic-bezier(0.65, 0, 0.35, 1)",
       onUpdate: () => setPct(Math.round(obj.v)),
       onComplete: () => {
         gsap.to(logoRef.current, { scale: 1.15, duration: 0.5, ease: "power2.out" });
         gsap.to(rootRef.current, {
           opacity: 0,
-          duration: 0.7,
-          delay: 0.35,
+          duration: 0.5,
+          delay: 0.15,
           ease: "power2.inOut",
           onComplete: () => {
             sessionStorage.setItem("preloaded", "1");
@@ -31,7 +37,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
     });
     gsap.to(barRef.current, {
       width: "100%",
-      duration: 2.4,
+      duration: 1.2,
       ease: "cubic-bezier(0.65, 0, 0.35, 1)",
     });
   }, [onDone]);

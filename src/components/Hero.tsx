@@ -39,17 +39,17 @@ export function Hero({ play }: { play: boolean }) {
           </a>
         </div>
 
-        <div className="label-tag js-reveal">[ FULL-STACK WEB DEVELOPER ]</div>
+        <div className="label-tag js-reveal">[ FULL-STACK WEB &amp; MOBILE DEVELOPER ]</div>
 
         <div className="headline">
           <div className="row row-1 js-reveal">Building Full-Stack</div>
           <div className="row row-2 js-reveal">
-            Web Experiences
+            Web &amp; App Experiences
           </div>
         </div>
 
         <p className="hero-desc js-reveal">
-          9 years turning ideas into fast, reliable websites of every kind — corporate sites, web apps, online stores and custom platforms. Front-end to back-end. Based in the Netherlands, working worldwide.
+          9 years turning ideas into fast, reliable products — corporate sites, online stores, custom platforms and, now, iOS &amp; Android apps. Front-end to back-end. Based in the Netherlands, working worldwide.
         </p>
 
         <div className="scroll-hint js-reveal">

@@ -7,7 +7,9 @@ import { Starfield } from "@/components/Starfield";
 import { SiteFooter } from "@/components/SiteFooter";
 import { GlobalGlow } from "@/components/GlobalGlow";
 import { projects } from "@/data/projects";
+import { ProjectCard } from "@/components/ProjectCard";
 import logoMark from "@/assets/oday-mark.svg";
+import { SITE_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/portfolio")({
   component: PortfolioRoute,
@@ -17,14 +19,16 @@ export const Route = createFileRoute("/portfolio")({
       {
         name: "description",
         content:
-          "The full portfolio of Oday — corporate websites, platforms, web apps and online stores designed, built and maintained end to end.",
+          "The full portfolio of Oday — corporate websites, platforms, online stores and mobile apps designed, built and maintained end to end.",
       },
       { property: "og:title", content: "Portfolio — Oday" },
+      { property: "og:url", content: `${SITE_URL}/portfolio` },
       {
         property: "og:description",
-        content: "Corporate websites, platforms, web apps and online stores built end to end.",
+        content: "Corporate websites, platforms, online stores and mobile apps built end to end.",
       },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/portfolio` }],
   }),
 });
 
@@ -39,7 +43,7 @@ function PortfolioRoute() {
 
   const visible = useMemo(
     () => (active === "All" ? projects : projects.filter((p) => p.category === active)),
-    [active]
+    [active],
   );
 
   // Reveal cards on mount and whenever the filter changes
@@ -50,7 +54,7 @@ function PortfolioRoute() {
       gsap.fromTo(
         ".pr-card",
         { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.05, duration: 0.6, ease: "power3.out", overwrite: true }
+        { y: 0, opacity: 1, stagger: 0.05, duration: 0.6, ease: "power3.out", overwrite: true },
       );
     }, grid);
     return () => ctx.revert();
@@ -75,15 +79,14 @@ function PortfolioRoute() {
         <section className="portfolio-section">
           <div className="pf-hero">
             <div className="pf-eyebrow">
-              <span className="pr-dot" />
-              [ PORTFOLIO · {projects.length} PROJECTS ]
+              <span className="pr-dot" />[ PORTFOLIO · {projects.length} PROJECTS ]
             </div>
             <h1 className="pf-title">
               All my <em>work.</em>
             </h1>
             <p className="pf-sub">
-              Nine years of corporate websites, platforms, web apps and online stores — designed,
-              built and maintained end to end. Filter by type below.
+              Nine years of corporate websites, platforms, online stores and now mobile apps —
+              designed, built and maintained end to end. Filter by type below.
             </p>
           </div>
 
@@ -104,34 +107,7 @@ function PortfolioRoute() {
 
           <div className="pr-grid pf-grid" ref={gridRef}>
             {visible.map((p, i) => (
-              <a
-                className="pr-card"
-                key={p.domain}
-                data-num={String(i + 1).padStart(2, "0")}
-                href={p.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div className="pr-card-top">
-                  <span className="pr-num">[ {String(i + 1).padStart(2, "0")} ]</span>
-                  <span className="pr-cat">{p.category}</span>
-                </div>
-                <div className="pr-card-body">
-                  <h3 className="pr-name">{p.title}</h3>
-                  <p className="pr-desc">{p.body}</p>
-                </div>
-                <ul className="pr-tags">
-                  {p.tags.map((t) => (
-                    <li key={t}>{t}</li>
-                  ))}
-                </ul>
-                <div className="pr-card-foot">
-                  <span className="pr-domain">{p.domain}</span>
-                  <span className="pr-visit">
-                    Visit <span className="pr-arrow">↗</span>
-                  </span>
-                </div>
-              </a>
+              <ProjectCard project={p} index={i} key={p.slug} />
             ))}
           </div>
         </section>

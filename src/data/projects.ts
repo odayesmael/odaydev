@@ -1,28 +1,52 @@
 export type Project = {
+  /** Stable id, also used as the React key */
+  slug: string;
   title: string;
   category: string;
   domain: string;
   url: string;
   body: string;
   tags: string[];
+  /** Shown in the home "Selected work" grid (first 9 web projects) */
   featured?: boolean;
+  /** "web" (default) or "app" for native / mobile products */
+  kind?: "web" | "app";
+  /** Optional cover image; falls back to a live screenshot of `url` */
+  image?: string;
+  /** Internal case-study path, e.g. "/work/shustyle" */
+  caseStudy?: string;
 };
 
 /**
  * Single source of truth for portfolio work.
  * The home page shows the `featured` items; the /portfolio page shows all.
+ * To use your own cover for a card, drop an image in /public/work and set `image`.
  */
 export const projects: Project[] = [
   {
-    title: "Dposphere",
-    category: "Legal & Compliance",
-    domain: "dposphere.com",
-    url: "https://dposphere.com",
-    body: "Corporate site for a data-protection and DPO-as-a-service firm — clear service architecture and GDPR-focused content.",
-    tags: ["WordPress", "Corporate", "SEO"],
+    slug: "shustyle",
+    title: "ShuStyle",
+    category: "Mobile App",
+    domain: "shustyle.app",
+    url: "https://shustyle.app",
+    body: "AI stylist app for iPhone and Android that builds outfits from the clothes you already own — matched to the weather and the occasion, with a 360° try-on on a model. Plus its 5-language website.",
+    tags: ["iOS", "Android", "AI", "Subscriptions"],
+    kind: "app",
+    image: "https://shustyle.app/img/home-en.webp",
+    caseStudy: "/work/shustyle",
+  },
+  {
+    slug: "solechem-europe",
+    title: "SoleChem Europe",
+    category: "Industrial",
+    domain: "solechem.eu",
+    url: "https://www.solechem.eu/",
+    body: "Multilingual B2B platform for a European chemical raw-materials supplier — a searchable catalogue of 4,500+ products, sector pages and quote funnels.",
+    tags: ["React", "B2B", "Multilingual"],
     featured: true,
   },
   {
+    slug: "jurcom-academy",
     title: "Jurcom Academy",
     category: "E-Learning",
     domain: "jurcomacademy.com",
@@ -32,114 +56,17 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    title: "JurcomGRC",
+    slug: "dposphere",
+    title: "Dposphere",
     category: "Legal & Compliance",
-    domain: "jurcom.nl",
-    url: "https://jurcom.nl",
-    body: "Governance, risk and compliance consultancy site — structured service pages and a lead-focused layout.",
-    tags: ["WordPress", "Consulting", "UX"],
+    domain: "dposphere.com",
+    url: "https://dposphere.com",
+    body: "Corporate site for a data-protection and DPO-as-a-service firm — clear service architecture and GDPR-focused content.",
+    tags: ["WordPress", "Corporate", "SEO"],
     featured: true,
   },
   {
-    title: "SoleChem Europe",
-    category: "Industrial",
-    domain: "solechem-eu.vercel.app",
-    url: "https://solechem-eu.vercel.app",
-    body: "Corporate site for a European chemical raw-materials supplier — sector-focused pages, product catalogues and B2B lead funnels.",
-    tags: ["React", "Corporate", "B2B"],
-    featured: true,
-  },
-  {
-    title: "Space and Place",
-    category: "Corporate",
-    domain: "sapdesign.sa",
-    url: "https://sapdesign.sa",
-    body: "Portfolio-style site for a design and architecture studio, letting the visual work lead the page.",
-    tags: ["WordPress", "Portfolio", "Design"],
-  },
-  {
-    title: "SoleChem English",
-    category: "Industrial",
-    domain: "solechem-en.vercel.app",
-    url: "https://solechem-en.vercel.app",
-    body: "English-language version of the SoleChem platform — chemical solutions showcase with R&D services and industry expertise.",
-    tags: ["React", "Multi-language", "Industrial"],
-  },
-  {
-    title: "KVKKOBI",
-    category: "Legal & Compliance",
-    domain: "kvkkobi.com",
-    url: "https://kvkkobi.com",
-    body: "KVKK (Turkish data-protection) compliance platform for SMEs, with guidance and clear service packages.",
-    tags: ["WordPress", "Compliance", "SME"],
-  },
-  {
-    title: "Amal Glass",
-    category: "Industrial",
-    domain: "amalglass.com",
-    url: "https://amalglass.com",
-    body: "Product and capability showcase for a glass & aluminium manufacturer, built to win B2B enquiries.",
-    tags: ["WordPress", "Catalogue", "Responsive"],
-    featured: true,
-  },
-  {
-    title: "Maximum Property",
-    category: "Real Estate",
-    domain: "maximumproperty.com",
-    url: "https://maximumproperty.com",
-    body: "Real-estate agency website with property listings, search and enquiry funnels tuned for conversions.",
-    tags: ["WordPress", "Listings", "SEO"],
-    featured: true,
-  },
-  {
-    title: "Chefs Equipment",
-    category: "E-commerce",
-    domain: "chefsequipment.com.au",
-    url: "https://chefsequipment.com.au",
-    body: "WooCommerce store for professional kitchen equipment with a large catalogue and product filtering.",
-    tags: ["WooCommerce", "Catalogue", "Filtering"],
-  },
-  {
-    title: "Gronhem",
-    category: "Corporate",
-    domain: "gronhem.com",
-    url: "https://gronhem.com",
-    body: "Clean corporate website with a modern, content-driven layout and strong calls to action.",
-    tags: ["WordPress", "Corporate", "Responsive"],
-  },
-  {
-    title: "Lidya Yachting",
-    category: "Marine",
-    domain: "lidyayachting.com",
-    url: "http://www.lidyayachting.com",
-    body: "Yacht charter and marine-leisure site with an immersive gallery and an enquiry-driven booking flow.",
-    tags: ["WordPress", "Booking", "Gallery"],
-  },
-  {
-    title: "Sea Boat Marine",
-    category: "Marine",
-    domain: "seaboatmarine.com",
-    url: "https://seaboatmarine.com",
-    body: "Marine services and boat-sales website with a product-forward layout and clear contact paths.",
-    tags: ["WordPress", "Catalogue", "Marine"],
-  },
-  {
-    title: "Max Gear",
-    category: "E-commerce",
-    domain: "maxgeartr.com",
-    url: "https://www.maxgeartr.com",
-    body: "Retail store for gear and equipment with a conversion-focused product experience.",
-    tags: ["WooCommerce", "Retail", "Responsive"],
-  },
-  {
-    title: "SoleChem Türkiye",
-    category: "Industrial",
-    domain: "solechemtr.vercel.app",
-    url: "https://solechemtr.vercel.app",
-    body: "Turkish localisation of the SoleChem platform — full B2B product catalogue and service pages for the Turkish market.",
-    tags: ["React", "Localisation", "Industrial"],
-  },
-  {
+    slug: "akhadia-holding",
     title: "Akhadia Holding",
     category: "Corporate",
     domain: "akhadia.nl",
@@ -149,6 +76,7 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "esg-platform",
     title: "ESG Platform",
     category: "Corporate",
     domain: "esg.jurcom.nl",
@@ -158,22 +86,7 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    title: "Özdilek Hukuk",
-    category: "Legal & Compliance",
-    domain: "ozdilekhukuk.com",
-    url: "https://ozdilekhukuk.com",
-    body: "Law-firm website with practice-area pages and a professional, trust-building presentation.",
-    tags: ["WordPress", "Legal", "SEO"],
-  },
-  {
-    title: "Right Hair Clinic",
-    category: "Healthcare",
-    domain: "righthairclinic.com",
-    url: "https://righthairclinic.com",
-    body: "Hair-transplant clinic site with treatment pages, before/after galleries and consultation funnels.",
-    tags: ["WordPress", "Medical", "Booking"],
-  },
-  {
+    slug: "raja-chaabani",
     title: "Raja Chaabani",
     category: "Portfolio",
     domain: "raja-seven-tau.vercel.app",
@@ -183,24 +96,17 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    title: "SoleChem Europe",
+    slug: "amal-glass",
+    title: "Amal Glass",
     category: "Industrial",
-    domain: "solechem.eu",
-    url: "https://www.solechem.eu/",
-    body: "SoleChem S.R.L. — trusted European chemical supplier. Browse 4,500+ industrial chemicals. ISO 9001 & ISO 22000 certified.",
-    tags: ["Industrial", "B2B", "Corporate"],
+    domain: "amalglass.com",
+    url: "https://amalglass.com",
+    body: "Product and capability showcase for a glass & aluminium manufacturer, built to win B2B enquiries.",
+    tags: ["WordPress", "Catalogue", "Responsive"],
     featured: true,
   },
   {
-    title: "SoleChem Kimya",
-    category: "Industrial",
-    domain: "solechem.com.tr",
-    url: "https://www.solechem.com.tr/",
-    body: "SoleChem Kimya — güvenilir kimyasal tedarikçiniz. 4.500+ endüstriyel kimyasal. ISO 9001, ISO 22000 ve GMP+ sertifikalı.",
-    tags: ["Industrial", "B2B", "Corporate"],
-    featured: true,
-  },
-  {
+    slug: "oday-handmade",
     title: "Oday Handmade",
     category: "E-commerce",
     domain: "odayhandmade.com",
@@ -210,12 +116,130 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "maximum-property",
+    title: "Maximum Property",
+    category: "Real Estate",
+    domain: "maximumproperty.com",
+    url: "https://maximumproperty.com",
+    body: "Real-estate agency website with property listings, search and enquiry funnels tuned for conversions.",
+    tags: ["WordPress", "Listings", "SEO"],
+    featured: true,
+  },
+  {
+    slug: "jurcomgrc",
+    title: "JurcomGRC",
+    category: "Legal & Compliance",
+    domain: "jurcom.nl",
+    url: "https://jurcom.nl",
+    body: "Governance, risk and compliance consultancy site — structured service pages and a lead-focused layout.",
+    tags: ["WordPress", "Consulting", "UX"],
+  },
+  {
+    slug: "space-and-place",
+    title: "Space and Place",
+    category: "Corporate",
+    domain: "sapdesign.sa",
+    url: "https://sapdesign.sa",
+    body: "Portfolio-style site for a design and architecture studio, letting the visual work lead the page.",
+    tags: ["WordPress", "Portfolio", "Design"],
+  },
+  {
+    slug: "kvkkobi",
+    title: "KVKKOBI",
+    category: "Legal & Compliance",
+    domain: "kvkkobi.com",
+    url: "https://kvkkobi.com",
+    body: "KVKK (Turkish data-protection) compliance platform for SMEs, with guidance and clear service packages.",
+    tags: ["WordPress", "Compliance", "SME"],
+  },
+  {
+    slug: "chefs-equipment",
+    title: "Chefs Equipment",
+    category: "E-commerce",
+    domain: "chefsequipment.com.au",
+    url: "https://chefsequipment.com.au",
+    body: "WooCommerce store for professional kitchen equipment with a large catalogue and product filtering.",
+    tags: ["WooCommerce", "Catalogue", "Filtering"],
+  },
+  {
+    slug: "gronhem",
+    title: "Gronhem",
+    category: "Corporate",
+    domain: "gronhem.com",
+    url: "https://gronhem.com",
+    body: "Clean corporate website with a modern, content-driven layout and strong calls to action.",
+    tags: ["WordPress", "Corporate", "Responsive"],
+  },
+  {
+    slug: "lidya-yachting",
+    title: "Lidya Yachting",
+    category: "Marine",
+    domain: "lidyayachting.com",
+    url: "http://www.lidyayachting.com",
+    body: "Yacht charter and marine-leisure site with an immersive gallery and an enquiry-driven booking flow.",
+    tags: ["WordPress", "Booking", "Gallery"],
+  },
+  {
+    slug: "sea-boat-marine",
+    title: "Sea Boat Marine",
+    category: "Marine",
+    domain: "seaboatmarine.com",
+    url: "https://seaboatmarine.com",
+    body: "Marine services and boat-sales website with a product-forward layout and clear contact paths.",
+    tags: ["WordPress", "Catalogue", "Marine"],
+  },
+  {
+    slug: "max-gear",
+    title: "Max Gear",
+    category: "E-commerce",
+    domain: "maxgeartr.com",
+    url: "https://www.maxgeartr.com",
+    body: "Retail store for gear and equipment with a conversion-focused product experience.",
+    tags: ["WooCommerce", "Retail", "Responsive"],
+  },
+  {
+    slug: "ozdilek-hukuk",
+    title: "Özdilek Hukuk",
+    category: "Legal & Compliance",
+    domain: "ozdilekhukuk.com",
+    url: "https://ozdilekhukuk.com",
+    body: "Law-firm website with practice-area pages and a professional, trust-building presentation.",
+    tags: ["WordPress", "Legal", "SEO"],
+  },
+  {
+    slug: "right-hair-clinic",
+    title: "Right Hair Clinic",
+    category: "Healthcare",
+    domain: "righthairclinic.com",
+    url: "https://righthairclinic.com",
+    body: "Hair-transplant clinic site with treatment pages, before/after galleries and consultation funnels.",
+    tags: ["WordPress", "Medical", "Booking"],
+  },
+  {
+    slug: "solechem-turkiye",
+    title: "SoleChem Türkiye",
+    category: "Industrial",
+    domain: "solechem.com.tr",
+    url: "https://www.solechem.com.tr/",
+    body: "Turkish-market edition of the SoleChem platform — localised catalogue, certifications and B2B enquiry flows for SoleChem Kimya.",
+    tags: ["React", "Localisation", "B2B"],
+  },
+  {
+    slug: "soul-of-palestine-art",
     title: "Soul Of Palestine Art",
     category: "E-commerce",
     domain: "soulofpalestineart.com",
     url: "https://www.soulofpalestineart.com/",
     body: "Online store showcasing Soul Of Palestine art, merchandise, and cultural products.",
     tags: ["E-commerce", "Shopify", "Retail"],
-    featured: true,
   },
 ];
+
+/** Featured web projects for the home grid (the app gets its own spotlight). */
+export const featuredProjects = projects.filter((p) => p.featured && p.kind !== "app").slice(0, 9);
+
+/** Cover image for a card: the project's own image, or a live screenshot of the site. */
+export function projectCover(p: Project): string {
+  if (p.image) return p.image;
+  return `https://s.wordpress.com/mshots/v1/${encodeURIComponent(p.url)}?w=1200&h=750`;
+}
