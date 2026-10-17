@@ -172,12 +172,12 @@ export function TextGrid() {
               <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
             </svg>
           </span>
-          Know me more — a web developer who ships
+          Know me more — a developer who ships
         </div>
 
         <div className="tg-grid">
           {[
-            { n: "01", title: "9 years of experience", body: "Nearly a decade building and maintaining sites of every size — from single-page brochures to e-commerce and multi-site platforms handling real business traffic." },
+            { n: "01", title: "9 years of experience", body: "Nearly a decade building and maintaining products of every size — from single-page brochures to e-commerce, multi-site platforms and a live iOS app handling real users." },
             { n: "02", title: "Custom, not off-the-shelf", body: "Built to your brand and requirements on whichever stack fits the job — CMS, custom code or headless. Clean, maintainable front-end and back-end, never a bloated template." },
             { n: "03", title: "Fast & search-ready", body: "Performance, accessibility and SEO baked in from the first line, so your site loads quickly, ranks well and stays easy to grow over time." },
           ].map((c) => (

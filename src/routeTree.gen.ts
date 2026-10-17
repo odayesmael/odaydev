@@ -9,16 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ProductRouteImport } from './routes/product'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicesDetectionResponseRouteImport } from './routes/services.detection-response'
+import { Route as WorkShustyleRouteImport } from './routes/work.shustyle'
 
-const ProductRoute = ProductRouteImport.update({
-  id: '/product',
-  path: '/product',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
@@ -29,61 +23,44 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesDetectionResponseRoute =
-  ServicesDetectionResponseRouteImport.update({
-    id: '/services/detection-response',
-    path: '/services/detection-response',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const WorkShustyleRoute = WorkShustyleRouteImport.update({
+  id: '/work/shustyle',
+  path: '/work/shustyle',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/portfolio': typeof PortfolioRoute
-  '/product': typeof ProductRoute
-  '/services/detection-response': typeof ServicesDetectionResponseRoute
+  '/work/shustyle': typeof WorkShustyleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/portfolio': typeof PortfolioRoute
-  '/product': typeof ProductRoute
-  '/services/detection-response': typeof ServicesDetectionResponseRoute
+  '/work/shustyle': typeof WorkShustyleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/portfolio': typeof PortfolioRoute
-  '/product': typeof ProductRoute
-  '/services/detection-response': typeof ServicesDetectionResponseRoute
+  '/work/shustyle': typeof WorkShustyleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/portfolio' | '/product' | '/services/detection-response'
+  fullPaths: '/' | '/portfolio' | '/work/shustyle'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/portfolio' | '/product' | '/services/detection-response'
-  id:
-    | '__root__'
-    | '/'
-    | '/portfolio'
-    | '/product'
-    | '/services/detection-response'
+  to: '/' | '/portfolio' | '/work/shustyle'
+  id: '__root__' | '/' | '/portfolio' | '/work/shustyle'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PortfolioRoute: typeof PortfolioRoute
-  ProductRoute: typeof ProductRoute
-  ServicesDetectionResponseRoute: typeof ServicesDetectionResponseRoute
+  WorkShustyleRoute: typeof WorkShustyleRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/product': {
-      id: '/product'
-      path: '/product'
-      fullPath: '/product'
-      preLoaderRoute: typeof ProductRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/portfolio': {
       id: '/portfolio'
       path: '/portfolio'
@@ -98,11 +75,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/detection-response': {
-      id: '/services/detection-response'
-      path: '/services/detection-response'
-      fullPath: '/services/detection-response'
-      preLoaderRoute: typeof ServicesDetectionResponseRouteImport
+    '/work/shustyle': {
+      id: '/work/shustyle'
+      path: '/work/shustyle'
+      fullPath: '/work/shustyle'
+      preLoaderRoute: typeof WorkShustyleRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -111,8 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PortfolioRoute: PortfolioRoute,
-  ProductRoute: ProductRoute,
-  ServicesDetectionResponseRoute: ServicesDetectionResponseRoute,
+  WorkShustyleRoute: WorkShustyleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

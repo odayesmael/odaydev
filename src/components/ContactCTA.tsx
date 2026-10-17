@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ContactBrief } from "./ContactBrief";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -314,8 +315,12 @@ export function ContactCTA() {
 
   useEffect(() => {
     const section = ref.current!;
-    const onEnter = () => { hoverSignal.current = 1; };
-    const onLeave = () => { hoverSignal.current = 0; };
+    const onEnter = () => {
+      hoverSignal.current = 1;
+    };
+    const onLeave = () => {
+      hoverSignal.current = 0;
+    };
     const trigger = section.querySelector(".cta-button") as HTMLElement | null;
     const target = trigger ?? section;
     target.addEventListener("mouseenter", onEnter);
@@ -350,14 +355,22 @@ export function ContactCTA() {
           <br />
           something{" "}
           <span className="cta-icon" aria-hidden>
-            <svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" strokeWidth="1.2">
+            <svg
+              viewBox="0 0 24 24"
+              width="42"
+              height="42"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.2"
+            >
               <circle cx="12" cy="12" r="10" strokeDasharray="2 3" />
               <circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none" />
             </svg>
           </span>
         </h2>
         <p className="cta-sub cta-reveal">
-          Have a website or web app in mind, or a site that needs care and speed? Available for freelance work and long-term collaborations.
+          Have a website or an app in mind, or a site that needs care and speed? Available for
+          freelance projects, long-term collaborations and full-time roles in the Netherlands.
         </p>
         <a className="cta-button cta-reveal" href="mailto:info@oday.dev">
           Let&apos;s Talk <span className="cta-button-dot" />
@@ -372,6 +385,19 @@ export function ContactCTA() {
             <span className="cta-detail-label">[ LOCATION ]</span>
             <span className="cta-detail-value">Netherlands</span>
           </div>
+          <a
+            className="cta-detail"
+            href="https://www.linkedin.com/in/oday-alatbash/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="cta-detail-label">[ LINKEDIN ]</span>
+            <span className="cta-detail-value">oday-alatbash</span>
+          </a>
+        </div>
+
+        <div className="cta-reveal">
+          <ContactBrief />
         </div>
       </div>
     </section>

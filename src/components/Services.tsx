@@ -76,6 +76,21 @@ function UxGlyph() {
   );
 }
 
+function MobileGlyph() {
+  return (
+    <svg viewBox="0 0 240 200" fill="none" stroke="currentColor" strokeWidth="1.2" className="bento-glyph-svg" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="62" y="34" width="62" height="128" rx="12" opacity="0.4" />
+      <rect x="116" y="46" width="62" height="128" rx="12" opacity="0.75" />
+      <line x1="138" y1="56" x2="156" y2="56" opacity="0.6" />
+      <rect x="126" y="70" width="42" height="30" rx="5" opacity="0.45" />
+      <line x1="126" y1="112" x2="168" y2="112" opacity="0.35" />
+      <line x1="126" y1="124" x2="156" y2="124" opacity="0.3" />
+      <circle cx="147" cy="160" r="5" opacity="0.6" />
+      <path d="M84 96 l8 8 l16 -18" opacity="0.7" />
+    </svg>
+  );
+}
+
 const SERVICES = [
   {
     n: "1.0",
@@ -104,6 +119,13 @@ const SERVICES = [
     Glyph: UxGlyph,
     body: "Intuitive user journeys and interaction design grounded in real usability — interfaces people understand without having to think.",
     tags: ["UX", "Prototyping", "Accessibility"],
+  },
+  {
+    n: "5.0",
+    title: "Mobile Apps",
+    Glyph: MobileGlyph,
+    body: "iOS and Android apps from idea to store launch — product design, AI features, subscriptions and a marketing site to match.",
+    tags: ["iOS", "Android", "App Store", "AI"],
   },
 ];
 
@@ -144,7 +166,7 @@ export function Services() {
           <em>do best.</em>
         </h2>
         <p className="bento-sub">
-          A focused set of services covering the full lifecycle of a website — design, build, optimise and refine.
+          A focused set of services covering the full lifecycle of a website or app — design, build, launch and refine.
         </p>
       </div>
 

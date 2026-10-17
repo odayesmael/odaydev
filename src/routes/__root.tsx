@@ -2,6 +2,7 @@ import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/r
 import { GlobalGlow } from "@/components/GlobalGlow";
 import { Starfield } from "@/components/Starfield";
 import logoMark from "@/assets/oday-mark.svg";
+import { SITE_URL } from "@/lib/site";
 
 import appCss from "../styles.css?url";
 
@@ -18,8 +19,7 @@ function NotFoundComponent() {
 
         <div className="nf-inner">
           <div className="nf-eyebrow">
-            <span className="nf-dot" />
-            [ ERROR 404 · ROUTE NOT FOUND ]
+            <span className="nf-dot" />[ ERROR 404 · ROUTE NOT FOUND ]
           </div>
 
           <h1 className="nf-code">
@@ -53,18 +53,39 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Oday — Full-Stack Web Developer" },
-      { name: "description", content: "Full-Stack Web Developer with 9 years of experience building fast, custom websites of every kind — corporate sites, web apps, online stores and platforms, with an AI-assisted workflow." },
+      { title: "Oday — Full-Stack Web & Mobile Developer" },
+      {
+        name: "description",
+        content:
+          "Full-Stack Web & Mobile Developer with 9 years of experience building fast, custom websites, online stores, platforms and iOS & Android apps, with an AI-assisted workflow.",
+      },
       { name: "author", content: "Oday" },
-      { property: "og:title", content: "Oday — Full-Stack Web Developer" },
-      { property: "og:description", content: "9 years crafting fast, custom websites of every kind — front-end, back-end, SEO and UI/UX, with an AI-assisted workflow." },
+      { name: "theme-color", content: "#050F05" },
+      { property: "og:site_name", content: "Oday" },
+      { property: "og:title", content: "Oday — Full-Stack Web & Mobile Developer" },
+      {
+        property: "og:description",
+        content:
+          "9 years crafting fast, custom websites and mobile apps — front-end, back-end, SEO and UI/UX, with an AI-assisted workflow.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:image", content: `${SITE_URL}/og-image.png` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.png` },
     ],
     links: [
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "icon", href: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,

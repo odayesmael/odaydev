@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Linkedin } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 
 export function SiteFooter() {
   return (
@@ -8,18 +8,20 @@ export function SiteFooter() {
         <div className="sf-col">
           <div className="sf-label">[ SERVICES ]</div>
           <ul>
-            <li><a href="#services">Web Design</a></li>
-            <li><a href="#services">Web Development</a></li>
-            <li><a href="#services">SEO Optimization</a></li>
-            <li><a href="#services">UI / UX Design</a></li>
+            <li><a href="/#services">Web Design</a></li>
+            <li><a href="/#services">Web Development</a></li>
+            <li><a href="/#services">SEO Optimization</a></li>
+            <li><a href="/#services">UI / UX Design</a></li>
+            <li><a href="/#services">Mobile Apps</a></li>
           </ul>
         </div>
         <div className="sf-col">
           <div className="sf-label">[ EXPLORE ]</div>
           <ul>
-            <li><a href="#skills">Skills</a></li>
+            <li><a href="/#skills">Skills</a></li>
             <li><Link to="/portfolio">Portfolio</Link></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><Link to="/work/shustyle">ShuStyle case study</Link></li>
+            <li><a href="/#contact">Contact</a></li>
           </ul>
         </div>
         <div className="sf-col">
@@ -35,6 +37,11 @@ export function SiteFooter() {
                 <Linkedin size={24} />
               </a>
             </li>
+            <li>
+              <a href="https://github.com/odayesmael" target="_blank" rel="noopener noreferrer" className="sf-icon-link" aria-label="GitHub">
+                <Github size={24} />
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -42,7 +49,7 @@ export function SiteFooter() {
       <div className="sf-divider" />
 
       <div className="sf-bottom">
-        <span>© {new Date().getFullYear()} Oday — Full-Stack Web Developer.</span>
+        <span>© {new Date().getFullYear()} Oday — Full-Stack Web &amp; Mobile Developer.</span>
         <span>All rights reserved.</span>
       </div>
     </footer>

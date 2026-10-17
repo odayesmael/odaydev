@@ -1,6 +1,7 @@
 const logos = [
   "JAVASCRIPT",
   "REACT",
+  "TYPESCRIPT",
   "PHP",
   "HTML5",
   "CSS3",
@@ -12,6 +13,8 @@ const logos = [
   "NODE.JS",
   "cPANEL",
   "WHMCS",
+  "iOS",
+  "ANDROID",
 ];
 
 const logos2 = [
@@ -32,7 +35,7 @@ export function LogoMarquee() {
   const row2 = [...logos2, ...logos2];
   return (
     <section className="marquee-section">
-      <div className="marquee-label">[ 9 YEARS · FULL-STACK · AI-ASSISTED WORKFLOW · NETHERLANDS ]</div>
+      <div className="marquee-label">[ 9 YEARS · WEB &amp; MOBILE · AI-ASSISTED WORKFLOW · NETHERLANDS ]</div>
       <div className="marquee">
         <div className="marquee-track">
           {row1.map((l, i) => (

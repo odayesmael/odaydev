@@ -2,11 +2,11 @@ import { useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { projects } from "@/data/projects";
+import { projects, featuredProjects } from "@/data/projects";
+import { ProjectCard } from "./ProjectCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const featured = projects.slice(0, 9);
 
 export function Projects() {
   const ref = useRef<HTMLElement>(null);
@@ -40,7 +40,7 @@ export function Projects() {
         <div className="pr-head">
           <div className="pr-eyebrow">
             <span className="pr-dot" />
-            [ 04 / SELECTED WORK ]
+            [ 03 / SELECTED WORK ]
           </div>
           <h2 className="pr-title">
             Projects I've<br />
@@ -52,38 +52,8 @@ export function Projects() {
         </div>
 
         <div className="pr-grid">
-          {featured.map((p, i) => (
-            <a
-              className="pr-card"
-              key={p.domain}
-              data-num={String(i + 1).padStart(2, "0")}
-              href={p.url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="pr-card-top">
-                <span className="pr-num">[ {String(i + 1).padStart(2, "0")} ]</span>
-                <span className="pr-cat">{p.category}</span>
-              </div>
-
-              <div className="pr-card-body">
-                <h3 className="pr-name">{p.title}</h3>
-                <p className="pr-desc">{p.body}</p>
-              </div>
-
-              <ul className="pr-tags">
-                {p.tags.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-
-              <div className="pr-card-foot">
-                <span className="pr-domain">{p.domain}</span>
-                <span className="pr-visit">
-                  Visit <span className="pr-arrow">↗</span>
-                </span>
-              </div>
-            </a>
+          {featuredProjects.map((p, i) => (
+            <ProjectCard project={p} index={i} key={p.slug} />
           ))}
         </div>
 
