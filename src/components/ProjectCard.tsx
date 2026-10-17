@@ -1,6 +1,6 @@
-import { Link } from "@tanstack/react-router";
 import { type Project, projectShots } from "@/data/projects";
 import { DeviceMockup } from "./DeviceMockup";
+import { CaseStudyLink } from "./CaseStudyLink";
 
 /**
  * One portfolio card, shared by the home grid and /portfolio.
@@ -62,9 +62,9 @@ export function ProjectCard({ project: p, index }: { project: Project; index: nu
 
   if (p.caseStudy) {
     return (
-      <Link className="pr-card" data-num={num} to={p.caseStudy}>
+      <CaseStudyLink slug={p.slug} className="pr-card" data-num={num}>
         {inner}
-      </Link>
+      </CaseStudyLink>
     );
   }
 

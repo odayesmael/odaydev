@@ -15,8 +15,8 @@ export type Project = {
   kind?: "web" | "app";
   /** App screens for the cover of a mobile app (kind: "app") */
   screens?: string[];
-  /** Internal case-study path, e.g. "/work/shustyle" */
-  caseStudy?: string;
+  /** Has an internal case study at /work/<slug> */
+  caseStudy?: boolean;
   /** Site is currently down: the card stays, but without a link out */
   offline?: boolean;
 };
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     tags: ["iOS", "Android", "AI", "Subscriptions"],
     kind: "app",
     screens: ["https://shustyle.app/img/look-en.webp", "https://shustyle.app/img/home-en.webp"],
-    caseStudy: "/work/shustyle",
+    caseStudy: true,
   },
   {
     slug: "solechem-europe",
@@ -48,6 +48,7 @@ export const projects: Project[] = [
     body: "Multilingual B2B platform for a European chemical raw-materials supplier — a searchable catalogue of 4,500+ products, sector pages and quote funnels.",
     tags: ["React", "B2B", "Multilingual"],
     featured: true,
+    caseStudy: true,
   },
   {
     slug: "jurcom-academy",
@@ -58,6 +59,7 @@ export const projects: Project[] = [
     body: "Online learning system with course catalogues, enrolment flows and a member area for legal and compliance training.",
     tags: ["LMS", "WordPress", "Membership"],
     featured: true,
+    caseStudy: true,
   },
   {
     slug: "dposphere",
@@ -68,6 +70,7 @@ export const projects: Project[] = [
     body: "Corporate site for a data-protection and DPO-as-a-service firm — clear service architecture and GDPR-focused content.",
     tags: ["WordPress", "Corporate", "SEO"],
     featured: true,
+    caseStudy: true,
   },
   {
     slug: "akhadia-holding",
@@ -146,6 +149,7 @@ export const projects: Project[] = [
     url: "https://sapdesign.sa",
     body: "Portfolio-style site for a design and architecture studio, letting the visual work lead the page.",
     tags: ["WordPress", "Portfolio", "Design"],
+    caseStudy: true,
   },
   {
     slug: "kvkkobi",
