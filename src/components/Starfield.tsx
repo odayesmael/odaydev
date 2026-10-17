@@ -153,6 +153,110 @@ export function Starfield() {
       }
     };
 
+    // Tiny UFOs: a rare, slow fly-by with a gentle wobble and blinking lights.
+    type Ufo = {
+      x: number;
+      y: number;
+      vx: number;
+      size: number;
+      t: number;
+      bob: number;
+      tilt: number;
+      alpha: number;
+      beam: number; // seconds of tractor beam left, 0 = off
+      beamAt: number; // when (along its trip, 0..1) it switches the beam on
+    };
+    const ufos: Ufo[] = [];
+    let untilUfo = 8 + Math.random() * 10;
+    const spawnUfo = () => {
+      const fromLeft = Math.random() < 0.5;
+      const size = 14 + Math.random() * 10; // px width of the saucer
+      const speed = 38 + Math.random() * 34; // px per second: slow cruise
+      ufos.push({
+        x: fromLeft ? -size * 2 : width + size * 2,
+        y: height * (0.12 + Math.random() * 0.6),
+        vx: fromLeft ? speed : -speed,
+        size,
+        t: 0,
+        bob: Math.random() * Math.PI * 2,
+        tilt: 0,
+        alpha: 0,
+        beam: 0,
+        beamAt: Math.random() < 0.5 ? 0.3 + Math.random() * 0.4 : 2, // half of them never beam
+      });
+    };
+    const drawUfos = (dt: number) => {
+      untilUfo -= dt;
+      if (untilUfo <= 0 && ufos.length === 0) {
+        spawnUfo();
+        untilUfo = 22 + Math.random() * 26; // seconds between fly-bys
+      }
+      for (let i = ufos.length - 1; i >= 0; i--) {
+        const u = ufos[i];
+        u.t += dt;
+        const progress = u.vx > 0 ? u.x / width : 1 - u.x / width;
+        // Pause and hover while the beam is on
+        if (u.beam <= 0 && progress >= u.beamAt) {
+          u.beam = 1.6;
+          u.beamAt = 2;
+        }
+        const hovering = u.beam > 0;
+        if (hovering) u.beam -= dt;
+        u.x += (hovering ? u.vx * 0.08 : u.vx) * dt;
+        const y = u.y + Math.sin(u.t * 1.6 + u.bob) * 4;
+        u.tilt = Math.sin(u.t * 1.1 + u.bob) * 0.09 + (hovering ? 0 : Math.sign(u.vx) * 0.05);
+        u.alpha = Math.min(1, u.alpha + dt * 0.8);
+        if (u.x < -u.size * 3 || u.x > width + u.size * 3) {
+          ufos.splice(i, 1);
+          continue;
+        }
+        const a = 0.55 * u.alpha; // overall faintness
+        const w = u.size;
+        ctx.save();
+        ctx.translate(u.x, y);
+        ctx.rotate(u.tilt);
+
+        // Tractor beam
+        if (hovering) {
+          const beamStrength = Math.min(1, u.beam / 0.4, (1.6 - u.beam) / 0.3);
+          const g = ctx.createLinearGradient(0, w * 0.15, 0, w * 2.8);
+          g.addColorStop(0, `rgba(160,255,190,${0.22 * a * beamStrength})`);
+          g.addColorStop(1, "rgba(160,255,190,0)");
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.moveTo(-w * 0.18, w * 0.15);
+          ctx.lineTo(w * 0.18, w * 0.15);
+          ctx.lineTo(w * 0.55, w * 2.8);
+          ctx.lineTo(-w * 0.55, w * 2.8);
+          ctx.closePath();
+          ctx.fill();
+        }
+
+        // Dome
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(170,255,200,${0.35 * a})`;
+        ctx.ellipse(0, -w * 0.12, w * 0.22, w * 0.2, 0, Math.PI, 0);
+        ctx.fill();
+        // Saucer
+        const body = ctx.createLinearGradient(0, -w * 0.14, 0, w * 0.16);
+        body.addColorStop(0, `rgba(225,235,230,${0.85 * a})`);
+        body.addColorStop(1, `rgba(90,110,100,${0.85 * a})`);
+        ctx.beginPath();
+        ctx.fillStyle = body;
+        ctx.ellipse(0, 0, w * 0.5, w * 0.14, 0, 0, Math.PI * 2);
+        ctx.fill();
+        // Blinking rim lights, running along the saucer
+        for (let k = 0; k < 3; k++) {
+          const on = (Math.floor(u.t * 4) + k) % 3 === 0;
+          ctx.beginPath();
+          ctx.fillStyle = on ? `rgba(74,222,128,${a})` : `rgba(74,222,128,${0.25 * a})`;
+          ctx.arc((k - 1) * w * 0.28, w * 0.02, Math.max(0.9, w * 0.045), 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+    };
+
     let last = performance.now();
     const loop = (now: number) => {
       const dt = Math.min(0.05, (now - last) / 1000);
@@ -196,7 +300,10 @@ export function Starfield() {
         }
       }
 
-      if (!reduceMotion) drawMeteors(dt);
+      if (!reduceMotion) {
+        drawMeteors(dt);
+        drawUfos(dt);
+      }
 
       if (visible && !reduceMotion) raf = requestAnimationFrame(loop);
     };
