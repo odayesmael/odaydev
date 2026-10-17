@@ -1,0 +1,40 @@
+name: Project screenshots
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: Comma-separated slugs to re-capture (empty = all)
+        required: false
+  push:
+    branches: [ci/screenshots]
+    paths: [scripts/screenshot-projects.mjs, scripts/only.txt, .github/workflows/screenshots.yml, src/data/projects.ts]
+
+permissions:
+  contents: write
+
+jobs:
+  shoot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install tools
+        run: |
+          mkdir -p /tmp/shot && cd /tmp/shot && npm init -y >/dev/null
+          npm i playwright@1 sharp@0.34 --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Capture
+        run: |
+          cp scripts/screenshot-projects.mjs /tmp/shot/run.mjs
+          ONLY="$(cat scripts/only.txt 2>/dev/null || true)" REPO_ROOT="$GITHUB_WORKSPACE" node /tmp/shot/run.mjs
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/work scripts/site-report.json
+          git commit -m "chore: update project screenshots [skip ci]" || echo "nothing to commit"
+          git push

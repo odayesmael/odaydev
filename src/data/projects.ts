@@ -1,3 +1,5 @@
+import { SCREENSHOTS } from "./screenshots";
+
 export type Project = {
   /** Stable id, also used as the React key */
   slug: string;
@@ -11,16 +13,18 @@ export type Project = {
   featured?: boolean;
   /** "web" (default) or "app" for native / mobile products */
   kind?: "web" | "app";
-  /** Optional cover image; falls back to a live screenshot of `url` */
-  image?: string;
+  /** App screens for the cover of a mobile app (kind: "app") */
+  screens?: string[];
   /** Internal case-study path, e.g. "/work/shustyle" */
   caseStudy?: string;
+  /** Site is currently down: the card stays, but without a link out */
+  offline?: boolean;
 };
 
 /**
  * Single source of truth for portfolio work.
  * The home page shows the `featured` items; the /portfolio page shows all.
- * To use your own cover for a card, drop an image in /public/work and set `image`.
+ * Card covers come from real screenshots in /public/work (see src/data/screenshots.ts).
  */
 export const projects: Project[] = [
   {
@@ -32,7 +36,7 @@ export const projects: Project[] = [
     body: "AI stylist app for iPhone and Android that builds outfits from the clothes you already own — matched to the weather and the occasion, with a 360° try-on on a model. Plus its 5-language website.",
     tags: ["iOS", "Android", "AI", "Subscriptions"],
     kind: "app",
-    image: "https://shustyle.app/img/home-en.webp",
+    screens: ["https://shustyle.app/img/look-en.webp", "https://shustyle.app/img/home-en.webp"],
     caseStudy: "/work/shustyle",
   },
   {
@@ -113,7 +117,7 @@ export const projects: Project[] = [
     url: "https://www.odayhandmade.com/",
     body: "E-commerce store for Palestinian & Arab handmade home decor.",
     tags: ["E-commerce", "Shopify", "Retail"],
-    featured: true,
+    offline: true,
   },
   {
     slug: "maximum-property",
@@ -178,6 +182,7 @@ export const projects: Project[] = [
     url: "http://www.lidyayachting.com",
     body: "Yacht charter and marine-leisure site with an immersive gallery and an enquiry-driven booking flow.",
     tags: ["WordPress", "Booking", "Gallery"],
+    offline: true,
   },
   {
     slug: "sea-boat-marine",
@@ -191,11 +196,11 @@ export const projects: Project[] = [
   {
     slug: "max-gear",
     title: "Max Gear",
-    category: "E-commerce",
+    category: "Car Rental",
     domain: "maxgeartr.com",
     url: "https://www.maxgeartr.com",
-    body: "Retail store for gear and equipment with a conversion-focused product experience.",
-    tags: ["WooCommerce", "Retail", "Responsive"],
+    body: "Car-rental website for Istanbul with a pick-up and drop-off search, fleet pages and a booking-led layout.",
+    tags: ["WordPress", "Booking", "Rental"],
   },
   {
     slug: "ozdilek-hukuk",
@@ -232,14 +237,19 @@ export const projects: Project[] = [
     url: "https://www.soulofpalestineart.com/",
     body: "Online store showcasing Soul Of Palestine art, merchandise, and cultural products.",
     tags: ["E-commerce", "Shopify", "Retail"],
+    featured: true,
   },
 ];
 
 /** Featured web projects for the home grid (the app gets its own spotlight). */
 export const featuredProjects = projects.filter((p) => p.featured && p.kind !== "app").slice(0, 9);
 
-/** Cover image for a card: the project's own image, or a live screenshot of the site. */
-export function projectCover(p: Project): string {
-  if (p.image) return p.image;
-  return `https://s.wordpress.com/mshots/v1/${encodeURIComponent(p.url)}?w=1200&h=750`;
+/** Real screenshots captured by scripts/screenshot-projects.mjs, if any. */
+export function projectShots(p: Project): { desktop?: string; mobile?: string } | null {
+  const shot = SCREENSHOTS[p.slug];
+  if (!shot || p.offline) return null;
+  return {
+    desktop: shot.desktop ? `/work/${p.slug}-desktop.webp` : undefined,
+    mobile: shot.mobile ? `/work/${p.slug}-mobile.webp` : undefined,
+  };
 }

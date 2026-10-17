@@ -1,0 +1,413 @@
+[
+  {
+    "slug": "solechem-europe",
+    "url": "https://www.solechem.eu/",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://www.solechem.eu/",
+      "title": "SoleChem Europe — Trusted Chemical Supplier | 4,500+ Products",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://www.solechem.eu/",
+      "title": "SoleChem Europe — Trusted Chemical Supplier | 4,500+ Products",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "jurcom-academy",
+    "url": "https://jurcomacademy.com",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://jurcomacademy.com/",
+      "title": "Jurcom Academy – Online Eğitim platformu",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://jurcomacademy.com/",
+      "title": "Jurcom Academy – Online Eğitim platformu",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "dposphere",
+    "url": "https://dposphere.com",
+    "ok": false,
+    "desktop": {
+      "status": 403,
+      "finalUrl": "https://dposphere.com/",
+      "title": "Just a moment...",
+      "error": null,
+      "flags": [
+        "bot-challenge"
+      ]
+    },
+    "mobile": {
+      "status": 403,
+      "finalUrl": "https://dposphere.com/",
+      "title": "Just a moment...",
+      "error": null,
+      "flags": [
+        "bot-challenge"
+      ]
+    }
+  },
+  {
+    "slug": "akhadia-holding",
+    "url": "https://akhadia.nl",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://akhadia.nl/",
+      "title": "Akhadia Holding",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://akhadia.nl/",
+      "title": "Akhadia Holding",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "esg-platform",
+    "url": "https://esg.jurcom.nl",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://esg.jurcom.nl/",
+      "title": "Your Gateway to Best Sustainability Practices - esg",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://esg.jurcom.nl/",
+      "title": "Your Gateway to Best Sustainability Practices - esg",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "raja-chaabani",
+    "url": "https://raja-seven-tau.vercel.app",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://raja-seven-tau.vercel.app/",
+      "title": "Raja Chaabani | الملاذ الفكري 2026",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://raja-seven-tau.vercel.app/",
+      "title": "Raja Chaabani | الملاذ الفكري 2026",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "amal-glass",
+    "url": "https://amalglass.com",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://amalglass.com/",
+      "title": "Amal Glass",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://amalglass.com/",
+      "title": "Amal Glass",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "oday-handmade",
+    "url": "https://www.odayhandmade.com/",
+    "ok": false,
+    "desktop": {
+      "status": 402,
+      "finalUrl": "https://www.odayhandmade.com/",
+      "title": "Store unavailable",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 402,
+      "finalUrl": "https://www.odayhandmade.com/",
+      "title": "Store unavailable",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "maximum-property",
+    "url": "https://maximumproperty.com",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://maximumproperty.com/",
+      "title": "Property for Sale in Turkey | 15+ Years - Maximum Property",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://maximumproperty.com/",
+      "title": "Property for Sale in Turkey | 15+ Years - Maximum Property",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "jurcomgrc",
+    "url": "https://jurcom.nl",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://jurcom.nl/",
+      "title": "Reach GRC Perfection Without Borders With JURCOM",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://jurcom.nl/",
+      "title": "Reach GRC Perfection Without Borders With JURCOM",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "space-and-place",
+    "url": "https://sapdesign.sa",
+    "ok": false,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://sapdesign.sa/",
+      "title": "أفضل شركة تصميم معماري في الرياض | لمسات إبداعية ومشاريع استثنائية - فراغ ومكان",
+      "error": null,
+      "flags": [
+        "under construction"
+      ]
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://sapdesign.sa/",
+      "title": "أفضل شركة تصميم معماري في الرياض | لمسات إبداعية ومشاريع استثنائية - فراغ ومكان",
+      "error": null,
+      "flags": [
+        "under construction"
+      ]
+    }
+  },
+  {
+    "slug": "kvkkobi",
+    "url": "https://kvkkobi.com",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://kvkkobi.com/",
+      "title": "kvkkobi.com – Kişisel Veri Yönetimi Platformu",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://kvkkobi.com/",
+      "title": "kvkkobi.com – Kişisel Veri Yönetimi Platformu",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "chefs-equipment",
+    "url": "https://chefsequipment.com.au",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://chefsequipment.com.au/",
+      "title": "Home - Chefs Equipment",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://chefsequipment.com.au/",
+      "title": "Home - Chefs Equipment",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "gronhem",
+    "url": "https://gronhem.com",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://gronhem.com/",
+      "title": "Your Gateway to Best Sustainability Practices - Gronhem",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://gronhem.com/",
+      "title": "Your Gateway to Best Sustainability Practices - Gronhem",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "lidya-yachting",
+    "url": "http://www.lidyayachting.com",
+    "ok": false,
+    "desktop": {
+      "status": 500,
+      "finalUrl": "http://www.lidyayachting.com/",
+      "title": "WordPress › Error",
+      "error": null,
+      "flags": [
+        "there has been a critical error"
+      ]
+    },
+    "mobile": {
+      "status": 500,
+      "finalUrl": "http://www.lidyayachting.com/",
+      "title": "WordPress › Error",
+      "error": null,
+      "flags": [
+        "there has been a critical error"
+      ]
+    }
+  },
+  {
+    "slug": "sea-boat-marine",
+    "url": "https://seaboatmarine.com",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://seaboatmarine.com/",
+      "title": "Seaboatmarine",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://seaboatmarine.com/",
+      "title": "Seaboatmarine",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "max-gear",
+    "url": "https://www.maxgeartr.com",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://www.maxgeartr.com/",
+      "title": "Maxgeartr",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://www.maxgeartr.com/",
+      "title": "Maxgeartr",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "ozdilek-hukuk",
+    "url": "https://ozdilekhukuk.com",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://ozdilekhukuk.com/",
+      "title": "Anasayfa - Özdilek Hukuk",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://ozdilekhukuk.com/",
+      "title": "Anasayfa - Özdilek Hukuk",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "right-hair-clinic",
+    "url": "https://righthairclinic.com",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://righthairclinic.com/",
+      "title": "Right Hair Clinic | hair transplant in Turkey | Free Consultation",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://righthairclinic.com/",
+      "title": "Right Hair Clinic | hair transplant in Turkey | Free Consultation",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "solechem-turkiye",
+    "url": "https://www.solechem.com.tr/",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://www.solechem.com.tr/",
+      "title": "SoleChem Kimya | Güvenilir Kimyasal Tedarikçi | 4.500+ Ürün",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://www.solechem.com.tr/",
+      "title": "SoleChem Kimya | Güvenilir Kimyasal Tedarikçi | 4.500+ Ürün",
+      "error": null,
+      "flags": []
+    }
+  },
+  {
+    "slug": "soul-of-palestine-art",
+    "url": "https://www.soulofpalestineart.com/",
+    "ok": true,
+    "desktop": {
+      "status": 200,
+      "finalUrl": "https://www.soulofpalestineart.com/",
+      "title": "Soul Of Palestine",
+      "error": null,
+      "flags": []
+    },
+    "mobile": {
+      "status": 200,
+      "finalUrl": "https://www.soulofpalestineart.com/",
+      "title": "Soul Of Palestine",
+      "error": null,
+      "flags": []
+    }
+  }
+]

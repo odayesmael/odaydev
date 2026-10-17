@@ -1,49 +1,36 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { type Project, projectCover } from "@/data/projects";
+import { type Project, projectShots } from "@/data/projects";
+import { DeviceMockup } from "./DeviceMockup";
 
 /**
  * One portfolio card, shared by the home grid and /portfolio.
- * Shows a cover (own image or a live screenshot) and links either to the
- * live site or, for projects with a case study, to the internal page.
+ * The cover is a device mockup built from real screenshots of the site
+ * (or the app screens), with a typographic fallback when none exist.
+ * Cards link to the live site, or to the internal case study when there is one.
  */
 export function ProjectCard({ project: p, index }: { project: Project; index: number }) {
-  const [imgState, setImgState] = useState<"loading" | "ready" | "error">("loading");
   const num = String(index + 1).padStart(2, "0");
-  const isApp = p.kind === "app";
-  const imgRef = useRef<HTMLImageElement>(null);
-
-  const judge = (img: HTMLImageElement) => {
-    // The screenshot service returns a small "generating" placeholder on a
-    // first request — treat that like a miss and show the typographic cover.
-    const w = img.naturalWidth;
-    setImgState(w === 0 || (w < 500 && !p.image) ? "error" : "ready");
-  };
-
-  // An image can finish loading before React hydrates and attaches onLoad.
-  useEffect(() => {
-    const img = imgRef.current;
-    if (img?.complete) judge(img);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const shots = projectShots(p);
 
   const inner = (
     <>
-      <div className={`pr-cover ${isApp ? "is-app" : ""} is-${imgState}`} aria-hidden>
-        {imgState !== "error" && (
-          <img
-            src={projectCover(p)}
-            alt=""
-            loading="lazy"
-            decoding="async"
-            width={1200}
-            height={750}
-            ref={imgRef}
-            onLoad={(e) => judge(e.currentTarget)}
-            onError={() => setImgState("error")}
-          />
+      <div className="pr-cover" aria-hidden>
+        {p.kind === "app" && p.screens?.length ? (
+          <div className="dm-stage app-stage">
+            <div className="dm-glow" />
+            {p.screens.slice(0, 2).map((src, i) => (
+              <div className={`dm-phone app-phone-${i}`} key={src}>
+                <div className="dm-phone-screen">
+                  <img src={src} alt="" width={600} height={1298} loading="lazy" decoding="async" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : shots && (shots.desktop || shots.mobile) ? (
+          <DeviceMockup desktop={shots.desktop} mobile={shots.mobile} domain={p.domain} />
+        ) : (
+          <span className="pr-cover-fallback">{p.title}</span>
         )}
-        <span className="pr-cover-fallback">{p.title}</span>
       </div>
 
       <div className="pr-card-top">
@@ -64,13 +51,25 @@ export function ProjectCard({ project: p, index }: { project: Project; index: nu
 
       <div className="pr-card-foot">
         <span className="pr-domain">{p.domain}</span>
-        <span className="pr-visit">
-          {p.caseStudy ? "Case study" : "Visit"}{" "}
-          <span className="pr-arrow">{p.caseStudy ? "→" : "↗"}</span>
-        </span>
+        {p.offline ? (
+          <span className="pr-visit is-offline">Currently offline</span>
+        ) : (
+          <span className="pr-visit">
+            {p.caseStudy ? "Case study" : "Visit"}{" "}
+            <span className="pr-arrow">{p.caseStudy ? "→" : "↗"}</span>
+          </span>
+        )}
       </div>
     </>
   );
+
+  if (p.offline) {
+    return (
+      <div className="pr-card is-offline" data-num={num}>
+        {inner}
+      </div>
+    );
+  }
 
   if (p.caseStudy) {
     return (
