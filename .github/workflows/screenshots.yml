@@ -2,9 +2,13 @@ name: Project screenshots
 
 on:
   workflow_dispatch:
+    inputs:
+      only:
+        description: Comma-separated slugs to re-capture (empty = all)
+        required: false
   push:
     branches: [ci/screenshots]
-    paths: [scripts/screenshot-projects.mjs, .github/workflows/screenshots.yml, src/data/projects.ts]
+    paths: [scripts/screenshot-projects.mjs, scripts/only.txt, .github/workflows/screenshots.yml, src/data/projects.ts]
 
 permissions:
   contents: write
@@ -26,7 +30,7 @@ jobs:
       - name: Capture
         run: |
           cp scripts/screenshot-projects.mjs /tmp/shot/run.mjs
-          REPO_ROOT="$GITHUB_WORKSPACE" node /tmp/shot/run.mjs
+          ONLY="$(cat scripts/only.txt 2>/dev/null || true)" REPO_ROOT="$GITHUB_WORKSPACE" node /tmp/shot/run.mjs
       - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
