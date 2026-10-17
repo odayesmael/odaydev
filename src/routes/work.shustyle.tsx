@@ -10,6 +10,7 @@ import { Phone } from "@/components/Phone";
 import { shustyle as s } from "@/data/shustyle";
 import { SITE_URL } from "@/lib/site";
 import logoMark from "@/assets/oday-mark.svg";
+import { EmailLink } from "@/components/EmailLink";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -134,9 +135,9 @@ function ShuStyleCaseStudy() {
               oday<span className="logo-dot">.</span>
             </span>
           </Link>
-          <a className="contact-btn" href="mailto:info@oday.dev">
+          <EmailLink className="contact-btn">
             Let&apos;s Talk <span className="arrow">↗</span>
-          </a>
+          </EmailLink>
         </header>
 
         <main>

@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Linkedin, Github } from "lucide-react";
+import { EmailLink } from "@/components/EmailLink";
 
 export function SiteFooter() {
   return (
@@ -8,37 +9,67 @@ export function SiteFooter() {
         <div className="sf-col">
           <div className="sf-label">[ SERVICES ]</div>
           <ul>
-            <li><a href="/#services">Web Design</a></li>
-            <li><a href="/#services">Web Development</a></li>
-            <li><a href="/#services">SEO Optimization</a></li>
-            <li><a href="/#services">UI / UX Design</a></li>
-            <li><a href="/#services">Mobile Apps</a></li>
+            <li>
+              <a href="/#services">Web Design</a>
+            </li>
+            <li>
+              <a href="/#services">Web Development</a>
+            </li>
+            <li>
+              <a href="/#services">SEO Optimization</a>
+            </li>
+            <li>
+              <a href="/#services">UI / UX Design</a>
+            </li>
+            <li>
+              <a href="/#services">Mobile Apps</a>
+            </li>
           </ul>
         </div>
         <div className="sf-col">
           <div className="sf-label">[ EXPLORE ]</div>
           <ul>
-            <li><a href="/#skills">Skills</a></li>
-            <li><Link to="/portfolio">Portfolio</Link></li>
-            <li><Link to="/work/shustyle">ShuStyle case study</Link></li>
-            <li><a href="/#contact">Contact</a></li>
+            <li>
+              <a href="/#skills">Skills</a>
+            </li>
+            <li>
+              <Link to="/portfolio">Portfolio</Link>
+            </li>
+            <li>
+              <Link to="/work/shustyle">ShuStyle case study</Link>
+            </li>
+            <li>
+              <a href="/#contact">Contact</a>
+            </li>
           </ul>
         </div>
         <div className="sf-col">
           <div className="sf-label">[ CONNECT ]</div>
           <ul>
             <li>
-              <a href="mailto:info@oday.dev" className="sf-icon-link" aria-label="Email">
+              <EmailLink className="sf-icon-link" aria-label="Email">
                 <Mail size={24} />
-              </a>
+              </EmailLink>
             </li>
             <li>
-              <a href="https://www.linkedin.com/in/oday-alatbash/" target="_blank" rel="noopener noreferrer" className="sf-icon-link" aria-label="LinkedIn">
+              <a
+                href="https://www.linkedin.com/in/oday-alatbash/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sf-icon-link"
+                aria-label="LinkedIn"
+              >
                 <Linkedin size={24} />
               </a>
             </li>
             <li>
-              <a href="https://github.com/odayesmael" target="_blank" rel="noopener noreferrer" className="sf-icon-link" aria-label="GitHub">
+              <a
+                href="https://github.com/odayesmael"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sf-icon-link"
+                aria-label="GitHub"
+              >
                 <Github size={24} />
               </a>
             </li>
