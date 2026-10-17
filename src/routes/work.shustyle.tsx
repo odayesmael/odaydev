@@ -339,8 +339,12 @@ function ShuStyleCaseStudy() {
 
           {/* ---------- Next ---------- */}
           <section className="cs-block cs-next">
-            <Link to="/portfolio" className="pr-viewall cs-in">
-              See all projects <span className="pr-arrow">→</span>
+            <Link
+              to="/work/$slug"
+              params={{ slug: "solechem-europe" }}
+              className="pr-viewall cs-in"
+            >
+              Next project: SoleChem Europe <span className="pr-arrow">→</span>
             </Link>
           </section>
         </main>

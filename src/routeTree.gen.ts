@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 import { Route as WorkShustyleRouteImport } from './routes/work.shustyle'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const PortfolioRoute = PortfolioRouteImport.update({
   path: '/portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkSlugRoute = WorkSlugRouteImport.update({
+  id: '/work/$slug',
+  path: '/work/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkShustyleRoute = WorkShustyleRouteImport.update({
   id: '/work/shustyle',
   path: '/work/shustyle',
@@ -32,30 +38,34 @@ const WorkShustyleRoute = WorkShustyleRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/portfolio': typeof PortfolioRoute
+  '/work/$slug': typeof WorkSlugRoute
   '/work/shustyle': typeof WorkShustyleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/portfolio': typeof PortfolioRoute
+  '/work/$slug': typeof WorkSlugRoute
   '/work/shustyle': typeof WorkShustyleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/portfolio': typeof PortfolioRoute
+  '/work/$slug': typeof WorkSlugRoute
   '/work/shustyle': typeof WorkShustyleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/portfolio' | '/work/shustyle'
+  fullPaths: '/' | '/portfolio' | '/work/$slug' | '/work/shustyle'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/portfolio' | '/work/shustyle'
-  id: '__root__' | '/' | '/portfolio' | '/work/shustyle'
+  to: '/' | '/portfolio' | '/work/$slug' | '/work/shustyle'
+  id: '__root__' | '/' | '/portfolio' | '/work/$slug' | '/work/shustyle'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PortfolioRoute: typeof PortfolioRoute
+  WorkSlugRoute: typeof WorkSlugRoute
   WorkShustyleRoute: typeof WorkShustyleRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/$slug': {
+      id: '/work/$slug'
+      path: '/work/$slug'
+      fullPath: '/work/$slug'
+      preLoaderRoute: typeof WorkSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/work/shustyle': {
       id: '/work/shustyle'
       path: '/work/shustyle'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PortfolioRoute: PortfolioRoute,
+  WorkSlugRoute: WorkSlugRoute,
   WorkShustyleRoute: WorkShustyleRoute,
 }
 export const routeTree = rootRouteImport
