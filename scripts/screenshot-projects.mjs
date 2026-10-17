@@ -21,22 +21,37 @@ const projects = [...src.matchAll(/slug: "([^"]+)",[\s\S]*?url: "([^"]+)"/g)]
 const outDir = path.join(root, "public/work");
 fs.mkdirSync(outDir, { recursive: true });
 
+// Scoped under "body " so a class on <html>/<body> itself (e.g. "cookies-not-set")
+// can never hide the whole page.
 const HIDE_OVERLAYS = `
-  [id*="cookie" i], [class*="cookie" i], [id*="consent" i], [class*="consent" i],
-  [class*="gdpr" i], [id*="gdpr" i], [class*="cmplz" i], [id*="cmplz" i],
-  [class*="cky-" i], #onetrust-banner-sdk, .fc-consent-root, [class*="popup-maker" i],
-  [class*="newsletter-popup" i], [id*="chat-widget" i], iframe[title*="chat" i],
-  .grecaptcha-badge, [class*="whatsapp" i], [role="dialog"], [aria-modal="true"],
-  .modal, .modal-backdrop, .elementor-popup-modal, .dialog-widget, .pum-overlay,
-  [class*="preloader" i], [id*="preloader" i], [class*="loader-wrap" i]
-  { display: none !important; visibility: hidden !important; }
+  body [id*="cookie" i], body [class*="cookie" i], body [id*="consent" i], body [class*="consent" i],
+  body [class*="gdpr" i], body [id*="gdpr" i], body [class*="cmplz" i], body [id*="cmplz" i],
+  body [class*="cky-" i], #onetrust-banner-sdk, .fc-consent-root, body .pum-overlay,
+  body .elementor-popup-modal, body .modal-backdrop, body .grecaptcha-badge,
+  body iframe[title*="chat" i] { display: none !important; }
   html, body { overflow: auto !important; }
-  body.modal-open, body.dialog-prevent-scroll { overflow: auto !important; }
-  /* Force scroll-reveal content to show (Elementor, AOS, WOW fallbacks) */
-  .elementor-invisible, .wow, [data-aos], .animated {
+  body .elementor-invisible, body .wow, body [data-aos] {
     visibility: visible !important; opacity: 1 !important; transform: none !important; animation: none !important;
   }
 `;
+
+/** Hide fixed overlays that cover the page (popups, preloaders, cookie bars). */
+const REMOVE_FIXED_OVERLAYS = () => {
+  const vw = innerWidth, vh = innerHeight;
+  for (const el of document.querySelectorAll("body *")) {
+    const cs = getComputedStyle(el);
+    if (cs.position !== "fixed") continue;
+    const r = el.getBoundingClientRect();
+    const area = Math.max(0, r.width) * Math.max(0, r.height);
+    const coversPage = area > vw * vh * 0.35;
+    const bottomBar = r.top > vh * 0.55 && r.height < vh * 0.45 && r.width > vw * 0.5;
+    if (coversPage || bottomBar) el.style.setProperty("display", "none", "important");
+  }
+  document.documentElement.style.setProperty("overflow", "auto", "important");
+  document.body.style.setProperty("overflow", "auto", "important");
+  document.body.style.setProperty("opacity", "1", "important");
+  document.body.style.setProperty("visibility", "visible", "important");
+};
 
 const BAD_SIGNS = [
   /domain (is )?for sale/i, /buy this domain/i, /account (has been )?suspended/i,
@@ -89,7 +104,7 @@ async function shoot(browser, p, kind) {
       window.scrollTo(0, 0);
     });
     await page.waitForTimeout(5000);
-    await page.addStyleTag({ content: HIDE_OVERLAYS }).catch(() => {});
+    await page.evaluate(REMOVE_FIXED_OVERLAYS).catch(() => {});
     await page.waitForTimeout(800);
     info.title = await page.title();
     const text = (await page.evaluate(() => document.body?.innerText || "")).slice(0, 5000);
