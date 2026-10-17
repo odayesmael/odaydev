@@ -32,7 +32,9 @@ export function Hero({ play }: { play: boolean }) {
         <div className="top-bar">
           <div className="logo js-reveal">
             <img className="icon" src={logoMark} alt="" />
-            <span>ODAY</span>
+            <span className="logo-word">
+              oday<span className="logo-dot">.</span>
+            </span>
           </div>
           <a className="contact-btn js-reveal" href="mailto:info@oday.dev">
             Let&apos;s Talk <span className="arrow">↗</span>
@@ -43,13 +45,13 @@ export function Hero({ play }: { play: boolean }) {
 
         <div className="headline">
           <div className="row row-1 js-reveal">Building Full-Stack</div>
-          <div className="row row-2 js-reveal">
-            Web &amp; App Experiences
-          </div>
+          <div className="row row-2 js-reveal">Web &amp; App Experiences</div>
         </div>
 
         <p className="hero-desc js-reveal">
-          9 years turning ideas into fast, reliable products — corporate sites, online stores, custom platforms and, now, iOS &amp; Android apps. Front-end to back-end. Based in the Netherlands, working worldwide.
+          9 years turning ideas into fast, reliable products — corporate sites, online stores,
+          custom platforms and, now, iOS &amp; Android apps. Front-end to back-end. Based in the
+          Netherlands, working worldwide.
         </p>
 
         <div className="scroll-hint js-reveal">
