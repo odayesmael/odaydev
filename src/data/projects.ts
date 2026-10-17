@@ -250,6 +250,7 @@ export function projectShots(p: Project): { desktop?: string; mobile?: string } 
   if (!shot || p.offline) return null;
   return {
     desktop: shot.desktop ? `/work/${p.slug}-desktop.webp` : undefined,
-    mobile: shot.mobile ? `/work/${p.slug}-mobile.webp` : undefined,
+    // Apps show their own app screen in the phone, not the mobile website.
+    mobile: shot.mobile ? `/work/${p.slug}-mobile.webp` : p.screens?.[0],
   };
 }

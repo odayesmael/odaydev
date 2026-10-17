@@ -15,18 +15,7 @@ export function ProjectCard({ project: p, index }: { project: Project; index: nu
   const inner = (
     <>
       <div className="pr-cover" aria-hidden>
-        {p.kind === "app" && p.screens?.length ? (
-          <div className="dm-stage app-stage">
-            <div className="dm-glow" />
-            {p.screens.slice(0, 2).map((src, i) => (
-              <div className={`dm-phone app-phone-${i}`} key={src}>
-                <div className="dm-phone-screen">
-                  <img src={src} alt="" width={600} height={1298} loading="lazy" decoding="async" />
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : shots && (shots.desktop || shots.mobile) ? (
+        {shots && (shots.desktop || shots.mobile) ? (
           <DeviceMockup desktop={shots.desktop} mobile={shots.mobile} domain={p.domain} />
         ) : (
           <span className="pr-cover-fallback">{p.title}</span>
