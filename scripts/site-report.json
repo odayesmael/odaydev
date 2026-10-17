@@ -46,14 +46,18 @@
       "finalUrl": "https://dposphere.com/",
       "title": "Just a moment...",
       "error": null,
-      "flags": []
+      "flags": [
+        "bot-challenge"
+      ]
     },
     "mobile": {
       "status": 403,
       "finalUrl": "https://dposphere.com/",
       "title": "Just a moment...",
       "error": null,
-      "flags": []
+      "flags": [
+        "bot-challenge"
+      ]
     }
   },
   {
@@ -154,11 +158,11 @@
   {
     "slug": "maximum-property",
     "url": "https://maximumproperty.com",
-    "ok": false,
+    "ok": true,
     "desktop": {
-      "status": 403,
+      "status": 200,
       "finalUrl": "https://maximumproperty.com/",
-      "title": "Just a moment...",
+      "title": "Property for Sale in Turkey | 15+ Years - Maximum Property",
       "error": null,
       "flags": []
     },
@@ -173,11 +177,11 @@
   {
     "slug": "jurcomgrc",
     "url": "https://jurcom.nl",
-    "ok": false,
+    "ok": true,
     "desktop": {
-      "status": 403,
+      "status": 200,
       "finalUrl": "https://jurcom.nl/",
-      "title": "Just a moment...",
+      "title": "Reach GRC Perfection Without Borders With JURCOM",
       "error": null,
       "flags": []
     },
