@@ -4,10 +4,13 @@ import { HeroSphere } from "./HeroSphere";
 import { BinaryRain } from "./BinaryRain";
 import { BottomNav } from "./BottomNav";
 import logoMark from "@/assets/oday-mark.svg";
+import { useMessages } from "@/i18n";
+import { LangSwitch } from "./LangSwitch";
 import { EmailLink } from "@/components/EmailLink";
 
 export function Hero({ play }: { play: boolean }) {
   const ref = useRef<HTMLElement>(null);
+  const t = useMessages();
 
   useEffect(() => {
     if (!play) return;
@@ -37,26 +40,25 @@ export function Hero({ play }: { play: boolean }) {
               oday<span className="logo-dot">.</span>
             </span>
           </div>
-          <EmailLink className="contact-btn js-reveal">
-            Let&apos;s Talk <span className="arrow">↗</span>
-          </EmailLink>
+          <div className="top-actions js-reveal">
+            <LangSwitch />
+            <EmailLink className="contact-btn">
+              {t.common.letsTalk} <span className="arrow">↗</span>
+            </EmailLink>
+          </div>
         </div>
 
-        <div className="label-tag js-reveal">[ FULL-STACK WEB &amp; MOBILE DEVELOPER ]</div>
+        <div className="label-tag js-reveal">[ {t.hero.label} ]</div>
 
         <div className="headline">
-          <div className="row row-1 js-reveal">Building Full-Stack</div>
-          <div className="row row-2 js-reveal">Web &amp; App Experiences</div>
+          <div className="row row-1 js-reveal">{t.hero.line1}</div>
+          <div className="row row-2 js-reveal">{t.hero.line2}</div>
         </div>
 
-        <p className="hero-desc js-reveal">
-          9 years turning ideas into fast, reliable products — corporate sites, online stores,
-          custom platforms and, now, iOS &amp; Android apps. Front-end to back-end. Based in the
-          Netherlands, working worldwide.
-        </p>
+        <p className="hero-desc js-reveal">{t.hero.desc}</p>
 
         <div className="scroll-hint js-reveal">
-          <span className="arrow">↓</span> Scroll to explore
+          <span className="arrow">↓</span> {t.common.scroll}
         </div>
       </div>
       <BottomNav />

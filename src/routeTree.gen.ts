@@ -9,104 +9,154 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as PortfolioRouteImport } from './routes/portfolio'
-import { Route as WorkSlugRouteImport } from './routes/work.$slug'
-import { Route as WorkShustyleRouteImport } from './routes/work.shustyle'
+import { Route as Char123LocaleChar125RouteRouteImport } from './routes/{-$locale}/route'
+import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$locale}/index'
+import { Route as Char123LocaleChar125PortfolioRouteImport } from './routes/{-$locale}/portfolio'
+import { Route as Char123LocaleChar125WorkSlugRouteImport } from './routes/{-$locale}/work.$slug'
+import { Route as Char123LocaleChar125WorkShustyleRouteImport } from './routes/{-$locale}/work.shustyle'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PortfolioRoute = PortfolioRouteImport.update({
-  id: '/portfolio',
-  path: '/portfolio',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WorkSlugRoute = WorkSlugRouteImport.update({
-  id: '/work/$slug',
-  path: '/work/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WorkShustyleRoute = WorkShustyleRouteImport.update({
-  id: '/work/shustyle',
-  path: '/work/shustyle',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const Char123LocaleChar125RouteRoute =
+  Char123LocaleChar125RouteRouteImport.update({
+    id: '/{-$locale}',
+    path: '/{-$locale}',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char123LocaleChar125IndexRoute =
+  Char123LocaleChar125IndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125PortfolioRoute =
+  Char123LocaleChar125PortfolioRouteImport.update({
+    id: '/portfolio',
+    path: '/portfolio',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125WorkSlugRoute =
+  Char123LocaleChar125WorkSlugRouteImport.update({
+    id: '/work/$slug',
+    path: '/work/$slug',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125WorkShustyleRoute =
+  Char123LocaleChar125WorkShustyleRouteImport.update({
+    id: '/work/shustyle',
+    path: '/work/shustyle',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/portfolio': typeof PortfolioRoute
-  '/work/$slug': typeof WorkSlugRoute
-  '/work/shustyle': typeof WorkShustyleRoute
+  '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
+  '/{-$locale}/portfolio': typeof Char123LocaleChar125PortfolioRoute
+  '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/work/$slug': typeof Char123LocaleChar125WorkSlugRoute
+  '/{-$locale}/work/shustyle': typeof Char123LocaleChar125WorkShustyleRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/portfolio': typeof PortfolioRoute
-  '/work/$slug': typeof WorkSlugRoute
-  '/work/shustyle': typeof WorkShustyleRoute
+  '/{-$locale}/portfolio': typeof Char123LocaleChar125PortfolioRoute
+  '/{-$locale}': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/work/$slug': typeof Char123LocaleChar125WorkSlugRoute
+  '/{-$locale}/work/shustyle': typeof Char123LocaleChar125WorkShustyleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/portfolio': typeof PortfolioRoute
-  '/work/$slug': typeof WorkSlugRoute
-  '/work/shustyle': typeof WorkShustyleRoute
+  '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
+  '/{-$locale}/portfolio': typeof Char123LocaleChar125PortfolioRoute
+  '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/work/$slug': typeof Char123LocaleChar125WorkSlugRoute
+  '/{-$locale}/work/shustyle': typeof Char123LocaleChar125WorkShustyleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/portfolio' | '/work/$slug' | '/work/shustyle'
+  fullPaths:
+    | '/{-$locale}'
+    | '/{-$locale}/portfolio'
+    | '/{-$locale}/'
+    | '/{-$locale}/work/$slug'
+    | '/{-$locale}/work/shustyle'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/portfolio' | '/work/$slug' | '/work/shustyle'
-  id: '__root__' | '/' | '/portfolio' | '/work/$slug' | '/work/shustyle'
+  to:
+    | '/{-$locale}/portfolio'
+    | '/{-$locale}'
+    | '/{-$locale}/work/$slug'
+    | '/{-$locale}/work/shustyle'
+  id:
+    | '__root__'
+    | '/{-$locale}'
+    | '/{-$locale}/portfolio'
+    | '/{-$locale}/'
+    | '/{-$locale}/work/$slug'
+    | '/{-$locale}/work/shustyle'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  PortfolioRoute: typeof PortfolioRoute
-  WorkSlugRoute: typeof WorkSlugRoute
-  WorkShustyleRoute: typeof WorkShustyleRoute
+  Char123LocaleChar125RouteRoute: typeof Char123LocaleChar125RouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/{-$locale}': {
+      id: '/{-$locale}'
+      path: '/{-$locale}'
+      fullPath: '/{-$locale}'
+      preLoaderRoute: typeof Char123LocaleChar125RouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/{-$locale}/': {
+      id: '/{-$locale}/'
       path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/'
+      preLoaderRoute: typeof Char123LocaleChar125IndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/portfolio': {
-      id: '/portfolio'
+    '/{-$locale}/portfolio': {
+      id: '/{-$locale}/portfolio'
       path: '/portfolio'
-      fullPath: '/portfolio'
-      preLoaderRoute: typeof PortfolioRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/portfolio'
+      preLoaderRoute: typeof Char123LocaleChar125PortfolioRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/work/$slug': {
-      id: '/work/$slug'
+    '/{-$locale}/work/$slug': {
+      id: '/{-$locale}/work/$slug'
       path: '/work/$slug'
-      fullPath: '/work/$slug'
-      preLoaderRoute: typeof WorkSlugRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/work/$slug'
+      preLoaderRoute: typeof Char123LocaleChar125WorkSlugRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
-    '/work/shustyle': {
-      id: '/work/shustyle'
+    '/{-$locale}/work/shustyle': {
+      id: '/{-$locale}/work/shustyle'
       path: '/work/shustyle'
-      fullPath: '/work/shustyle'
-      preLoaderRoute: typeof WorkShustyleRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$locale}/work/shustyle'
+      preLoaderRoute: typeof Char123LocaleChar125WorkShustyleRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
     }
   }
 }
 
+interface Char123LocaleChar125RouteRouteChildren {
+  Char123LocaleChar125PortfolioRoute: typeof Char123LocaleChar125PortfolioRoute
+  Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
+  Char123LocaleChar125WorkSlugRoute: typeof Char123LocaleChar125WorkSlugRoute
+  Char123LocaleChar125WorkShustyleRoute: typeof Char123LocaleChar125WorkShustyleRoute
+}
+
+const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChildren =
+  {
+    Char123LocaleChar125PortfolioRoute: Char123LocaleChar125PortfolioRoute,
+    Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
+    Char123LocaleChar125WorkSlugRoute: Char123LocaleChar125WorkSlugRoute,
+    Char123LocaleChar125WorkShustyleRoute:
+      Char123LocaleChar125WorkShustyleRoute,
+  }
+
+const Char123LocaleChar125RouteRouteWithChildren =
+  Char123LocaleChar125RouteRoute._addFileChildren(
+    Char123LocaleChar125RouteRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  PortfolioRoute: PortfolioRoute,
-  WorkSlugRoute: WorkSlugRoute,
-  WorkShustyleRoute: WorkShustyleRoute,
+  Char123LocaleChar125RouteRoute: Char123LocaleChar125RouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

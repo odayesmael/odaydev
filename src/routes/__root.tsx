@@ -1,28 +1,31 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { GlobalGlow } from "@/components/GlobalGlow";
 import { Starfield } from "@/components/Starfield";
 import logoMark from "@/assets/oday-mark.svg";
 import { SITE_URL } from "@/lib/site";
+import { LOCALE_META, useLocale, useMessages } from "@/i18n";
+import { LocaleLink } from "@/components/LocaleLink";
 
 import appCss from "../styles.css?url";
 import displayFont from "@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url";
 
 function NotFoundComponent() {
+  const t = useMessages().notFound;
   return (
     <>
       <div className="grain-overlay" />
       <main className="nf-page">
         <Starfield />
-        <Link to="/" className="logo nf-logo">
+        <LocaleLink to="/" className="logo nf-logo">
           <img className="icon" src={logoMark} alt="" />
           <span className="logo-word">
             oday<span className="logo-dot">.</span>
           </span>
-        </Link>
+        </LocaleLink>
 
         <div className="nf-inner">
           <div className="nf-eyebrow">
-            <span className="nf-dot" />[ ERROR 404 · ROUTE NOT FOUND ]
+            <span className="nf-dot" />[ {t.eyebrow} ]
           </div>
 
           <h1 className="nf-code">
@@ -30,20 +33,17 @@ function NotFoundComponent() {
           </h1>
 
           <h2 className="nf-title">
-            This page <em>doesn&apos;t exist.</em>
+            {t.title[0]} <em>{t.title[1]}</em>
           </h2>
-          <p className="nf-sub">
-            The link may be broken or the page has moved. Let&apos;s get you back to something that
-            works.
-          </p>
+          <p className="nf-sub">{t.sub}</p>
 
           <div className="nf-actions">
-            <Link to="/" className="nf-btn nf-btn-primary">
-              Back home <span className="nf-arrow">→</span>
-            </Link>
-            <Link to="/portfolio" className="nf-btn">
-              View my work <span className="nf-arrow">↗</span>
-            </Link>
+            <LocaleLink to="/" className="nf-btn nf-btn-primary">
+              {t.home} <span className="nf-arrow">→</span>
+            </LocaleLink>
+            <LocaleLink to="/portfolio" className="nf-btn">
+              {t.work} <span className="nf-arrow">↗</span>
+            </LocaleLink>
           </div>
         </div>
       </main>
@@ -102,8 +102,9 @@ export const Route = createRootRoute({
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
+  const locale = useLocale();
   return (
-    <html lang="en">
+    <html lang={locale} dir={LOCALE_META[locale].dir}>
       <head>
         <HeadContent />
       </head>

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
+import { LocaleLink } from "./LocaleLink";
 
-/** Typed link to a case study: ShuStyle has its own route, the rest use /work/$slug. */
+/** Link to a case study in the current language: ShuStyle has its own route. */
 export function CaseStudyLink({
   slug,
   children,
@@ -15,14 +15,14 @@ export function CaseStudyLink({
 }) {
   if (slug === "shustyle") {
     return (
-      <Link to="/work/shustyle" className={className} {...rest}>
+      <LocaleLink to="/work/shustyle" className={className} {...rest}>
         {children}
-      </Link>
+      </LocaleLink>
     );
   }
   return (
-    <Link to="/work/$slug" params={{ slug }} className={className} {...rest}>
+    <LocaleLink to="/work/$slug" slug={slug} className={className} {...rest}>
       {children}
-    </Link>
+    </LocaleLink>
   );
 }

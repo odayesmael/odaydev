@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,21 +11,33 @@ import { CaseStudyLink } from "@/components/CaseStudyLink";
 import { caseStudyOrder, getCaseStudy, type CaseStudy } from "@/data/caseStudies";
 import { projects, projectShots } from "@/data/projects";
 import { SITE_URL } from "@/lib/site";
-import logoMark from "@/assets/oday-mark.svg";
-import { EmailLink } from "@/components/EmailLink";
+import { PageHeader } from "@/components/PageHeader";
+import { LocaleLink } from "@/components/LocaleLink";
+import {
+  localeFromParam,
+  localePath,
+  localizeCaseStudy,
+  messagesFor,
+  useLocale,
+  useMessages,
+} from "@/i18n";
+import { localeLinks, localeMeta } from "@/i18n/seo";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const Route = createFileRoute("/work/$slug")({
+export const Route = createFileRoute("/{-$locale}/work/$slug")({
   loader: ({ params }) => {
-    const cs = getCaseStudy(params.slug);
-    if (!cs) throw notFound();
-    return cs;
+    const base = getCaseStudy(params.slug);
+    if (!base) throw notFound();
+    return localizeCaseStudy(base, localeFromParam(params.locale));
   },
-  head: ({ loaderData: cs }) => {
+  head: ({ loaderData: cs, params }) => {
     if (!cs) return {};
-    const title = `${cs.name} — case study — Oday`;
-    const url = `${SITE_URL}/work/${cs.slug}`;
+    const locale = localeFromParam(params.locale);
+    const t = messagesFor(locale);
+    const title = `${cs.name} — ${t.meta.caseStudySuffix}`;
+    const path = `/work/${cs.slug}`;
+    const url = `${SITE_URL}${localePath(locale, path)}`;
     const image = `${SITE_URL}/og-${cs.slug}.png`;
     return {
       meta: [
@@ -33,21 +45,22 @@ export const Route = createFileRoute("/work/$slug")({
         { name: "description", content: cs.summary },
         { property: "og:title", content: title },
         { property: "og:description", content: cs.summary },
-        { property: "og:url", content: url },
+        ...localeMeta(locale, path),
         { property: "og:image", content: image },
         { property: "og:image:width", content: "1200" },
         { property: "og:image:height", content: "630" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:image", content: image },
       ],
-      links: [{ rel: "canonical", href: url }],
+      links: localeLinks(locale, path),
       scripts: [
         {
           type: "application/ld+json",
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CreativeWork",
-            name: `${cs.name} — case study`,
+            name: title,
+            inLanguage: locale,
             description: cs.summary,
             url,
             image,
@@ -70,6 +83,9 @@ function nextProject(slug: string) {
 
 function CaseStudyPage() {
   const cs = Route.useLoaderData() as CaseStudy;
+  const t = useMessages();
+  const tc = t.caseStudy;
+  const locale = useLocale();
   const ref = useRef<HTMLDivElement>(null);
   const project = projects.find((p) => p.slug === cs.slug);
   const shots = project ? projectShots(project) : null;
@@ -111,30 +127,21 @@ function CaseStudyPage() {
       <div className="grain-overlay" />
       <div className="dr-page cs-page" ref={ref}>
         <Starfield />
-        <header className="dr-page-top">
-          <Link to="/" className="logo dr-logo">
-            <img className="icon" src={logoMark} alt="" />
-            <span className="logo-word">
-              oday<span className="logo-dot">.</span>
-            </span>
-          </Link>
-          <EmailLink className="contact-btn">
-            Let&apos;s Talk <span className="arrow">↗</span>
-          </EmailLink>
-        </header>
+        <PageHeader />
 
         <main>
           {/* ---------- Hero ---------- */}
           <section className="cs-hero cs-hero-web">
             <div className="cs-hero-copy">
               <nav className="cs-crumbs cs-reveal" aria-label="Breadcrumb">
-                <Link to="/portfolio">Portfolio</Link> <span>/</span> <span>{cs.name}</span>
+                <LocaleLink to="/portfolio">{t.common.portfolio}</LocaleLink> <span>/</span>{" "}
+                <span>{cs.name}</span>
               </nav>
               <div className="cs-eyebrow cs-reveal">
-                <span className="cs-dot" />[ CASE STUDY · {cs.kind.toUpperCase()} ]
+                <span className="cs-dot" />[ {tc.eyebrow} · {cs.kind.toLocaleUpperCase(locale)} ]
               </div>
               <h1 className="cs-title cs-reveal">
-                {cs.name} — <em>{cs.tagline}</em>
+                <bdi>{cs.name}</bdi> — <em>{cs.tagline}</em>
               </h1>
               <p className="cs-lead cs-reveal">{cs.summary}</p>
               <div className="cs-actions cs-reveal">
@@ -144,11 +151,11 @@ function CaseStudyPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Visit {cs.domain} <span aria-hidden>↗</span>
+                  {t.common.visit} {cs.domain} <span aria-hidden>↗</span>
                 </a>
-                <Link className="as-btn" to="/portfolio">
-                  All projects
-                </Link>
+                <LocaleLink className="as-btn" to="/portfolio">
+                  {t.common.allProjects}
+                </LocaleLink>
               </div>
               <dl className="cs-meta cs-reveal">
                 {cs.meta.map((m) => (
@@ -173,7 +180,7 @@ function CaseStudyPage() {
 
           {/* ---------- Stats ---------- */}
           {cs.stats && (
-            <section className="cs-block cs-stats-block" aria-label="Key numbers">
+            <section className="cs-block cs-stats-block" aria-label={tc.keyNumbers}>
               <div className="cs-stats">
                 {cs.stats.map((s) => (
                   <div className="cs-stat cs-in" key={s.label}>
@@ -187,16 +194,16 @@ function CaseStudyPage() {
 
           {/* ---------- Challenge ---------- */}
           <section className="cs-block cs-problem">
-            <div className="cs-label cs-in">[ 01 / THE CHALLENGE ]</div>
+            <div className="cs-label cs-in">[ {tc.challenge} ]</div>
             <h2 className="cs-h2 cs-in">{cs.challenge.heading}</h2>
             <p className="cs-p cs-in">{cs.challenge.body}</p>
           </section>
 
           {/* ---------- Features ---------- */}
           <section className="cs-block">
-            <div className="cs-label cs-in">[ 02 / WHAT I BUILT ]</div>
+            <div className="cs-label cs-in">[ {tc.built} ]</div>
             <h2 className="cs-h2 cs-in">
-              The pieces that <em>make it work.</em>
+              {tc.builtTitle[0]} <em>{tc.builtTitle[1]}</em>
             </h2>
             <div className="cs-features">
               {cs.features.map((f, i) => (
@@ -211,9 +218,9 @@ function CaseStudyPage() {
 
           {/* ---------- Gallery ---------- */}
           <section className="cs-block">
-            <div className="cs-label cs-in">[ 03 / INSIDE THE SITE ]</div>
+            <div className="cs-label cs-in">[ {tc.inside} ]</div>
             <h2 className="cs-h2 cs-in">
-              Key pages, <em>as they are live.</em>
+              {tc.insideTitle[0]} <em>{tc.insideTitle[1]}</em>
             </h2>
             <div className="cs-gallery">
               {cs.gallery.map((g, i) => (
@@ -245,7 +252,7 @@ function CaseStudyPage() {
           {/* ---------- Deliverables + stack ---------- */}
           <section className="cs-block cs-split cs-split-top">
             <div>
-              <div className="cs-label cs-in">[ 04 / WHAT I DELIVERED ]</div>
+              <div className="cs-label cs-in">[ {tc.delivered} ]</div>
               <ul className="cs-list cs-in">
                 {cs.deliverables.map((d) => (
                   <li key={d}>{d}</li>
@@ -253,14 +260,14 @@ function CaseStudyPage() {
               </ul>
             </div>
             <div>
-              <div className="cs-label cs-in">[ 05 / BUILT WITH ]</div>
+              <div className="cs-label cs-in">[ {tc.stack} ]</div>
               <ul className="cs-stack cs-in">
                 {cs.stack.map((s) => (
                   <li key={s}>{s}</li>
                 ))}
               </ul>
               <a className="as-btn cs-in" href={cs.url} target="_blank" rel="noopener noreferrer">
-                Open {cs.domain} <span aria-hidden>↗</span>
+                {tc.open} {cs.domain} <span aria-hidden>↗</span>
               </a>
             </div>
           </section>
@@ -269,7 +276,7 @@ function CaseStudyPage() {
           {next && (
             <section className="cs-block cs-next">
               <CaseStudyLink slug={next.slug} className="pr-viewall cs-in">
-                Next project: {next.name} <span className="pr-arrow">→</span>
+                {t.common.nextProject}: {next.name} <span className="pr-arrow">→</span>
               </CaseStudyLink>
             </section>
           )}

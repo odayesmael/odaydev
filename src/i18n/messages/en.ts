@@ -1,0 +1,228 @@
+/**
+ * English UI copy — the source of truth. Other locales must provide every key.
+ * Headings with an accented second half are written as [plain, accent] pairs.
+ */
+const en = {
+  meta: {
+    homeTitle: "Oday — Full-Stack Web & Mobile Developer",
+    homeDescription:
+      "Oday — Full-Stack Web & Mobile Developer with 9 years of experience building corporate sites, online stores, custom platforms and iOS & Android apps, with an AI-assisted workflow. Based in the Netherlands, working worldwide.",
+    ogDescription:
+      "9 years crafting fast, custom websites and mobile apps — front-end, back-end, SEO and UI/UX, with an AI-assisted workflow.",
+    portfolioTitle: "Portfolio — Oday",
+    portfolioDescription:
+      "The full portfolio of Oday — corporate websites, platforms, online stores and mobile apps designed, built and maintained end to end.",
+    caseStudySuffix: "case study — Oday",
+  },
+  common: {
+    letsTalk: "Let's Talk",
+    language: "Language",
+    portfolio: "Portfolio",
+    allProjects: "All projects",
+    nextProject: "Next project",
+    seeAllProjects: "See all projects",
+    visit: "Visit",
+    caseStudy: "Case study",
+    offline: "Currently offline",
+    scroll: "Scroll to explore",
+    loading: "LOADING...",
+  },
+  nav: { home: "Home", work: "Work", skills: "Skills", contact: "Contact" },
+  hero: {
+    label: "FULL-STACK WEB & MOBILE DEVELOPER",
+    line1: "Building Full-Stack",
+    line2: "Web & App Experiences",
+    desc: "9 years turning ideas into fast, reliable products — corporate sites, online stores, custom platforms and, now, iOS & Android apps. Front-end to back-end. Based in the Netherlands, working worldwide.",
+  },
+  marquee: "9 YEARS · WEB & MOBILE · AI-ASSISTED WORKFLOW · NETHERLANDS",
+  approach: {
+    eyebrow: "Know me more — a developer who ships",
+    items: [
+      {
+        title: "9 years of experience",
+        body: "Nearly a decade building and maintaining products of every size — from single-page brochures to e-commerce, multi-site platforms and a live iOS app handling real users.",
+      },
+      {
+        title: "Custom, not off-the-shelf",
+        body: "Built to your brand and requirements on whichever stack fits the job — CMS, custom code or headless. Clean, maintainable front-end and back-end, never a bloated template.",
+      },
+      {
+        title: "Fast & search-ready",
+        body: "Performance, accessibility and SEO baked in from the first line, so your site loads quickly, ranks well and stays easy to grow over time.",
+      },
+    ],
+  },
+  tools: { label: "AI-ASSISTED WORKFLOW & TOOLS" },
+  services: {
+    eyebrow: "02 / SERVICES",
+    title: ["What I", "do best."] as [string, string],
+    sub: "A focused set of services covering the full lifecycle of a website or app — design, build, launch and refine.",
+    detailsLabel: "details",
+    items: [
+      {
+        title: "Web Design",
+        body: "Brand-driven, pixel-perfect interfaces. From wireframes to polished, fully responsive layouts that feel right on every screen.",
+      },
+      {
+        title: "Web Development",
+        body: "Corporate sites, web apps, online stores and custom platforms — hand-coded, standards-compliant, built to scale and easy to maintain.",
+      },
+      {
+        title: "SEO Optimization",
+        body: "On-page SEO, Core Web Vitals and clean semantic markup so your site loads fast and ranks where your customers are searching.",
+      },
+      {
+        title: "UI / UX Design",
+        body: "Intuitive user journeys and interaction design grounded in real usability — interfaces people understand without having to think.",
+      },
+      {
+        title: "Mobile Apps",
+        body: "iOS and Android apps from idea to store launch — product design, AI features, subscriptions and a marketing site to match.",
+      },
+    ],
+  },
+  spotlight: {
+    eyebrow: "LATEST · MOBILE APP",
+    readCaseStudy: "Read the case study",
+    chips: ["iOS", "Android", "AI try-on", "360° view", "5 languages", "Subscriptions"],
+  },
+  projects: {
+    eyebrow: "03 / SELECTED WORK",
+    title: ["Projects I've", "shipped & shaped."] as [string, string],
+    sub: "A selection of corporate sites, platforms and online stores I've designed, built and maintained — from data-protection firms to e-commerce.",
+    viewAll: "View all {n} projects",
+  },
+  skills: {
+    eyebrow: "04 / SKILLS",
+    title: ["Tools I trust,", "sharpened over 9 years."] as [string, string],
+    sub: "Front-end craft, back-end logic, mobile apps and the platforms in between — everything I need to take a product from blank canvas to launch.",
+    stats: [
+      "Years building for the web",
+      "Projects shipped & maintained",
+      "Platforms — Web, iOS, Android",
+      "Working languages — EN, AR, TR",
+    ],
+    groups: [
+      "Front-end",
+      "Back-end & CMS",
+      "Mobile apps",
+      "Design & UX",
+      "SEO & Performance",
+      "Hosting & Ops",
+    ],
+  },
+  contact: {
+    title: ["Let's build", "something"] as [string, string],
+    sub: "Have a website or an app in mind, or a site that needs care and speed? Available for freelance projects, long-term collaborations and full-time roles in the Netherlands.",
+    email: "EMAIL",
+    location: "LOCATION",
+    locationValue: "Netherlands",
+    linkedin: "LINKEDIN",
+    brief: {
+      legend: "WHAT ARE YOU PLANNING?",
+      types: ["Website", "Online store", "Mobile app", "SEO & care", "Full-time role"],
+      name: "Your name",
+      namePlaceholder: "Jane from Acme",
+      message: "A few lines about it",
+      messagePlaceholder: "What you need, rough timeline, links…",
+      submit: "Write the email",
+      copy: "Copy",
+      copied: "Copied ✓",
+      note: "Opens your mail app with the brief filled in — nothing is stored.",
+      subject: "{type} enquiry",
+      greeting: "Hi Oday,",
+      fallbackMessage: "I'd like to talk about a project.",
+    },
+  },
+  footer: {
+    services: "SERVICES",
+    explore: "EXPLORE",
+    connect: "CONNECT",
+    skills: "Skills",
+    portfolio: "Portfolio",
+    shustyle: "ShuStyle case study",
+    contact: "Contact",
+    role: "Full-Stack Web & Mobile Developer",
+    rights: "All rights reserved.",
+  },
+  portfolio: {
+    eyebrow: "PORTFOLIO · {n} PROJECTS",
+    title: ["All my", "work."] as [string, string],
+    sub: "Nine years of corporate websites, platforms, online stores and now mobile apps — designed, built and maintained end to end. Filter by type below.",
+    filterLabel: "Filter projects by category",
+    all: "All",
+  },
+  categories: {
+    "Mobile App": "Mobile App",
+    Industrial: "Industrial",
+    "E-Learning": "E-Learning",
+    "Legal & Compliance": "Legal & Compliance",
+    Corporate: "Corporate",
+    Portfolio: "Portfolio",
+    "E-commerce": "E-commerce",
+    "Real Estate": "Real Estate",
+    Marine: "Marine",
+    "Car Rental": "Car Rental",
+    Healthcare: "Healthcare",
+  } as Record<string, string>,
+  notFound: {
+    eyebrow: "ERROR 404 · ROUTE NOT FOUND",
+    title: ["This page", "doesn't exist."] as [string, string],
+    sub: "The link may be broken or the page has moved. Let's get you back to something that works.",
+    home: "Back home",
+    work: "View my work",
+  },
+  caseStudy: {
+    eyebrow: "CASE STUDY",
+    challenge: "01 / THE CHALLENGE",
+    built: "02 / WHAT I BUILT",
+    builtTitle: ["The pieces that", "make it work."] as [string, string],
+    inside: "03 / INSIDE THE SITE",
+    insideTitle: ["Key pages,", "as they are live."] as [string, string],
+    delivered: "04 / WHAT I DELIVERED",
+    stack: "05 / BUILT WITH",
+    open: "Open",
+    keyNumbers: "Key numbers",
+  },
+  shustylePage: {
+    eyebrow: "CASE STUDY · MOBILE APP",
+    titleAccent: "your AI stylist.",
+    download: "Download on the App Store",
+    visitSite: "Visit shustyle.app",
+    problemLabel: "01 / THE PROBLEM",
+    problemTitle: ["A full wardrobe, and", "nothing to wear."] as [string, string],
+    problemBody:
+      "Most people wear a small slice of what they own and lose time every morning deciding. Styling apps tend to push new purchases. ShuStyle starts from the opposite idea: work with the closet you already have, read the day — weather, plans, occasion — and answer in seconds, in the user's own language.",
+    howLabel: "02 / HOW IT WORKS",
+    howTitle: ["From closet to outfit", "in three taps."] as [string, string],
+    tryLabel: "03 / AI TRY-ON",
+    tryTitle: ["See it on a model,", "from every side."] as [string, string],
+    tryBody:
+      "One tap turns a flat-lay of the user's own pieces into a realistic photo on a model, then into a 360° view they can drag around. Measurements in the profile tune the result. Drag the slider to compare.",
+    flatLay: "Flat-lay",
+    tryOn: "AI try-on",
+    compareLabel: "Compare the flat-lay with the AI try-on",
+    featuresLabel: "04 / FEATURES",
+    featuresTitle: ["Everything the closet", "was missing."] as [string, string],
+    screensLabel: "05 / INSIDE THE APP",
+    screensTitle: ["Designed to make getting dressed", "easy."] as [string, string],
+    screensAria: "App screens, scroll horizontally",
+    modelLabel: "06 / BUSINESS MODEL",
+    modelTitle: ["Free to start,", "subscriptions to grow."] as [string, string],
+    modelBody:
+      "A freemium model with monthly and yearly in-app subscriptions, plus style-point top-ups for occasional extra use. Prices shown in USD; the store shows local pricing.",
+    siteLabel: "07 / THE WEBSITE",
+    siteTitle: ["shustyle.app —", "the front door."] as [string, string],
+    siteBody:
+      "A fast, five-language landing site that explains the product and sends visitors straight to the store.",
+    openSite: "Open shustyle.app",
+    privacyLabel: "08 / PRIVATE BY DESIGN",
+    privacyTitle: ["The closet", "stays yours."] as [string, string],
+    privacyBody:
+      "Clothes and photos are visible only to their owner and are sent to AI providers solely to style outfits — never sold or used for ads. Deleting the account in the app removes everything.",
+    deliveredLabel: "WHAT I DELIVERED",
+  },
+};
+
+export type Messages = typeof en;
+export default en;

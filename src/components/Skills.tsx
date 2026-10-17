@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/data/projects";
+import { useMessages } from "@/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,6 +72,7 @@ const GROUPS = [
 
 export function Skills() {
   const ref = useRef<HTMLElement>(null);
+  const t = useMessages();
 
   useEffect(() => {
     const section = ref.current!;
@@ -108,34 +110,31 @@ export function Skills() {
       <div className="skills-inner">
         <div className="sk-head">
           <div className="sk-eyebrow">
-            <span className="sk-dot" />[ 04 / SKILLS ]
+            <span className="sk-dot" />[ {t.skills.eyebrow} ]
           </div>
           <h2 className="sk-title">
-            Tools I trust,
+            {t.skills.title[0]}
             <br />
-            <em>sharpened over 9 years.</em>
+            <em>{t.skills.title[1]}</em>
           </h2>
-          <p className="sk-sub">
-            Front-end craft, back-end logic, mobile apps and the platforms in between — everything I
-            need to take a product from blank canvas to launch.
-          </p>
+          <p className="sk-sub">{t.skills.sub}</p>
         </div>
 
         <div className="sk-stats">
-          {STATS.map((s) => (
+          {STATS.map((s, i) => (
             <div className="sk-stat" key={s.label}>
               <span className="sk-stat-value">{s.value}</span>
-              <span className="sk-stat-label">{s.label}</span>
+              <span className="sk-stat-label">{t.skills.stats[i]}</span>
             </div>
           ))}
         </div>
 
         <div className="sk-groups">
-          {GROUPS.map((g) => (
+          {GROUPS.map((g, gi) => (
             <div className="sk-group" key={g.title}>
               <div className="sk-group-head">
                 <span className="sk-group-num">[ {g.n} ]</span>
-                <h3 className="sk-group-title">{g.title}</h3>
+                <h3 className="sk-group-title">{t.skills.groups[gi]}</h3>
               </div>
               <ul className="sk-group-list">
                 {g.items.map((it) => (
