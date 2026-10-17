@@ -87,6 +87,72 @@ export function Starfield() {
 
     const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
+    // Shooting stars: an occasional streak across the sky, never more than two at once.
+    type Meteor = {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      life: number;
+      ttl: number;
+      len: number;
+    };
+    const meteors: Meteor[] = [];
+    const nextGap = () => 5 + Math.random() * 9; // seconds between meteors
+    let untilNext = 2.5 + Math.random() * 3;
+    const spawnMeteor = () => {
+      const angle = ((200 + Math.random() * 22) * Math.PI) / 180; // heading down and to the left
+      const speed = 650 + Math.random() * 450; // px per second
+      meteors.push({
+        x: width * (0.35 + Math.random() * 0.75),
+        y: height * (Math.random() * 0.45) - 40,
+        vx: Math.cos(angle) * speed, // negative: moves left
+        vy: -Math.sin(angle) * speed, // positive: moves down
+        life: 0,
+        ttl: 0.7 + Math.random() * 0.6,
+        len: 110 + Math.random() * 120,
+      });
+    };
+    const drawMeteors = (dt: number) => {
+      untilNext -= dt;
+      if (untilNext <= 0 && meteors.length < 2) {
+        spawnMeteor();
+        untilNext = nextGap();
+      }
+      for (let i = meteors.length - 1; i >= 0; i--) {
+        const m = meteors[i];
+        m.life += dt;
+        m.x += m.vx * dt;
+        m.y += m.vy * dt;
+        const t = m.life / m.ttl;
+        if (t >= 1) {
+          meteors.splice(i, 1);
+          continue;
+        }
+        // Fade in fast, fade out slowly
+        const fade = t < 0.15 ? t / 0.15 : 1 - (t - 0.15) / 0.85;
+        const speed = Math.hypot(m.vx, m.vy);
+        const tx = m.x - (m.vx / speed) * m.len;
+        const ty = m.y - (m.vy / speed) * m.len;
+        const grad = ctx.createLinearGradient(m.x, m.y, tx, ty);
+        grad.addColorStop(0, `rgba(235,255,240,${0.55 * fade})`);
+        grad.addColorStop(0.25, `rgba(140,255,180,${0.22 * fade})`);
+        grad.addColorStop(1, "rgba(74,222,128,0)");
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.4;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(m.x, m.y);
+        ctx.lineTo(tx, ty);
+        ctx.stroke();
+        // Bright head
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(240,255,245,${0.6 * fade})`;
+        ctx.arc(m.x, m.y, 1.3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    };
+
     let last = performance.now();
     const loop = (now: number) => {
       const dt = Math.min(0.05, (now - last) / 1000);
@@ -129,6 +195,8 @@ export function Starfield() {
           ctx.fill();
         }
       }
+
+      if (!reduceMotion) drawMeteors(dt);
 
       if (visible && !reduceMotion) raf = requestAnimationFrame(loop);
     };
