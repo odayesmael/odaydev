@@ -22,7 +22,6 @@ const jsonLd = {
       "@id": `${SITE_URL}/#person`,
       name: "Oday",
       url: SITE_URL,
-      email: "mailto:info@oday.dev",
       jobTitle: "Full-Stack Web & Mobile Developer",
       image: `${SITE_URL}/icon-512.png`,
       address: { "@type": "PostalAddress", addressCountry: "NL" },

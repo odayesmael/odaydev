@@ -4,6 +4,7 @@ import { HeroSphere } from "./HeroSphere";
 import { BinaryRain } from "./BinaryRain";
 import { BottomNav } from "./BottomNav";
 import logoMark from "@/assets/oday-mark.svg";
+import { EmailLink } from "@/components/EmailLink";
 
 export function Hero({ play }: { play: boolean }) {
   const ref = useRef<HTMLElement>(null);
@@ -36,9 +37,9 @@ export function Hero({ play }: { play: boolean }) {
               oday<span className="logo-dot">.</span>
             </span>
           </div>
-          <a className="contact-btn js-reveal" href="mailto:info@oday.dev">
+          <EmailLink className="contact-btn js-reveal">
             Let&apos;s Talk <span className="arrow">↗</span>
-          </a>
+          </EmailLink>
         </div>
 
         <div className="label-tag js-reveal">[ FULL-STACK WEB &amp; MOBILE DEVELOPER ]</div>

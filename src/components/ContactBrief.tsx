@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { contactEmail, EMAIL_PLACEHOLDER } from "@/lib/email";
 
-const EMAIL = "info@oday.dev";
 const TYPES = ["Website", "Online store", "Mobile app", "SEO & care", "Full-time role"];
 
 /**
@@ -12,18 +12,20 @@ export function ContactBrief() {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [copied, setCopied] = useState(false);
+  const [email, setEmail] = useState<string | null>(null);
+  useEffect(() => setEmail(contactEmail()), []);
 
   const subject = `${type} enquiry${name ? ` — ${name}` : ""}`;
   const body = `Hi Oday,\n\n${message || "I'd like to talk about a project."}\n\n— ${name || ""}`;
-  const href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const href = `mailto:${email ?? ""}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(EMAIL);
+      await navigator.clipboard.writeText(contactEmail());
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      window.location.href = `mailto:${EMAIL}`;
+      window.location.href = `mailto:${contactEmail()}`;
     }
   };
 
@@ -59,6 +61,7 @@ export function ContactBrief() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             autoComplete="name"
+            maxLength={80}
             placeholder="Jane from Acme"
           />
         </label>
@@ -66,6 +69,7 @@ export function ContactBrief() {
           <span>A few lines about it</span>
           <textarea
             rows={3}
+            maxLength={1500}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="What you need, rough timeline, links…"
@@ -78,7 +82,7 @@ export function ContactBrief() {
           Write the email <span aria-hidden>↗</span>
         </button>
         <button type="button" className="as-btn" onClick={copy}>
-          {copied ? "Copied ✓" : `Copy ${EMAIL}`}
+          {copied ? "Copied ✓" : `Copy ${email ?? EMAIL_PLACEHOLDER}`}
         </button>
       </div>
       <p className="cb-note">Opens your mail app with the brief filled in — nothing is stored.</p>

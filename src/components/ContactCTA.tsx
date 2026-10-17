@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ContactBrief } from "./ContactBrief";
+import { EmailLink, EmailAddress } from "@/components/EmailLink";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -380,15 +381,17 @@ export function ContactCTA() {
           Have a website or an app in mind, or a site that needs care and speed? Available for
           freelance projects, long-term collaborations and full-time roles in the Netherlands.
         </p>
-        <a className="cta-button cta-reveal" href="mailto:info@oday.dev">
+        <EmailLink className="cta-button cta-reveal">
           Let&apos;s Talk <span className="cta-button-dot" />
-        </a>
+        </EmailLink>
 
         <div className="cta-details cta-reveal">
-          <a className="cta-detail" href="mailto:info@oday.dev">
+          <EmailLink className="cta-detail">
             <span className="cta-detail-label">[ EMAIL ]</span>
-            <span className="cta-detail-value">info@oday.dev</span>
-          </a>
+            <span className="cta-detail-value">
+              <EmailAddress />
+            </span>
+          </EmailLink>
           <div className="cta-detail">
             <span className="cta-detail-label">[ LOCATION ]</span>
             <span className="cta-detail-value">Netherlands</span>

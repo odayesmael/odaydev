@@ -12,6 +12,7 @@ import { caseStudyOrder, getCaseStudy, type CaseStudy } from "@/data/caseStudies
 import { projects, projectShots } from "@/data/projects";
 import { SITE_URL } from "@/lib/site";
 import logoMark from "@/assets/oday-mark.svg";
+import { EmailLink } from "@/components/EmailLink";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -117,9 +118,9 @@ function CaseStudyPage() {
               oday<span className="logo-dot">.</span>
             </span>
           </Link>
-          <a className="contact-btn" href="mailto:info@oday.dev">
+          <EmailLink className="contact-btn">
             Let&apos;s Talk <span className="arrow">↗</span>
-          </a>
+          </EmailLink>
         </header>
 
         <main>

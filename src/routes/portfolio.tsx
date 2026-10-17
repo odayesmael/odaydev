@@ -9,6 +9,7 @@ import { projects } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import logoMark from "@/assets/oday-mark.svg";
 import { SITE_URL } from "@/lib/site";
+import { EmailLink } from "@/components/EmailLink";
 
 export const Route = createFileRoute("/portfolio")({
   component: PortfolioRoute,
@@ -71,9 +72,9 @@ function PortfolioRoute() {
               oday<span className="logo-dot">.</span>
             </span>
           </Link>
-          <a className="contact-btn p-reveal" href="mailto:info@oday.dev">
+          <EmailLink className="contact-btn p-reveal">
             Let&apos;s Talk <span className="arrow">↗</span>
-          </a>
+          </EmailLink>
         </header>
 
         <section className="portfolio-section">
