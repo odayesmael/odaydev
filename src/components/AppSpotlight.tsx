@@ -1,17 +1,17 @@
 import { useEffect, useRef } from "react";
-import { Link } from "@tanstack/react-router";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { shustyle } from "@/data/shustyle";
+import { localizeShustyle, useLocale, useMessages } from "@/i18n";
+import { LocaleLink } from "./LocaleLink";
 import { Phone } from "./Phone";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CHIPS = ["iOS", "Android", "AI try-on", "360° view", "5 languages", "Subscriptions"];
-
 /** Home-page spotlight for the latest product: the ShuStyle app. */
 export function AppSpotlight() {
   const ref = useRef<HTMLElement>(null);
+  const t = useMessages();
+  const shustyle = localizeShustyle(useLocale());
 
   useEffect(() => {
     const section = ref.current!;
@@ -41,7 +41,7 @@ export function AppSpotlight() {
       <div className="as-card">
         <div className="as-copy">
           <div className="as-eyebrow as-reveal">
-            <span className="as-dot" />[ LATEST · MOBILE APP · {shustyle.year} ]
+            <span className="as-dot" />[ {t.spotlight.eyebrow} · {shustyle.year} ]
           </div>
           <h2 className="as-title as-reveal" id="as-title">
             <img className="as-logo" src={shustyle.logo} alt="" width={56} height={56} />
@@ -51,15 +51,15 @@ export function AppSpotlight() {
           <p className="as-body as-reveal">{shustyle.summary}</p>
 
           <ul className="as-chips as-reveal">
-            {CHIPS.map((c) => (
+            {t.spotlight.chips.map((c) => (
               <li key={c}>{c}</li>
             ))}
           </ul>
 
           <div className="as-actions as-reveal">
-            <Link to="/work/shustyle" className="as-btn as-btn-primary">
-              Read the case study <span aria-hidden>→</span>
-            </Link>
+            <LocaleLink to="/work/shustyle" className="as-btn as-btn-primary">
+              {t.spotlight.readCaseStudy} <span aria-hidden>→</span>
+            </LocaleLink>
             <a
               className="as-btn"
               href={shustyle.appStore}

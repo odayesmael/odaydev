@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useMessages } from "@/i18n";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -24,6 +25,7 @@ const TOOLS = [
 
 /** AI-assisted workflow & tooling strip — sits above the services grid. */
 export function Tools() {
+  const t = useMessages();
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -52,8 +54,7 @@ export function Tools() {
     <section className="tools-section" ref={ref}>
       <div className="tools-inner">
         <div className="sk-tools-label">
-          <span className="sk-dot" />
-          [ AI-ASSISTED WORKFLOW &amp; TOOLS ]
+          <span className="sk-dot" />[ {t.tools.label} ]
         </div>
         <div className="sk-chips">
           {TOOLS.map((t) => (

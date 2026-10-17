@@ -11,6 +11,8 @@ import { Tools } from "@/components/Tools";
 import { Projects } from "@/components/Projects";
 import { AppSpotlight } from "@/components/AppSpotlight";
 import { SITE_URL } from "@/lib/site";
+import { localeFromParam, messagesFor } from "@/i18n";
+import { localeLinks, localeMeta } from "@/i18n/seo";
 import { ContactCTA } from "@/components/ContactCTA";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -25,7 +27,7 @@ const jsonLd = {
       jobTitle: "Full-Stack Web & Mobile Developer",
       image: `${SITE_URL}/icon-512.png`,
       address: { "@type": "PostalAddress", addressCountry: "NL" },
-      knowsLanguage: ["en", "ar", "tr"],
+      knowsLanguage: ["en", "ar", "tr", "nl"],
       knowsAbout: ["Web development", "WordPress", "React", "Mobile apps", "SEO", "UI/UX design"],
       sameAs: ["https://www.linkedin.com/in/oday-alatbash/", "https://github.com/odayesmael"],
     },
@@ -49,27 +51,23 @@ const jsonLd = {
   ],
 };
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/{-$locale}/")({
   component: Index,
-  head: () => ({
-    meta: [
-      { title: "Oday — Full-Stack Web & Mobile Developer" },
-      {
-        name: "description",
-        content:
-          "Oday — Full-Stack Web & Mobile Developer with 9 years of experience building corporate sites, online stores, custom platforms and iOS & Android apps, with an AI-assisted workflow. Based in the Netherlands, working worldwide.",
-      },
-      { property: "og:title", content: "Oday — Full-Stack Web & Mobile Developer" },
-      { property: "og:url", content: `${SITE_URL}/` },
-      {
-        property: "og:description",
-        content:
-          "9 years crafting fast, custom websites and mobile apps — front-end, back-end, SEO and UI/UX, with an AI-assisted workflow.",
-      },
-    ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
-  }),
+  head: ({ params }) => {
+    const locale = localeFromParam(params.locale);
+    const t = messagesFor(locale);
+    return {
+      meta: [
+        { title: t.meta.homeTitle },
+        { name: "description", content: t.meta.homeDescription },
+        { property: "og:title", content: t.meta.homeTitle },
+        { property: "og:description", content: t.meta.ogDescription },
+        ...localeMeta(locale, "/"),
+      ],
+      links: localeLinks(locale, "/"),
+      scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
+    };
+  },
 });
 
 function Index() {

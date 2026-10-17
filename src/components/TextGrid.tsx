@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useMessages } from "@/i18n";
 import * as THREE from "three";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -65,6 +66,7 @@ const FRAG = /* glsl */ `
 `;
 
 export function TextGrid() {
+  const t = useMessages();
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const hoverRef = useRef(0);
@@ -189,36 +191,22 @@ export function TextGrid() {
               <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
             </svg>
           </span>
-          Know me more — a developer who ships
+          {t.approach.eyebrow}
         </div>
 
         <div className="tg-grid">
-          {[
-            {
-              n: "01",
-              title: "9 years of experience",
-              body: "Nearly a decade building and maintaining products of every size — from single-page brochures to e-commerce, multi-site platforms and a live iOS app handling real users.",
-            },
-            {
-              n: "02",
-              title: "Custom, not off-the-shelf",
-              body: "Built to your brand and requirements on whichever stack fits the job — CMS, custom code or headless. Clean, maintainable front-end and back-end, never a bloated template.",
-            },
-            {
-              n: "03",
-              title: "Fast & search-ready",
-              body: "Performance, accessibility and SEO baked in from the first line, so your site loads quickly, ranks well and stays easy to grow over time.",
-            },
-          ].map((c) => (
-            <div className="tg-col" key={c.n}>
-              <div className="tg-num">[ {c.n} ]</div>
-              <h3 className="tg-title">
-                <span className="tg-pulse" />
-                {c.title}
-              </h3>
-              <p className="tg-body">{c.body}</p>
-            </div>
-          ))}
+          {t.approach.items
+            .map((c, i) => ({ ...c, n: String(i + 1).padStart(2, "0") }))
+            .map((c) => (
+              <div className="tg-col" key={c.n}>
+                <div className="tg-num">[ {c.n} ]</div>
+                <h3 className="tg-title">
+                  <span className="tg-pulse" />
+                  {c.title}
+                </h3>
+                <p className="tg-body">{c.body}</p>
+              </div>
+            ))}
         </div>
       </div>
     </section>

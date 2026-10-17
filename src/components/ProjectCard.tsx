@@ -1,6 +1,7 @@
 import { type Project, projectShots } from "@/data/projects";
 import { DeviceMockup } from "./DeviceMockup";
 import { CaseStudyLink } from "./CaseStudyLink";
+import { localizeProject, useLocale, useMessages } from "@/i18n";
 
 /**
  * One portfolio card, shared by the home grid and /portfolio.
@@ -8,7 +9,9 @@ import { CaseStudyLink } from "./CaseStudyLink";
  * (or the app screens), with a typographic fallback when none exist.
  * Cards link to the live site, or to the internal case study when there is one.
  */
-export function ProjectCard({ project: p, index }: { project: Project; index: number }) {
+export function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const t = useMessages();
+  const p = localizeProject(project, useLocale());
   const num = String(index + 1).padStart(2, "0");
   const shots = projectShots(p);
 
@@ -24,7 +27,7 @@ export function ProjectCard({ project: p, index }: { project: Project; index: nu
 
       <div className="pr-card-top">
         <span className="pr-num">[ {num} ]</span>
-        <span className="pr-cat">{p.category}</span>
+        <span className="pr-cat">{p.categoryLabel}</span>
       </div>
 
       <div className="pr-card-body">
@@ -41,10 +44,10 @@ export function ProjectCard({ project: p, index }: { project: Project; index: nu
       <div className="pr-card-foot">
         <span className="pr-domain">{p.domain}</span>
         {p.offline ? (
-          <span className="pr-visit is-offline">Currently offline</span>
+          <span className="pr-visit is-offline">{t.common.offline}</span>
         ) : (
           <span className="pr-visit">
-            {p.caseStudy ? "Case study" : "Visit"}{" "}
+            {p.caseStudy ? t.common.caseStudy : t.common.visit}{" "}
             <span className="pr-arrow">{p.caseStudy ? "→" : "↗"}</span>
           </span>
         )}

@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -7,74 +7,74 @@ import { BottomNav } from "@/components/BottomNav";
 import { Starfield } from "@/components/Starfield";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Phone } from "@/components/Phone";
-import { shustyle as s } from "@/data/shustyle";
+import { shustyle as base } from "@/data/shustyle";
 import { SITE_URL } from "@/lib/site";
-import logoMark from "@/assets/oday-mark.svg";
-import { EmailLink } from "@/components/EmailLink";
+import { PageHeader } from "@/components/PageHeader";
+import { LocaleLink } from "@/components/LocaleLink";
+import {
+  localeFromParam,
+  localizeShustyle,
+  messagesFor,
+  useLocale,
+  useMessages,
+  type Messages,
+} from "@/i18n";
+import { localeLinks, localeMeta } from "@/i18n/seo";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const TITLE = "ShuStyle — AI stylist app case study — Oday";
-const DESCRIPTION =
-  "Case study: ShuStyle, an AI stylist app for iOS and Android that builds outfits from your own closet, with 360° try-on, a week planner and a five-language website — designed and built by Oday.";
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "MobileApplication",
-  name: s.name,
-  description: s.tagline,
-  url: s.site,
+  name: base.name,
+  description: base.tagline,
+  url: base.site,
   operatingSystem: "iOS, Android",
   applicationCategory: "LifestyleApplication",
   inLanguage: ["ar", "en", "tr", "nl", "fr"],
-  installUrl: s.appStore,
+  installUrl: base.appStore,
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   author: { "@type": "Person", name: "Oday", url: SITE_URL },
 };
 
-export const Route = createFileRoute("/work/shustyle")({
+export const Route = createFileRoute("/{-$locale}/work/shustyle")({
   component: ShuStyleCaseStudy,
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:url", content: `${SITE_URL}/work/shustyle` },
-      { property: "og:image", content: `${SITE_URL}/og-shustyle.png` },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { name: "twitter:image", content: `${SITE_URL}/og-shustyle.png` },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/work/shustyle` }],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
-  }),
+  head: ({ params }) => {
+    const locale = localeFromParam(params.locale);
+    const t = messagesFor(locale);
+    const title = `ShuStyle — ${t.shustylePage.titleAccent.replace(/\.$/, "")} — ${t.meta.caseStudySuffix}`;
+    const description = localizeShustyle(locale).summary;
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        ...localeMeta(locale, "/work/shustyle"),
+        { property: "og:image", content: `${SITE_URL}/og-shustyle.png` },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { name: "twitter:image", content: `${SITE_URL}/og-shustyle.png` },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: localeLinks(locale, "/work/shustyle"),
+      scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
+    };
+  },
 });
 
 /** Drag-to-compare: flat-lay vs. AI try-on. */
-function Compare() {
+function Compare({ t }: { t: Messages["shustylePage"] }) {
   const [pos, setPos] = useState(50);
+  const s = base;
   return (
     <div className="cs-compare" style={{ ["--pos" as string]: `${pos}%` }}>
-      <img
-        src={s.compare.after}
-        alt="The same outfit generated on a model by AI"
-        loading="lazy"
-        width={600}
-        height={844}
-      />
+      <img src={s.compare.after} alt={t.tryOn} loading="lazy" width={600} height={844} />
       <div className="cs-compare-before">
-        <img
-          src={s.compare.before}
-          alt="An outfit laid out flat from the user's own clothes"
-          loading="lazy"
-          width={600}
-          height={844}
-        />
+        <img src={s.compare.before} alt={t.flatLay} loading="lazy" width={600} height={844} />
       </div>
-      <span className="cs-compare-tag cs-compare-tag-l">Flat-lay</span>
-      <span className="cs-compare-tag cs-compare-tag-r">AI try-on</span>
+      <span className="cs-compare-tag cs-compare-tag-l">{t.flatLay}</span>
+      <span className="cs-compare-tag cs-compare-tag-r">{t.tryOn}</span>
       <span className="cs-compare-handle" aria-hidden />
       <input
         type="range"
@@ -82,7 +82,7 @@ function Compare() {
         max={100}
         value={pos}
         onChange={(e) => setPos(Number(e.target.value))}
-        aria-label="Compare the flat-lay with the AI try-on"
+        aria-label={t.compareLabel}
       />
     </div>
   );
@@ -90,6 +90,9 @@ function Compare() {
 
 function ShuStyleCaseStudy() {
   const ref = useRef<HTMLDivElement>(null);
+  const tt = useMessages();
+  const t = tt.shustylePage;
+  const s = localizeShustyle(useLocale());
 
   useEffect(() => {
     const root = ref.current!;
@@ -128,31 +131,22 @@ function ShuStyleCaseStudy() {
       <div className="grain-overlay" />
       <div className="dr-page cs-page" ref={ref}>
         <Starfield />
-        <header className="dr-page-top">
-          <Link to="/" className="logo dr-logo">
-            <img className="icon" src={logoMark} alt="" />
-            <span className="logo-word">
-              oday<span className="logo-dot">.</span>
-            </span>
-          </Link>
-          <EmailLink className="contact-btn">
-            Let&apos;s Talk <span className="arrow">↗</span>
-          </EmailLink>
-        </header>
+        <PageHeader />
 
         <main>
           {/* ---------- Hero ---------- */}
           <section className="cs-hero">
             <div className="cs-hero-copy">
               <nav className="cs-crumbs cs-reveal" aria-label="Breadcrumb">
-                <Link to="/portfolio">Portfolio</Link> <span>/</span> <span>ShuStyle</span>
+                <LocaleLink to="/portfolio">{tt.common.portfolio}</LocaleLink> <span>/</span>{" "}
+                <span>ShuStyle</span>
               </nav>
               <div className="cs-eyebrow cs-reveal">
-                <span className="cs-dot" />[ CASE STUDY · MOBILE APP · {s.year} ]
+                <span className="cs-dot" />[ {t.eyebrow} · {s.year} ]
               </div>
               <h1 className="cs-title cs-reveal">
                 <img className="cs-logo" src={s.logo} alt="" width={72} height={72} />
-                ShuStyle — <em>your AI stylist.</em>
+                ShuStyle — <em>{t.titleAccent}</em>
               </h1>
               <p className="cs-lead cs-reveal">{s.summary}</p>
 
@@ -163,10 +157,10 @@ function ShuStyleCaseStudy() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Download on the App Store <span aria-hidden>↗</span>
+                  {t.download} <span aria-hidden>↗</span>
                 </a>
                 <a className="as-btn" href={s.site} target="_blank" rel="noopener noreferrer">
-                  Visit shustyle.app <span aria-hidden>↗</span>
+                  {t.visitSite} <span aria-hidden>↗</span>
                 </a>
               </div>
 
@@ -190,23 +184,18 @@ function ShuStyleCaseStudy() {
 
           {/* ---------- Problem ---------- */}
           <section className="cs-block cs-problem">
-            <div className="cs-label cs-in">[ 01 / THE PROBLEM ]</div>
+            <div className="cs-label cs-in">[ {t.problemLabel} ]</div>
             <h2 className="cs-h2 cs-in">
-              A full wardrobe, and <em>nothing to wear.</em>
+              {t.problemTitle[0]} <em>{t.problemTitle[1]}</em>
             </h2>
-            <p className="cs-p cs-in">
-              Most people wear a small slice of what they own and lose time every morning deciding.
-              Styling apps tend to push new purchases. ShuStyle starts from the opposite idea: work
-              with the closet you already have, read the day — weather, plans, occasion — and answer
-              in seconds, in the user's own language.
-            </p>
+            <p className="cs-p cs-in">{t.problemBody}</p>
           </section>
 
           {/* ---------- How it works ---------- */}
           <section className="cs-block">
-            <div className="cs-label cs-in">[ 02 / HOW IT WORKS ]</div>
+            <div className="cs-label cs-in">[ {t.howLabel} ]</div>
             <h2 className="cs-h2 cs-in">
-              From closet to outfit <em>in three taps.</em>
+              {t.howTitle[0]} <em>{t.howTitle[1]}</em>
             </h2>
             <ol className="cs-steps">
               {s.steps.map((st) => (
@@ -222,26 +211,22 @@ function ShuStyleCaseStudy() {
           {/* ---------- AI try-on ---------- */}
           <section className="cs-block cs-split">
             <div>
-              <div className="cs-label cs-in">[ 03 / AI TRY-ON ]</div>
+              <div className="cs-label cs-in">[ {t.tryLabel} ]</div>
               <h2 className="cs-h2 cs-in">
-                See it on a model, <em>from every side.</em>
+                {t.tryTitle[0]} <em>{t.tryTitle[1]}</em>
               </h2>
-              <p className="cs-p cs-in">
-                One tap turns a flat-lay of the user's own pieces into a realistic photo on a model,
-                then into a 360° view they can drag around. Measurements in the profile tune the
-                result. Drag the slider to compare.
-              </p>
+              <p className="cs-p cs-in">{t.tryBody}</p>
             </div>
             <div className="cs-in">
-              <Compare />
+              <Compare t={t} />
             </div>
           </section>
 
           {/* ---------- Features ---------- */}
           <section className="cs-block">
-            <div className="cs-label cs-in">[ 04 / FEATURES ]</div>
+            <div className="cs-label cs-in">[ {t.featuresLabel} ]</div>
             <h2 className="cs-h2 cs-in">
-              Everything the closet <em>was missing.</em>
+              {t.featuresTitle[0]} <em>{t.featuresTitle[1]}</em>
             </h2>
             <div className="cs-features">
               {s.features.map((f, i) => (
@@ -256,11 +241,11 @@ function ShuStyleCaseStudy() {
 
           {/* ---------- Screens ---------- */}
           <section className="cs-block cs-screens-block">
-            <div className="cs-label cs-in">[ 05 / INSIDE THE APP ]</div>
+            <div className="cs-label cs-in">[ {t.screensLabel} ]</div>
             <h2 className="cs-h2 cs-in">
-              Designed to make getting dressed <em>easy.</em>
+              {t.screensTitle[0]} <em>{t.screensTitle[1]}</em>
             </h2>
-            <div className="cs-screens" tabIndex={0} aria-label="App screens, scroll horizontally">
+            <div className="cs-screens" tabIndex={0} aria-label={t.screensAria}>
               {s.screens.map((sc) => (
                 <figure className="cs-screen cs-in" key={sc.src}>
                   <Phone src={sc.src} alt={`ShuStyle screen: ${sc.caption}`} />
@@ -272,14 +257,11 @@ function ShuStyleCaseStudy() {
 
           {/* ---------- Business model ---------- */}
           <section className="cs-block">
-            <div className="cs-label cs-in">[ 06 / BUSINESS MODEL ]</div>
+            <div className="cs-label cs-in">[ {t.modelLabel} ]</div>
             <h2 className="cs-h2 cs-in">
-              Free to start, <em>subscriptions to grow.</em>
+              {t.modelTitle[0]} <em>{t.modelTitle[1]}</em>
             </h2>
-            <p className="cs-p cs-in">
-              A freemium model with monthly and yearly in-app subscriptions, plus style-point
-              top-ups for occasional extra use. Prices shown in USD; the store shows local pricing.
-            </p>
+            <p className="cs-p cs-in">{t.modelBody}</p>
             <div className="cs-plans">
               {s.plans.map((p) => (
                 <div
@@ -302,34 +284,27 @@ function ShuStyleCaseStudy() {
           {/* ---------- Website + privacy ---------- */}
           <section className="cs-block cs-split cs-split-top">
             <div>
-              <div className="cs-label cs-in">[ 07 / THE WEBSITE ]</div>
+              <div className="cs-label cs-in">[ {t.siteLabel} ]</div>
               <h2 className="cs-h2 cs-in">
-                shustyle.app — <em>the front door.</em>
+                {t.siteTitle[0]} <em>{t.siteTitle[1]}</em>
               </h2>
-              <p className="cs-p cs-in">
-                A fast, five-language landing site that explains the product and sends visitors
-                straight to the store.
-              </p>
+              <p className="cs-p cs-in">{t.siteBody}</p>
               <ul className="cs-list cs-in">
                 {s.website.map((w) => (
                   <li key={w}>{w}</li>
                 ))}
               </ul>
               <a className="as-btn cs-in" href={s.site} target="_blank" rel="noopener noreferrer">
-                Open shustyle.app <span aria-hidden>↗</span>
+                {t.openSite} <span aria-hidden>↗</span>
               </a>
             </div>
             <div>
-              <div className="cs-label cs-in">[ 08 / PRIVATE BY DESIGN ]</div>
+              <div className="cs-label cs-in">[ {t.privacyLabel} ]</div>
               <h2 className="cs-h2 cs-in">
-                The closet <em>stays yours.</em>
+                {t.privacyTitle[0]} <em>{t.privacyTitle[1]}</em>
               </h2>
-              <p className="cs-p cs-in">
-                Clothes and photos are visible only to their owner and are sent to AI providers
-                solely to style outfits — never sold or used for ads. Deleting the account in the
-                app removes everything.
-              </p>
-              <div className="cs-label cs-in cs-label-gap">[ WHAT I DELIVERED ]</div>
+              <p className="cs-p cs-in">{t.privacyBody}</p>
+              <div className="cs-label cs-in cs-label-gap">[ {t.deliveredLabel} ]</div>
               <ul className="cs-list cs-in">
                 {s.deliverables.map((d) => (
                   <li key={d}>{d}</li>
@@ -340,13 +315,9 @@ function ShuStyleCaseStudy() {
 
           {/* ---------- Next ---------- */}
           <section className="cs-block cs-next">
-            <Link
-              to="/work/$slug"
-              params={{ slug: "solechem-europe" }}
-              className="pr-viewall cs-in"
-            >
-              Next project: SoleChem Europe <span className="pr-arrow">→</span>
-            </Link>
+            <LocaleLink to="/work/$slug" slug="solechem-europe" className="pr-viewall cs-in">
+              {tt.common.nextProject}: SoleChem Europe <span className="pr-arrow">→</span>
+            </LocaleLink>
           </section>
         </main>
 

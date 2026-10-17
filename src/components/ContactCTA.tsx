@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ContactBrief } from "./ContactBrief";
+import { useMessages } from "@/i18n";
 import { EmailLink, EmailAddress } from "@/components/EmailLink";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -319,6 +320,7 @@ function Orb({ tint, hoverSignal }: { tint: "green" | "amber"; hoverSignal: { cu
 }
 
 export function ContactCTA() {
+  const t = useMessages();
   const ref = useRef<HTMLElement>(null);
   const hoverSignal = useRef(0);
 
@@ -360,9 +362,9 @@ export function ContactCTA() {
 
       <div className="cta-content">
         <h2 className="cta-title cta-reveal">
-          Let&apos;s build
+          {t.contact.title[0]}
           <br />
-          something{" "}
+          {t.contact.title[1]}{" "}
           <span className="cta-icon" aria-hidden>
             <svg
               viewBox="0 0 24 24"
@@ -377,24 +379,21 @@ export function ContactCTA() {
             </svg>
           </span>
         </h2>
-        <p className="cta-sub cta-reveal">
-          Have a website or an app in mind, or a site that needs care and speed? Available for
-          freelance projects, long-term collaborations and full-time roles in the Netherlands.
-        </p>
+        <p className="cta-sub cta-reveal">{t.contact.sub}</p>
         <EmailLink className="cta-button cta-reveal">
-          Let&apos;s Talk <span className="cta-button-dot" />
+          {t.common.letsTalk} <span className="cta-button-dot" />
         </EmailLink>
 
         <div className="cta-details cta-reveal">
           <EmailLink className="cta-detail">
-            <span className="cta-detail-label">[ EMAIL ]</span>
+            <span className="cta-detail-label">[ {t.contact.email} ]</span>
             <span className="cta-detail-value">
               <EmailAddress />
             </span>
           </EmailLink>
           <div className="cta-detail">
-            <span className="cta-detail-label">[ LOCATION ]</span>
-            <span className="cta-detail-value">Netherlands</span>
+            <span className="cta-detail-label">[ {t.contact.location} ]</span>
+            <span className="cta-detail-value">{t.contact.locationValue}</span>
           </div>
           <a
             className="cta-detail"
@@ -402,7 +401,7 @@ export function ContactCTA() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="cta-detail-label">[ LINKEDIN ]</span>
+            <span className="cta-detail-label">[ {t.contact.linkedin} ]</span>
             <span className="cta-detail-value">oday-alatbash</span>
           </a>
         </div>

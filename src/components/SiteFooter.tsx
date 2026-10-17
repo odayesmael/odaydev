@@ -1,50 +1,43 @@
-import { Link } from "@tanstack/react-router";
 import { Mail, Linkedin, Github } from "lucide-react";
 import { EmailLink } from "@/components/EmailLink";
+import { LocaleLink } from "./LocaleLink";
+import { localePath, useLocale, useMessages } from "@/i18n";
 
 export function SiteFooter() {
+  const t = useMessages();
+  const home = localePath(useLocale(), "/");
   return (
     <footer className="site-footer">
       <div className="sf-columns">
         <div className="sf-col">
-          <div className="sf-label">[ SERVICES ]</div>
+          <div className="sf-label">[ {t.footer.services} ]</div>
+          <ul>
+            {t.services.items.map((item) => (
+              <li key={item.title}>
+                <a href={`${home}#services`}>{item.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="sf-col">
+          <div className="sf-label">[ {t.footer.explore} ]</div>
           <ul>
             <li>
-              <a href="/#services">Web Design</a>
+              <a href={`${home}#skills`}>{t.footer.skills}</a>
             </li>
             <li>
-              <a href="/#services">Web Development</a>
+              <LocaleLink to="/portfolio">{t.footer.portfolio}</LocaleLink>
             </li>
             <li>
-              <a href="/#services">SEO Optimization</a>
+              <LocaleLink to="/work/shustyle">{t.footer.shustyle}</LocaleLink>
             </li>
             <li>
-              <a href="/#services">UI / UX Design</a>
-            </li>
-            <li>
-              <a href="/#services">Mobile Apps</a>
+              <a href={`${home}#contact`}>{t.footer.contact}</a>
             </li>
           </ul>
         </div>
         <div className="sf-col">
-          <div className="sf-label">[ EXPLORE ]</div>
-          <ul>
-            <li>
-              <a href="/#skills">Skills</a>
-            </li>
-            <li>
-              <Link to="/portfolio">Portfolio</Link>
-            </li>
-            <li>
-              <Link to="/work/shustyle">ShuStyle case study</Link>
-            </li>
-            <li>
-              <a href="/#contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-        <div className="sf-col">
-          <div className="sf-label">[ CONNECT ]</div>
+          <div className="sf-label">[ {t.footer.connect} ]</div>
           <ul>
             <li>
               <EmailLink className="sf-icon-link" aria-label="Email">
@@ -80,8 +73,10 @@ export function SiteFooter() {
       <div className="sf-divider" />
 
       <div className="sf-bottom">
-        <span>© {new Date().getFullYear()} Oday — Full-Stack Web &amp; Mobile Developer.</span>
-        <span>All rights reserved.</span>
+        <span>
+          © {new Date().getFullYear()} Oday — {t.footer.role}.
+        </span>
+        <span>{t.footer.rights}</span>
       </div>
     </footer>
   );

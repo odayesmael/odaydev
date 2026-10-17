@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import logoMark from "@/assets/oday-mark.svg";
+import { useMessages } from "@/i18n";
 
 export function Preloader({ onDone }: { onDone: () => void }) {
+  const t = useMessages();
   const [pct, setPct] = useState(0);
   const rootRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
@@ -51,7 +53,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
         </span>
       </div>
       <div className="preloader-bottom">
-        <span>[ LOADING... ]</span>
+        <span>[ {t.common.loading} ]</span>
         <span>[ {String(pct).padStart(2, "0")}% ]</span>
       </div>
       <div className="preloader-bar" ref={barRef} />

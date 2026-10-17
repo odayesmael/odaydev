@@ -1,19 +1,25 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "@tanstack/react-router";
+import { localeParam, stripLocale, useLocale, useMessages } from "@/i18n";
 
-type Item = { label: string; target: string };
+type Item = { key: "home" | "work" | "skills" | "contact"; target: string };
 
 const items: Item[] = [
-  { label: "Home", target: "top" },
-  { label: "Work", target: "work" },
-  { label: "Skills", target: "skills" },
-  { label: "Contact", target: "contact" },
+  { key: "home", target: "top" },
+  { key: "work", target: "work" },
+  { key: "skills", target: "skills" },
+  { key: "contact", target: "contact" },
 ];
 
 export function BottomNav() {
   const navigate = useNavigate();
   const location = useLocation();
-  const isHome = location.pathname === "/";
+  const locale = useLocale();
+  const t = useMessages();
+  const isHome = stripLocale(location.pathname) === "/";
+  const goHome = () =>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    navigate({ to: "/{-$locale}" as any, params: { locale: localeParam(locale) } as any });
 
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const [style, setStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
@@ -32,7 +38,7 @@ export function BottomNav() {
 
     if (target === "top") {
       if (isHome) window.scrollTo({ top: 0, behavior: "smooth" });
-      else navigate({ to: "/" });
+      else goHome();
       return;
     }
 
@@ -40,7 +46,7 @@ export function BottomNav() {
     if (scrollToId(target)) return;
 
     // Otherwise it lives on the home page: go there, then scroll once it mounts
-    navigate({ to: "/" });
+    goHome();
     let tries = 0;
     const tick = () => {
       if (scrollToId(target) || ++tries > 60) return;
@@ -101,7 +107,7 @@ export function BottomNav() {
       <span className="pill-indicator" style={{ left: style.left, width: style.width }} />
       {items.map((item, i) => (
         <button
-          key={item.label}
+          key={item.key}
           type="button"
           ref={(el) => {
             refs.current[i] = el;
@@ -109,7 +115,7 @@ export function BottomNav() {
           className={`bn-btn ${i === active ? "active" : ""}`}
           onClick={() => go(item.target, i)}
         >
-          {item.label}
+          {t.nav[item.key]}
         </button>
       ))}
     </nav>

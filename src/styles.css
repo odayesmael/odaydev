@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @import "@fontsource-variable/archivo/wdth.css";
 @import "@fontsource-variable/jetbrains-mono/index.css";
+@import "@fontsource-variable/alexandria/index.css";
 @source "../src";
 
 @custom-variant dark (&:is(.dark *));
@@ -2956,4 +2957,80 @@ a.cta-detail:hover {
   .cs-features:has(> :nth-child(8):last-child) { grid-template-columns: 1fr; }
   .cs-stat { padding: 12px 0; border-left: 0; border-top: 1px solid var(--border-green); }
   .cs-stat:first-child { border-top: 0; }
+}
+
+
+/* ============ LANGUAGES ============ */
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid var(--border-green);
+  border-radius: 999px;
+  background: rgba(5, 15, 5, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.lang-switch a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: var(--white-muted);
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+}
+.lang-switch a[lang="ar"] { font-family: "Alexandria Variable", sans-serif; letter-spacing: 0; }
+.lang-switch a:hover { color: var(--white); }
+.lang-switch a.is-active {
+  color: var(--bg);
+  background: var(--green-bright);
+}
+.lang-switch a:focus-visible { outline: 2px solid var(--green-bright); outline-offset: 2px; }
+@media (max-width: 640px) {
+  .top-actions { gap: 8px; }
+  .lang-switch a { padding: 6px 7px; font-size: 10px; }
+  .top-actions .contact-btn { display: none; }
+}
+
+/* Arabic: Alexandria for everything; Arabic letters must never be tracked or slanted */
+html[lang="ar"] {
+  --font-display: "Alexandria Variable", "Archivo Variable", system-ui, sans-serif;
+  --font-body: "Alexandria Variable", "Archivo Variable", system-ui, sans-serif;
+  --font-mono: "Alexandria Variable", "JetBrains Mono Variable", ui-monospace, monospace;
+}
+html[lang="ar"] body * { letter-spacing: 0 !important; }
+html[lang="ar"] em { font-style: normal; }
+html[lang="ar"] .logo-word,
+html[lang="ar"] .dm-url,
+html[lang="ar"] .pr-domain { font-family: "Archivo Variable", sans-serif; }
+
+/* RTL: keep things that represent real devices, code or motion left-to-right */
+[dir="rtl"] .dm-stage,
+[dir="rtl"] .cs-shot-frame,
+[dir="rtl"] .cs-hero-mock,
+[dir="rtl"] .marquee,
+[dir="rtl"] .cs-compare,
+[dir="rtl"] .logo,
+[dir="rtl"] .sk-chips { direction: ltr; }
+[dir="rtl"] .logo { flex-direction: row; }
+.bottom-nav button { white-space: nowrap; }
+
+/* Arabic needs more line height and slightly smaller display sizes */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] .headline .row { line-height: 1.3; }
+html[lang="ar"] .cs-title { font-size: clamp(32px, 3.8vw, 56px); }
+html[lang="ar"] .cs-h2 { font-size: clamp(28px, 3.2vw, 46px); }
+html[lang="ar"] .as-title { line-height: 1.1; }
+@media (max-width: 440px) {
+  .bottom-nav button { padding: 10px 11px; font-size: 11px; letter-spacing: 0.02em; }
 }

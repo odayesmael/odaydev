@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
 import { contactEmail, EMAIL_PLACEHOLDER } from "@/lib/email";
-
-const TYPES = ["Website", "Online store", "Mobile app", "SEO & care", "Full-time role"];
+import { fmt, useMessages } from "@/i18n";
 
 /**
  * A short brief that opens the visitor's mail app with everything pre-filled —
  * no backend or third-party form service needed.
  */
 export function ContactBrief() {
-  const [type, setType] = useState(TYPES[0]);
+  const t = useMessages().contact.brief;
+  const TYPES = t.types;
+  const [typeIndex, setTypeIndex] = useState(0);
+  const type = TYPES[typeIndex];
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [copied, setCopied] = useState(false);
   const [email, setEmail] = useState<string | null>(null);
   useEffect(() => setEmail(contactEmail()), []);
 
-  const subject = `${type} enquiry${name ? ` — ${name}` : ""}`;
-  const body = `Hi Oday,\n\n${message || "I'd like to talk about a project."}\n\n— ${name || ""}`;
+  const subject = `${fmt(t.subject, { type })}${name ? ` — ${name}` : ""}`;
+  const body = `${t.greeting}\n\n${message || t.fallbackMessage}\n\n— ${name || ""}`;
   const href = `mailto:${email ?? ""}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
   const copy = async () => {
@@ -38,54 +40,54 @@ export function ContactBrief() {
       }}
     >
       <fieldset className="cb-types">
-        <legend>[ WHAT ARE YOU PLANNING? ]</legend>
-        {TYPES.map((t) => (
-          <label key={t} className={`cb-type ${type === t ? "is-active" : ""}`}>
+        <legend>[ {t.legend} ]</legend>
+        {TYPES.map((label, i) => (
+          <label key={label} className={`cb-type ${typeIndex === i ? "is-active" : ""}`}>
             <input
               type="radio"
               name="type"
-              value={t}
-              checked={type === t}
-              onChange={() => setType(t)}
+              value={label}
+              checked={typeIndex === i}
+              onChange={() => setTypeIndex(i)}
             />
-            {t}
+            {label}
           </label>
         ))}
       </fieldset>
 
       <div className="cb-fields">
         <label className="cb-field">
-          <span>Your name</span>
+          <span>{t.name}</span>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             autoComplete="name"
             maxLength={80}
-            placeholder="Jane from Acme"
+            placeholder={t.namePlaceholder}
           />
         </label>
         <label className="cb-field cb-field-wide">
-          <span>A few lines about it</span>
+          <span>{t.message}</span>
           <textarea
             rows={3}
             maxLength={1500}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="What you need, rough timeline, links…"
+            placeholder={t.messagePlaceholder}
           />
         </label>
       </div>
 
       <div className="cb-actions">
         <button type="submit" className="as-btn as-btn-primary">
-          Write the email <span aria-hidden>↗</span>
+          {t.submit} <span aria-hidden>↗</span>
         </button>
         <button type="button" className="as-btn" onClick={copy}>
-          {copied ? "Copied ✓" : `Copy ${email ?? EMAIL_PLACEHOLDER}`}
+          {copied ? t.copied : `${t.copy} ${email ?? EMAIL_PLACEHOLDER}`}
         </button>
       </div>
-      <p className="cb-note">Opens your mail app with the brief filled in — nothing is stored.</p>
+      <p className="cb-note">{t.note}</p>
     </form>
   );
 }

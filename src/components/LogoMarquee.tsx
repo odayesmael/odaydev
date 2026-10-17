@@ -1,3 +1,4 @@
+import { useMessages } from "@/i18n";
 const logos = [
   "JAVASCRIPT",
   "REACT",
@@ -31,11 +32,12 @@ const logos2 = [
 ];
 
 export function LogoMarquee() {
+  const t = useMessages();
   const row1 = [...logos, ...logos];
   const row2 = [...logos2, ...logos2];
   return (
     <section className="marquee-section">
-      <div className="marquee-label">[ 9 YEARS · WEB &amp; MOBILE · AI-ASSISTED WORKFLOW · NETHERLANDS ]</div>
+      <div className="marquee-label">[ {t.marquee} ]</div>
       <div className="marquee">
         <div className="marquee-track">
           {row1.map((l, i) => (

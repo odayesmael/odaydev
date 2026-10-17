@@ -1,15 +1,16 @@
 import { useEffect, useRef } from "react";
-import { Link } from "@tanstack/react-router";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects, featuredProjects } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
+import { LocaleLink } from "./LocaleLink";
+import { fmt, useMessages } from "@/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 export function Projects() {
   const ref = useRef<HTMLElement>(null);
+  const t = useMessages();
 
   useEffect(() => {
     const section = ref.current!;
@@ -39,16 +40,14 @@ export function Projects() {
       <div className="pr-inner">
         <div className="pr-head">
           <div className="pr-eyebrow">
-            <span className="pr-dot" />
-            [ 03 / SELECTED WORK ]
+            <span className="pr-dot" />[ {t.projects.eyebrow} ]
           </div>
           <h2 className="pr-title">
-            Projects I've<br />
-            <em>shipped &amp; shaped.</em>
+            {t.projects.title[0]}
+            <br />
+            <em>{t.projects.title[1]}</em>
           </h2>
-          <p className="pr-sub">
-            A selection of corporate sites, platforms and online stores I've designed, built and maintained — from data-protection firms to e-commerce.
-          </p>
+          <p className="pr-sub">{t.projects.sub}</p>
         </div>
 
         <div className="pr-grid">
@@ -58,9 +57,9 @@ export function Projects() {
         </div>
 
         <div className="pr-viewall-wrap">
-          <Link to="/portfolio" className="pr-viewall">
-            View all {projects.length} projects <span className="pr-arrow">→</span>
-          </Link>
+          <LocaleLink to="/portfolio" className="pr-viewall">
+            {fmt(t.projects.viewAll, { n: projects.length })} <span className="pr-arrow">→</span>
+          </LocaleLink>
         </div>
       </div>
     </section>
