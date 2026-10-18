@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Typecheck, build & smoke-test 4 languages
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Production build
+        run: npm run build
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Start the site
+        run: |
+          npx vite dev --port 8080 --host 127.0.0.1 > dev.log 2>&1 &
+          for i in $(seq 1 60); do
+            curl -sf -o /dev/null http://127.0.0.1:8080/ && exit 0
+            sleep 2
+          done
+          cat dev.log
+          exit 1
+
+      - name: Smoke test (EN · AR · NL · TR, phone + desktop)
+        run: node tests/smoke.mjs
+        env:
+          BASE_URL: http://127.0.0.1:8080

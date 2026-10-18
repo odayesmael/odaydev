@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { Phone } from "@/components/Phone";
 import { shustyle as base } from "@/data/shustyle";
 import { SITE_URL } from "@/lib/site";
+import { consumeMorph } from "@/lib/viewTransition";
 import { PageHeader } from "@/components/PageHeader";
 import { LocaleLink } from "@/components/LocaleLink";
 import {
@@ -19,7 +20,7 @@ import {
   useMessages,
   type Messages,
 } from "@/i18n";
-import { localeLinks, localeMeta } from "@/i18n/seo";
+import { breadcrumbs, localeLinks, localeMeta, ogImageMeta } from "@/i18n/seo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,14 +52,16 @@ export const Route = createFileRoute("/{-$locale}/work/shustyle")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         ...localeMeta(locale, "/work/shustyle"),
-        { property: "og:image", content: `${SITE_URL}/og-shustyle.png` },
-        { property: "og:image:width", content: "1200" },
-        { property: "og:image:height", content: "630" },
-        { name: "twitter:image", content: `${SITE_URL}/og-shustyle.png` },
-        { name: "twitter:card", content: "summary_large_image" },
+        ...ogImageMeta(locale, "work-shustyle", title),
       ],
       links: localeLinks(locale, "/work/shustyle"),
-      scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
+      scripts: [
+        { type: "application/ld+json", children: JSON.stringify(jsonLd) },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(breadcrumbs(locale, "ShuStyle", "/work/shustyle")),
+        },
+      ],
     };
   },
 });
@@ -104,14 +107,16 @@ function ShuStyleCaseStudy() {
         duration: 0.9,
         ease: "power3.out",
       });
-      gsap.from(".cs-hero .phone", {
-        y: 90,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 1.1,
-        ease: "power3.out",
-        delay: 0.2,
-      });
+      if (!consumeMorph()) {
+        gsap.from(".cs-hero .phone", {
+          y: 90,
+          opacity: 0,
+          stagger: 0.15,
+          duration: 1.1,
+          ease: "power3.out",
+          delay: 0.2,
+        });
+      }
       root.querySelectorAll<HTMLElement>(".cs-block").forEach((el) => {
         gsap.from(el.querySelectorAll(".cs-in"), {
           y: 30,
@@ -174,7 +179,11 @@ function ShuStyleCaseStudy() {
               </dl>
             </div>
 
-            <div className="cs-hero-visual" aria-hidden>
+            <div
+              className="cs-hero-visual"
+              aria-hidden
+              style={{ viewTransitionName: "shot-shustyle" }}
+            >
               <div className="as-halo" />
               <Phone className="cs-phone-l" src={s.screens[2].src} loading="eager" />
               <Phone className="cs-phone-c" src={s.screens[0].src} loading="eager" />

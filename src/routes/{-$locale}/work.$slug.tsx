@@ -12,6 +12,9 @@ import { caseStudyOrder, getCaseStudy, type CaseStudy } from "@/data/caseStudies
 import { projects, projectShots } from "@/data/projects";
 import { SITE_URL } from "@/lib/site";
 import { PageHeader } from "@/components/PageHeader";
+import { BeforeAfter } from "@/components/BeforeAfter";
+import { Testimonials } from "@/components/Testimonials";
+import { consumeMorph } from "@/lib/viewTransition";
 import { LocaleLink } from "@/components/LocaleLink";
 import {
   localeFromParam,
@@ -21,7 +24,7 @@ import {
   useLocale,
   useMessages,
 } from "@/i18n";
-import { localeLinks, localeMeta } from "@/i18n/seo";
+import { breadcrumbs, localeLinks, localeMeta, ogImage, ogImageMeta } from "@/i18n/seo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,7 +41,7 @@ export const Route = createFileRoute("/{-$locale}/work/$slug")({
     const title = `${cs.name} — ${t.meta.caseStudySuffix}`;
     const path = `/work/${cs.slug}`;
     const url = `${SITE_URL}${localePath(locale, path)}`;
-    const image = `${SITE_URL}/og-${cs.slug}.png`;
+    const image = ogImage(locale, `work-${cs.slug}`);
     return {
       meta: [
         { title },
@@ -46,11 +49,7 @@ export const Route = createFileRoute("/{-$locale}/work/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: cs.summary },
         ...localeMeta(locale, path),
-        { property: "og:image", content: image },
-        { property: "og:image:width", content: "1200" },
-        { property: "og:image:height", content: "630" },
-        { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:image", content: image },
+        ...ogImageMeta(locale, `work-${cs.slug}`, title),
       ],
       links: localeLinks(locale, path),
       scripts: [
@@ -65,9 +64,10 @@ export const Route = createFileRoute("/{-$locale}/work/$slug")({
             url,
             image,
             about: { "@type": "WebSite", name: cs.name, url: cs.url },
-            author: { "@type": "Person", name: "Oday", url: SITE_URL },
+            author: { "@type": "Person", "@id": `${SITE_URL}/#person`, name: "Oday", url: SITE_URL },
           }),
         },
+        { type: "application/ld+json", children: JSON.stringify(breadcrumbs(locale, cs.name, path)) },
       ],
     };
   },
@@ -101,13 +101,16 @@ function CaseStudyPage() {
         duration: 0.9,
         ease: "power3.out",
       });
-      gsap.from(".cs-hero-mock", {
-        y: 60,
-        opacity: 0,
-        duration: 1.1,
-        ease: "power3.out",
-        delay: 0.2,
-      });
+      // When we arrived by morphing a project card into this mockup, don't animate it again.
+      if (!consumeMorph()) {
+        gsap.from(".cs-hero-mock", {
+          y: 60,
+          opacity: 0,
+          duration: 1.1,
+          ease: "power3.out",
+          delay: 0.2,
+        });
+      }
       root.querySelectorAll<HTMLElement>(".cs-block").forEach((el) => {
         gsap.from(el.querySelectorAll(".cs-in"), {
           y: 30,
@@ -167,7 +170,7 @@ function CaseStudyPage() {
               </dl>
             </div>
             {shots && (
-              <div className="cs-hero-mock">
+              <div className="cs-hero-mock" style={{ viewTransitionName: `shot-${cs.slug}` }}>
                 <DeviceMockup
                   desktop={shots.desktop}
                   mobile={shots.mobile}
@@ -198,6 +201,26 @@ function CaseStudyPage() {
             <h2 className="cs-h2 cs-in">{cs.challenge.heading}</h2>
             <p className="cs-p cs-in">{cs.challenge.body}</p>
           </section>
+
+          {/* ---------- Before / after ---------- */}
+          {cs.before && (
+            <section className="cs-block">
+              <div className="cs-label cs-in">[ {tc.beforeAfter} ]</div>
+              <h2 className="cs-h2 cs-in">
+                {tc.beforeAfterTitle[0]} <em>{tc.beforeAfterTitle[1]}</em>
+              </h2>
+              <div className="cs-in">
+                <BeforeAfter
+                  className="cs-compare-web"
+                  before={cs.before.src}
+                  after={`/work/${cs.slug}-desktop.webp`}
+                  beforeLabel={`${tc.before} · ${cs.before.label}`}
+                  afterLabel={tc.after}
+                  label={tc.compareLabel}
+                />
+              </div>
+            </section>
+          )}
 
           {/* ---------- Features ---------- */}
           <section className="cs-block">
@@ -248,6 +271,8 @@ function CaseStudyPage() {
               ))}
             </div>
           </section>
+
+          <Testimonials project={cs.slug} />
 
           {/* ---------- Deliverables + stack ---------- */}
           <section className="cs-block cs-split cs-split-top">

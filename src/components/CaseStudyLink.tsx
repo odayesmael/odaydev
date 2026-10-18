@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type React from "react";
 import { LocaleLink } from "./LocaleLink";
 
 /** Link to a case study in the current language: ShuStyle has its own route. */
@@ -12,6 +13,7 @@ export function CaseStudyLink({
   children: ReactNode;
   className?: string;
   "data-num"?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }) {
   if (slug === "shustyle") {
     return (

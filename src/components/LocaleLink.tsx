@@ -1,8 +1,9 @@
+import type React from "react";
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { localeParam, useLocale } from "@/i18n";
 
-type Target = "/" | "/portfolio" | "/work/shustyle" | "/work/$slug";
+type Target = "/" | "/portfolio" | "/work/shustyle" | "/work/$slug" | "/blog" | "/blog/$slug";
 
 /** An internal link that keeps the visitor's language (adds /ar, /nl or /tr). */
 export function LocaleLink({
@@ -17,6 +18,7 @@ export function LocaleLink({
   className?: string;
   "data-num"?: string;
   "aria-label"?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }) {
   const locale = useLocale();
   const params = { locale: localeParam(locale), ...(slug ? { slug } : {}) };

@@ -11,20 +11,41 @@ import { Tools } from "@/components/Tools";
 import { Projects } from "@/components/Projects";
 import { AppSpotlight } from "@/components/AppSpotlight";
 import { SITE_URL } from "@/lib/site";
-import { localeFromParam, messagesFor } from "@/i18n";
-import { localeLinks, localeMeta } from "@/i18n/seo";
+import { localeFromParam, localePath, messagesFor, type Locale } from "@/i18n";
+import { localeLinks, localeMeta, ogImageMeta } from "@/i18n/seo";
 import { ContactCTA } from "@/components/ContactCTA";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Testimonials } from "@/components/Testimonials";
+import { LatestPosts } from "@/components/LatestPosts";
 
-const jsonLd = {
+const jsonLd = (locale: Locale, jobTitle: string, description: string) => ({
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: "oday.dev",
+      url: SITE_URL,
+      inLanguage: ["en", "ar", "nl", "tr"],
+      publisher: { "@id": `${SITE_URL}/#person` },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${SITE_URL}${localePath(locale, "/")}#page`,
+      url: `${SITE_URL}${localePath(locale, "/")}`,
+      inLanguage: locale,
+      description,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      mainEntity: { "@id": `${SITE_URL}/#person` },
+    },
     {
       "@type": "Person",
       "@id": `${SITE_URL}/#person`,
       name: "Oday",
+      alternateName: "عدي",
       url: SITE_URL,
-      jobTitle: "Full-Stack Web & Mobile Developer",
+      jobTitle,
+      description,
       image: `${SITE_URL}/icon-512.png`,
       address: { "@type": "PostalAddress", addressCountry: "NL" },
       knowsLanguage: ["en", "ar", "tr", "nl"],
@@ -49,7 +70,7 @@ const jsonLd = {
       ],
     },
   ],
-};
+});
 
 export const Route = createFileRoute("/{-$locale}/")({
   component: Index,
@@ -63,9 +84,18 @@ export const Route = createFileRoute("/{-$locale}/")({
         { property: "og:title", content: t.meta.homeTitle },
         { property: "og:description", content: t.meta.ogDescription },
         ...localeMeta(locale, "/"),
+        ...ogImageMeta(locale, "home", t.meta.homeTitle),
       ],
-      links: localeLinks(locale, "/"),
-      scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
+      links: [
+        ...localeLinks(locale, "/"),
+        { rel: "alternate", type: "application/rss+xml", title: "Oday — Notes", href: "/rss.xml" },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(jsonLd(locale, t.hero.label, t.meta.homeDescription)),
+        },
+      ],
     };
   },
 });
@@ -93,6 +123,8 @@ function Index() {
         <AppSpotlight />
         <Projects />
         <Skills />
+        <Testimonials />
+        <LatestPosts />
         <ContactCTA />
         <SiteFooter />
       </div>

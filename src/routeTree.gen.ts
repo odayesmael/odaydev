@@ -9,18 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RssDotxmlRouteImport } from './routes/rss[.]xml'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Char123LocaleChar125RouteRouteImport } from './routes/{-$locale}/route'
+import { Route as ApiContactRouteImport } from './routes/api/contact'
 import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$locale}/index'
 import { Route as Char123LocaleChar125PortfolioRouteImport } from './routes/{-$locale}/portfolio'
+import { Route as Char123LocaleChar125BlogIndexRouteImport } from './routes/{-$locale}/blog.index'
+import { Route as Char123LocaleChar125BlogSlugRouteImport } from './routes/{-$locale}/blog.$slug'
 import { Route as Char123LocaleChar125WorkSlugRouteImport } from './routes/{-$locale}/work.$slug'
 import { Route as Char123LocaleChar125WorkShustyleRouteImport } from './routes/{-$locale}/work.shustyle'
 
+const RssDotxmlRoute = RssDotxmlRouteImport.update({
+  id: '/rss.xml',
+  path: '/rss.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char123LocaleChar125RouteRoute =
   Char123LocaleChar125RouteRouteImport.update({
     id: '/{-$locale}',
     path: '/{-$locale}',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiContactRoute = ApiContactRouteImport.update({
+  id: '/api/contact',
+  path: '/api/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char123LocaleChar125IndexRoute =
   Char123LocaleChar125IndexRouteImport.update({
     id: '/',
@@ -31,6 +51,18 @@ const Char123LocaleChar125PortfolioRoute =
   Char123LocaleChar125PortfolioRouteImport.update({
     id: '/portfolio',
     path: '/portfolio',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125BlogIndexRoute =
+  Char123LocaleChar125BlogIndexRouteImport.update({
+    id: '/blog/',
+    path: '/blog/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125BlogSlugRoute =
+  Char123LocaleChar125BlogSlugRouteImport.update({
+    id: '/blog/$slug',
+    path: '/blog/$slug',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
 const Char123LocaleChar125WorkSlugRoute =
@@ -48,59 +80,113 @@ const Char123LocaleChar125WorkShustyleRoute =
 
 export interface FileRoutesByFullPath {
   '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
+  '/rss.xml': typeof RssDotxmlRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/contact': typeof ApiContactRoute
   '/{-$locale}/portfolio': typeof Char123LocaleChar125PortfolioRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/blog/$slug': typeof Char123LocaleChar125BlogSlugRoute
   '/{-$locale}/work/$slug': typeof Char123LocaleChar125WorkSlugRoute
   '/{-$locale}/work/shustyle': typeof Char123LocaleChar125WorkShustyleRoute
+  '/{-$locale}/blog/': typeof Char123LocaleChar125BlogIndexRoute
 }
 export interface FileRoutesByTo {
+  '/rss.xml': typeof RssDotxmlRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/contact': typeof ApiContactRoute
   '/{-$locale}/portfolio': typeof Char123LocaleChar125PortfolioRoute
   '/{-$locale}': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/blog/$slug': typeof Char123LocaleChar125BlogSlugRoute
   '/{-$locale}/work/$slug': typeof Char123LocaleChar125WorkSlugRoute
   '/{-$locale}/work/shustyle': typeof Char123LocaleChar125WorkShustyleRoute
+  '/{-$locale}/blog': typeof Char123LocaleChar125BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
+  '/rss.xml': typeof RssDotxmlRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/contact': typeof ApiContactRoute
   '/{-$locale}/portfolio': typeof Char123LocaleChar125PortfolioRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
+  '/{-$locale}/blog/$slug': typeof Char123LocaleChar125BlogSlugRoute
   '/{-$locale}/work/$slug': typeof Char123LocaleChar125WorkSlugRoute
   '/{-$locale}/work/shustyle': typeof Char123LocaleChar125WorkShustyleRoute
+  '/{-$locale}/blog/': typeof Char123LocaleChar125BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/{-$locale}'
+    | '/rss.xml'
+    | '/sitemap.xml'
+    | '/api/contact'
     | '/{-$locale}/portfolio'
     | '/{-$locale}/'
+    | '/{-$locale}/blog/$slug'
     | '/{-$locale}/work/$slug'
     | '/{-$locale}/work/shustyle'
+    | '/{-$locale}/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/rss.xml'
+    | '/sitemap.xml'
+    | '/api/contact'
     | '/{-$locale}/portfolio'
     | '/{-$locale}'
+    | '/{-$locale}/blog/$slug'
     | '/{-$locale}/work/$slug'
     | '/{-$locale}/work/shustyle'
+    | '/{-$locale}/blog'
   id:
     | '__root__'
     | '/{-$locale}'
+    | '/rss.xml'
+    | '/sitemap.xml'
+    | '/api/contact'
     | '/{-$locale}/portfolio'
     | '/{-$locale}/'
+    | '/{-$locale}/blog/$slug'
     | '/{-$locale}/work/$slug'
     | '/{-$locale}/work/shustyle'
+    | '/{-$locale}/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   Char123LocaleChar125RouteRoute: typeof Char123LocaleChar125RouteRouteWithChildren
+  RssDotxmlRoute: typeof RssDotxmlRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiContactRoute: typeof ApiContactRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/rss.xml': {
+      id: '/rss.xml'
+      path: '/rss.xml'
+      fullPath: '/rss.xml'
+      preLoaderRoute: typeof RssDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/{-$locale}': {
       id: '/{-$locale}'
       path: '/{-$locale}'
       fullPath: '/{-$locale}'
       preLoaderRoute: typeof Char123LocaleChar125RouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/contact': {
+      id: '/api/contact'
+      path: '/api/contact'
+      fullPath: '/api/contact'
+      preLoaderRoute: typeof ApiContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/{-$locale}/': {
@@ -115,6 +201,20 @@ declare module '@tanstack/react-router' {
       path: '/portfolio'
       fullPath: '/{-$locale}/portfolio'
       preLoaderRoute: typeof Char123LocaleChar125PortfolioRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/blog/': {
+      id: '/{-$locale}/blog/'
+      path: '/blog'
+      fullPath: '/{-$locale}/blog/'
+      preLoaderRoute: typeof Char123LocaleChar125BlogIndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/blog/$slug': {
+      id: '/{-$locale}/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/{-$locale}/blog/$slug'
+      preLoaderRoute: typeof Char123LocaleChar125BlogSlugRouteImport
       parentRoute: typeof Char123LocaleChar125RouteRoute
     }
     '/{-$locale}/work/$slug': {
@@ -137,17 +237,21 @@ declare module '@tanstack/react-router' {
 interface Char123LocaleChar125RouteRouteChildren {
   Char123LocaleChar125PortfolioRoute: typeof Char123LocaleChar125PortfolioRoute
   Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
+  Char123LocaleChar125BlogSlugRoute: typeof Char123LocaleChar125BlogSlugRoute
   Char123LocaleChar125WorkSlugRoute: typeof Char123LocaleChar125WorkSlugRoute
   Char123LocaleChar125WorkShustyleRoute: typeof Char123LocaleChar125WorkShustyleRoute
+  Char123LocaleChar125BlogIndexRoute: typeof Char123LocaleChar125BlogIndexRoute
 }
 
 const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChildren =
   {
     Char123LocaleChar125PortfolioRoute: Char123LocaleChar125PortfolioRoute,
     Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
+    Char123LocaleChar125BlogSlugRoute: Char123LocaleChar125BlogSlugRoute,
     Char123LocaleChar125WorkSlugRoute: Char123LocaleChar125WorkSlugRoute,
     Char123LocaleChar125WorkShustyleRoute:
       Char123LocaleChar125WorkShustyleRoute,
+    Char123LocaleChar125BlogIndexRoute: Char123LocaleChar125BlogIndexRoute,
   }
 
 const Char123LocaleChar125RouteRouteWithChildren =
@@ -157,6 +261,9 @@ const Char123LocaleChar125RouteRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   Char123LocaleChar125RouteRoute: Char123LocaleChar125RouteRouteWithChildren,
+  RssDotxmlRoute: RssDotxmlRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiContactRoute: ApiContactRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

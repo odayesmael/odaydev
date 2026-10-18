@@ -2,6 +2,7 @@ import logoMark from "@/assets/oday-mark.svg";
 import { useMessages } from "@/i18n";
 import { EmailLink } from "./EmailLink";
 import { LangSwitch } from "./LangSwitch";
+import { PaletteButton } from "./CommandPaletteHost";
 import { LocaleLink } from "./LocaleLink";
 
 /** Top bar for inner pages: logo home, language switch, contact. */
@@ -16,6 +17,7 @@ export function PageHeader() {
         </span>
       </LocaleLink>
       <div className="top-actions">
+        <PaletteButton label={t.palette.trigger} />
         <LangSwitch />
         <EmailLink className="contact-btn">
           {t.common.letsTalk} <span className="arrow">↗</span>

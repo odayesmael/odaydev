@@ -32,6 +32,9 @@ export function SiteFooter() {
               <LocaleLink to="/work/shustyle">{t.footer.shustyle}</LocaleLink>
             </li>
             <li>
+              <LocaleLink to="/blog">{t.footer.blog}</LocaleLink>
+            </li>
+            <li>
               <a href={`${home}#contact`}>{t.footer.contact}</a>
             </li>
           </ul>

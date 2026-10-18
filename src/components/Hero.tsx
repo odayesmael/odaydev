@@ -6,6 +6,7 @@ import { BottomNav } from "./BottomNav";
 import logoMark from "@/assets/oday-mark.svg";
 import { useMessages } from "@/i18n";
 import { LangSwitch } from "./LangSwitch";
+import { PaletteButton } from "./CommandPaletteHost";
 import { EmailLink } from "@/components/EmailLink";
 
 export function Hero({ play }: { play: boolean }) {
@@ -41,6 +42,7 @@ export function Hero({ play }: { play: boolean }) {
             </span>
           </div>
           <div className="top-actions js-reveal">
+            <PaletteButton label={t.palette.trigger} />
             <LangSwitch />
             <EmailLink className="contact-btn">
               {t.common.letsTalk} <span className="arrow">↗</span>
