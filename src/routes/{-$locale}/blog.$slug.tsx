@@ -166,6 +166,8 @@ function PostPage() {
   const text = postText(post, locale);
   const lang: Locale = data.lang;
   const dir = LOCALE_META[lang].dir;
+  // The page's own language, for UI labels around an article written in another one
+  const pageDir = LOCALE_META[locale].dir;
   const headings = headingsOf(data.markdown).filter((h) => h.level === 2);
   const ref = useRef<HTMLDivElement>(null);
   const others = LOCALES.filter((l) => post.i18n[l] && l !== lang);
@@ -187,8 +189,8 @@ function PostPage() {
         <Starfield />
         <PageHeader />
         <main className="bl-main">
-          <header className="bl-head">
-            <nav className="cs-crumbs" aria-label="Breadcrumb">
+          <header className="bl-head" lang={lang} dir={dir}>
+            <nav className="cs-crumbs" aria-label="Breadcrumb" lang={locale}>
               <LocaleLink to="/blog">{t.blog.back}</LocaleLink> <span>/</span>{" "}
               <span>{post.tags[0]}</span>
             </nav>
@@ -197,10 +199,10 @@ function PostPage() {
                 <li key={tag}>{tag}</li>
               ))}
             </ul>
-            <h1 className="bl-title" lang={lang} dir={dir}>
+            <h1 className="bl-title">
               {text.title}
             </h1>
-            <p className="bl-lead" lang={lang} dir={dir}>
+            <p className="bl-lead">
               {text.description}
             </p>
             <div className="bl-byline">
@@ -209,7 +211,7 @@ function PostPage() {
               </span>
               <span>
                 <strong>Oday</strong>
-                <span className="bl-byline-sub">
+                <span className="bl-byline-sub" lang={locale} dir={pageDir}>
                   {t.blog.published}{" "}
                   <time dateTime={post.date}>{formatDate(post.date, locale)}</time> ·{" "}
                   {fmt(t.blog.minRead, { n: post.minutes })}
@@ -217,10 +219,12 @@ function PostPage() {
               </span>
             </div>
             {lang !== locale && (
-              <p className="bl-notice">{fmt(t.blog.onlyIn, { lang: LOCALE_META[lang].name })}</p>
+              <p className="bl-notice" lang={locale} dir={pageDir}>
+                {fmt(t.blog.onlyIn, { lang: LOCALE_META[lang].name })}
+              </p>
             )}
             {others.length > 0 && (
-              <p className="bl-also">
+              <p className="bl-also" lang={locale} dir={pageDir}>
                 {t.blog.alsoIn}{" "}
                 {others.map((l, k) => (
                   <span key={l}>
@@ -234,11 +238,13 @@ function PostPage() {
             )}
           </header>
 
-          <div className="bl-layout">
+          <div className="bl-layout" lang={lang} dir={dir}>
             {headings.length > 2 && (
               <aside className="bl-toc" aria-label={t.blog.toc}>
-                <div className="bl-toc-label">[ {t.blog.toc} ]</div>
-                <ol lang={lang} dir={dir}>
+                <div className="bl-toc-label" lang={locale}>
+                  [ {t.blog.toc} ]
+                </div>
+                <ol>
                   {headings.map((h) => (
                     <li key={h.id}>
                       <a href={`#${h.id}`}>{h.text.replace(/`/g, "")}</a>
@@ -247,10 +253,12 @@ function PostPage() {
                 </ol>
               </aside>
             )}
-            <article className="bl-prose" lang={lang} dir={dir}>
+            <article className="bl-prose">
               <Markdown source={data.markdown} />
-              <ShareRow title={text.title} />
-              <div className="bl-cta">
+              <div lang={locale} dir={pageDir}>
+                <ShareRow title={text.title} />
+              </div>
+              <div className="bl-cta" lang={locale} dir={pageDir}>
                 <h2>{t.blog.ctaTitle}</h2>
                 <p>{t.blog.ctaBody}</p>
                 <a className="as-btn as-btn-primary" href={`${localePath(locale, "/")}#contact`}>
