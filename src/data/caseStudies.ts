@@ -20,6 +20,11 @@ export type CaseStudy = {
   gallery: { label: string }[];
   deliverables: string[];
   stack: string[];
+  /**
+   * Optional before/after slider: a screenshot of the previous site
+   * (e.g. from the Wayback Machine), compared with /work/<slug>-desktop.webp.
+   */
+  before?: { src: string; label: string };
 };
 
 export const caseStudies: CaseStudy[] = [

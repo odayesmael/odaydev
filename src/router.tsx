@@ -60,6 +60,9 @@ export const getRouter = () => {
     routeTree,
     context: {},
     scrollRestoration: true,
+    // Cross-fade between pages (and morph project cards into case studies)
+    // in browsers that support the View Transitions API; a no-op elsewhere.
+    defaultViewTransition: true,
     defaultPreloadStaleTime: 0,
     defaultErrorComponent: DefaultErrorComponent,
   });

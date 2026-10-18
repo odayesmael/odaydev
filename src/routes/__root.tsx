@@ -5,6 +5,10 @@ import logoMark from "@/assets/oday-mark.svg";
 import { SITE_URL } from "@/lib/site";
 import { LOCALE_META, useLocale, useMessages } from "@/i18n";
 import { LocaleLink } from "@/components/LocaleLink";
+import { LangSuggest } from "@/components/LangSuggest";
+import { CommandPaletteHost } from "@/components/CommandPaletteHost";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../styles.css?url";
 import displayFont from "@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url";
@@ -121,6 +125,11 @@ function RootComponent() {
     <>
       <GlobalGlow />
       <Outlet />
+      <LangSuggest />
+      <CommandPaletteHost />
+      {/* Cookieless, privacy-friendly analytics + real-user Core Web Vitals */}
+      <Analytics />
+      <SpeedInsights />
     </>
   );
 }

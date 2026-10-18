@@ -2,6 +2,8 @@ import { type Project, projectShots } from "@/data/projects";
 import { DeviceMockup } from "./DeviceMockup";
 import { CaseStudyLink } from "./CaseStudyLink";
 import { localizeProject, useLocale, useMessages } from "@/i18n";
+import { markMorph } from "@/lib/viewTransition";
+import { track } from "@/lib/analytics";
 
 /**
  * One portfolio card, shared by the home grid and /portfolio.
@@ -65,14 +67,29 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
 
   if (p.caseStudy) {
     return (
-      <CaseStudyLink slug={p.slug} className="pr-card" data-num={num}>
+      <CaseStudyLink
+        slug={p.slug}
+        className="pr-card"
+        data-num={num}
+        onClick={(e) => {
+          track("case_study_open", { project: p.slug });
+          markMorph(e.currentTarget.querySelector<HTMLElement>(".pr-cover"), p.slug);
+        }}
+      >
         {inner}
       </CaseStudyLink>
     );
   }
 
   return (
-    <a className="pr-card" data-num={num} href={p.url} target="_blank" rel="noopener noreferrer">
+    <a
+      className="pr-card"
+      data-num={num}
+      href={p.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => track("project_visit", { project: p.slug })}
+    >
       {inner}
     </a>
   );
