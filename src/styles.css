@@ -3606,3 +3606,28 @@ html[lang="ar"] .bl-prose, .bl-prose[lang="ar"] { line-height: 1.95; }
   .bl-prose { padding: 36px 20px 32px; border-radius: 24px; font-size: 16px; }
   .bl-card { padding: 24px 20px 22px; }
 }
+
+/* Text in another language than the page (e.g. an English article on /ar)
+   gets that language's fonts back. */
+html[lang="ar"] [lang]:not([lang="ar"]) {
+  --font-display: "Archivo Variable", "Archivo", system-ui, sans-serif;
+  --font-body: "Archivo Variable", "Archivo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+  font-family: var(--font-body);
+}
+html [lang="ar"] {
+  --font-display: "Alexandria Variable", "Archivo Variable", system-ui, sans-serif;
+  --font-body: "Alexandria Variable", "Archivo Variable", system-ui, sans-serif;
+  --font-mono: "Alexandria Variable", "JetBrains Mono Variable", ui-monospace, monospace;
+}
+html:not([lang="ar"]) [lang="ar"] { font-family: var(--font-body); letter-spacing: 0; }
+html[lang="ar"] [lang]:not([lang="ar"]) h1,
+html[lang="ar"] [lang]:not([lang="ar"]) h2,
+html[lang="ar"] [lang]:not([lang="ar"]) h3 { line-height: 1.12; }
+
+/* Buttons inside articles keep their own colours (not the prose link colour) */
+.bl-prose a.as-btn { color: var(--white); text-decoration: none; }
+.bl-prose a.as-btn-primary { color: var(--bg); }
+/* Page-language notes inside an article island line up with the island */
+.bl-head[dir="ltr"] .bl-also { text-align: left; }
+.bl-head[dir="rtl"] .bl-also { text-align: right; }
