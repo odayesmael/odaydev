@@ -258,6 +258,16 @@ const nl: Messages = {
     home: "Home",
     hint: "om overal te openen",
   },
+  ufo: {
+    eyebrow: "INKOMEND SIGNAAL",
+    title: ["Een project", "op je radar?"],
+    body: "Ik ontwerp en bouw snelle websites en mobiele apps — en sta open voor freelanceprojecten en vaste functies in Nederland. Vertel me wat je van plan bent; ik reageer binnen één werkdag.",
+    primary: "Stuur een briefing",
+    secondary: "Bekijk mijn werk",
+    later: "Misschien later",
+    close: "Sluiten",
+    label: "Een bericht van Oday",
+  },
   shustylePage: {
     eyebrow: "CASE STUDY · MOBIELE APP",
     titleAccent: "je AI-stylist.",

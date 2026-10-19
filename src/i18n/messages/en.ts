@@ -264,6 +264,16 @@ const en = {
     home: "Home",
     hint: "to open anywhere",
   },
+  ufo: {
+    eyebrow: "INCOMING TRANSMISSION",
+    title: ["Got a project", "in orbit?"] as [string, string],
+    body: "I design and build fast websites and mobile apps — and I'm open to freelance projects and full-time roles in the Netherlands. Tell me what you're planning; I reply within one working day.",
+    primary: "Send a brief",
+    secondary: "See my work",
+    later: "Maybe later",
+    close: "Close",
+    label: "A message from Oday",
+  },
   shustylePage: {
     eyebrow: "CASE STUDY · MOBILE APP",
     titleAccent: "your AI stylist.",
