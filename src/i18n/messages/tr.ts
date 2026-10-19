@@ -4,9 +4,9 @@ const tr: Messages = {
   meta: {
     homeTitle: "Oday — Full-Stack Web & Mobil Geliştirici",
     homeDescription:
-      "Oday — kurumsal siteler, e-ticaret mağazaları, özel platformlar ve iOS & Android uygulamaları geliştirmede 9 yıllık deneyime sahip, yapay zekâ destekli çalışan full-stack web ve mobil geliştirici. Hollanda'da yaşıyor, dünya genelinde çalışıyor.",
+      "Oday — kurumsal siteler, e-ticaret mağazaları, özel platformlar ve iOS & Android uygulamaları geliştiren, yapay zekâ destekli çalışan full-stack web ve mobil geliştirici. Hollanda'da yaşıyor, dünya genelinde çalışıyor.",
     ogDescription:
-      "9 yıldır hızlı, özel web siteleri ve mobil uygulamalar — front-end, back-end, SEO ve UI/UX, yapay zekâ destekli bir iş akışıyla.",
+      "Hızlı, özel web siteleri ve mobil uygulamalar — front-end, back-end, SEO ve UI/UX, yapay zekâ destekli bir iş akışıyla.",
     portfolioTitle: "Portfolyo — Oday",
     portfolioDescription:
       "Oday'in tüm portfolyosu — baştan sona tasarlanan, geliştirilen ve bakımı yapılan kurumsal siteler, platformlar, e-ticaret mağazaları ve mobil uygulamalar.",
@@ -30,15 +30,15 @@ const tr: Messages = {
     label: "FULL-STACK WEB & MOBİL GELİŞTİRİCİ",
     line1: "Full-stack geliştirilen",
     line2: "web & uygulama deneyimleri",
-    desc: "9 yıldır fikirleri hızlı ve güvenilir ürünlere dönüştürüyorum — kurumsal siteler, e-ticaret mağazaları, özel platformlar ve artık iOS & Android uygulamaları. Front-end'den back-end'e. Hollanda'da yaşıyor, dünya genelinde çalışıyorum.",
+    desc: "Fikirleri hızlı ve güvenilir ürünlere dönüştürüyorum — kurumsal siteler, e-ticaret mağazaları, özel platformlar ve artık iOS & Android uygulamaları. Front-end'den back-end'e. Hollanda'da yaşıyor, dünya genelinde çalışıyorum.",
   },
-  marquee: "9 YIL · WEB & MOBİL · YAPAY ZEKÂ DESTEKLİ İŞ AKIŞI · HOLLANDA",
+  marquee: "FULL-STACK · WEB & MOBİL · YAPAY ZEKÂ DESTEKLİ İŞ AKIŞI · HOLLANDA",
   approach: {
     eyebrow: "Beni daha yakından tanıyın — işi teslim eden bir geliştirici",
     items: [
       {
-        title: "9 yıllık deneyim",
-        body: "Yaklaşık on yıldır her ölçekte ürün geliştiriyor ve bakımını yapıyorum — tek sayfalık tanıtım sitelerinden e-ticarete, çoklu site platformlarına ve gerçek kullanıcıları olan canlı bir iOS uygulamasına kadar.",
+        title: "Fikirden yayına, uçtan uca",
+        body: "Her ölçekte ürünü tasarlıyor, geliştiriyor, yayına alıyor ve bakımını yapıyorum — tek sayfalık tanıtım sitelerinden e-ticarete, çoklu site platformlarına ve gerçek kullanıcıları olan canlı bir iOS uygulamasına kadar.",
       },
       {
         title: "Hazır tema değil, size özel",
@@ -92,10 +92,10 @@ const tr: Messages = {
   },
   skills: {
     eyebrow: "04 / YETENEKLER",
-    title: ["Güvendiğim araçlar,", "9 yılda keskinleşti."],
+    title: ["Güvendiğim araçlar,", "gerçek projelerde keskinleşti."],
     sub: "Front-end ustalığı, back-end mantığı, mobil uygulamalar ve aradaki tüm platformlar — bir ürünü boş sayfadan yayına taşımak için gereken her şey.",
     stats: [
-      "Yıl web için geliştirme",
+      "Hizmet verilen sektör",
       "Teslim edilen ve bakımı yapılan proje",
       "Platform — Web, iOS, Android",
       "Çalışma dili — EN, AR, TR",
@@ -156,7 +156,7 @@ const tr: Messages = {
   portfolio: {
     eyebrow: "PORTFOLYO · {n} PROJE",
     title: ["Tüm", "işlerim."],
-    sub: "Dokuz yıllık kurumsal siteler, platformlar, e-ticaret mağazaları ve artık mobil uygulamalar — baştan sona tasarlandı, geliştirildi ve bakımı yapıldı. Aşağıdan türe göre filtreleyin.",
+    sub: "Kurumsal siteler, platformlar, e-ticaret mağazaları ve artık mobil uygulamalar — baştan sona tasarlandı, geliştirildi ve bakımı yapıldı. Aşağıdan türe göre filtreleyin.",
     filterLabel: "Projeleri kategoriye göre filtrele",
     all: "Tümü",
     typeLabel: "Tür",
