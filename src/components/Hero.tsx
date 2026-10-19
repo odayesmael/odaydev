@@ -8,6 +8,7 @@ import { useMessages } from "@/i18n";
 import { LangSwitch } from "./LangSwitch";
 import { PaletteButton } from "./CommandPaletteHost";
 import { EmailLink } from "@/components/EmailLink";
+import { LocaleLink } from "./LocaleLink";
 
 export function Hero({ play }: { play: boolean }) {
   const ref = useRef<HTMLElement>(null);
@@ -50,14 +51,25 @@ export function Hero({ play }: { play: boolean }) {
           </div>
         </div>
 
-        <div className="label-tag js-reveal">[ {t.hero.label} ]</div>
-
-        <div className="headline">
-          <div className="row row-1 js-reveal">{t.hero.line1}</div>
-          <div className="row row-2 js-reveal">{t.hero.line2}</div>
+        <div className="hero-intro">
+          <div className="hero-eyebrow js-reveal">
+            <span className="hero-eyebrow-dot" aria-hidden />[ {t.hero.label} ]
+          </div>
+          <h1 className="hero-title js-reveal">
+            {t.hero.line1}
+            <br />
+            <em>{t.hero.line2}</em>
+          </h1>
+          <p className="hero-lead js-reveal">{t.hero.desc}</p>
+          <div className="hero-actions js-reveal">
+            <LocaleLink to="/portfolio" className="as-btn as-btn-primary">
+              {t.ufo.secondary} <span aria-hidden>→</span>
+            </LocaleLink>
+            <a className="as-btn" href="#contact">
+              {t.common.letsTalk} <span aria-hidden>↗</span>
+            </a>
+          </div>
         </div>
-
-        <p className="hero-desc js-reveal">{t.hero.desc}</p>
 
         <div className="scroll-hint js-reveal">
           <span className="arrow">↓</span> {t.common.scroll}
