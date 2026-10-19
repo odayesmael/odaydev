@@ -26,7 +26,10 @@ export function HeroSphere() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
     // Move camera further back on smaller screens to make the brain appear smaller
-    camera.position.z = w < 600 ? 7.5 : w < 900 ? 6.0 : 4.5;
+    camera.position.z = w < 600 ? 10.5 : w < 900 ? 6.6 : 5.6;
+    // Phones: the intro text fills the lower half, so lift the brain into the space above it
+    // (moving the camera down instead of the canvas keeps the scroll-scatter trigger intact)
+    camera.position.y = w < 600 ? -1.6 : 0;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -555,7 +558,8 @@ export function HeroSphere() {
       const W = mount.clientWidth;
       const H = mount.clientHeight;
       camera.aspect = W / H;
-      camera.position.z = W < 600 ? 7.5 : W < 900 ? 6.0 : 4.5;
+      camera.position.z = W < 600 ? 10.5 : W < 900 ? 6.6 : 5.6;
+      camera.position.y = W < 600 ? -1.6 : 0;
       camera.updateProjectionMatrix();
       renderer.setSize(W, H);
       uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2);

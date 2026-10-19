@@ -3783,11 +3783,7 @@ html[lang="ar"] .ufo-title { line-height: 1.35; }
   width: min(880px, calc(100% - 64px));
   z-index: 3;
 }
-/* Shift the brain off-centre (away from the text) and darken the corner the text sits in */
-@media (min-width: 881px) {
-  .hero .hero-canvas { transform: translate(9%, -3%); }
-  [dir="rtl"] .hero .hero-canvas { transform: translate(-9%, -3%); }
-}
+/* Darken the corner the text sits in (the brain stays centred) */
 .hero::after {
   content: "";
   position: absolute;
