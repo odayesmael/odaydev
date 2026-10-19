@@ -3,6 +3,7 @@ import { useRouterState } from "@tanstack/react-router";
 import { contactEmail, EMAIL_PLACEHOLDER } from "@/lib/email";
 import { fmt, useLocale, useMessages } from "@/i18n";
 import { track } from "@/lib/analytics";
+import { markUfoDone } from "./UfoPopup";
 
 type Status = "idle" | "sending" | "sent" | "error" | "rate";
 
@@ -67,6 +68,7 @@ export function ContactBrief() {
       });
       if (res.ok) {
         setStatus("sent");
+        markUfoDone();
         track("contact_sent", { type, locale });
         return;
       }

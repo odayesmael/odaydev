@@ -258,6 +258,16 @@ const tr: Messages = {
     home: "Ana sayfa",
     hint: "her yerden açmak için",
   },
+  ufo: {
+    eyebrow: "GELEN SİNYAL",
+    title: ["Aklında bir proje", "mi var?"],
+    body: "Hızlı web siteleri ve mobil uygulamalar tasarlayıp geliştiriyorum; Hollanda'da serbest projelere ve tam zamanlı pozisyonlara açığım. Ne planladığını anlat, bir iş günü içinde dönüş yaparım.",
+    primary: "Proje talebi gönder",
+    secondary: "İşlerimi gör",
+    later: "Belki sonra",
+    close: "Kapat",
+    label: "Oday'den bir mesaj",
+  },
   shustylePage: {
     eyebrow: "VAKA ÇALIŞMASI · MOBİL UYGULAMA",
     titleAccent: "yapay zekâ stilistiniz.",

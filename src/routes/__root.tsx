@@ -6,6 +6,7 @@ import { SITE_URL } from "@/lib/site";
 import { LOCALE_META, useLocale, useMessages } from "@/i18n";
 import { LocaleLink } from "@/components/LocaleLink";
 import { LangSuggest } from "@/components/LangSuggest";
+import { UfoPopup } from "@/components/UfoPopup";
 import { CommandPaletteHost } from "@/components/CommandPaletteHost";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -127,6 +128,7 @@ function RootComponent() {
       <Outlet />
       <LangSuggest />
       <CommandPaletteHost />
+      <UfoPopup />
       {/* Cookieless, privacy-friendly analytics + real-user Core Web Vitals */}
       <Analytics />
       <SpeedInsights />

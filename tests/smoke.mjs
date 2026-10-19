@@ -30,7 +30,10 @@ const fail = (msg) => {
 const browser = await chromium.launch({ args: ["--use-gl=swiftshader"] });
 for (const width of WIDTHS) {
   const ctx = await browser.newContext({ viewport: { width, height: 900 }, locale: "en-US" });
-  await ctx.addInitScript(() => sessionStorage.setItem("preloaded", "1"));
+  await ctx.addInitScript(() => {
+    sessionStorage.setItem("preloaded", "1");
+    localStorage.setItem("oday:ufo-popup", String(Date.now())); // keep the invitation popup out of the checks
+  });
   const page = await ctx.newPage();
   const errors = [];
   page.on("pageerror", (e) => errors.push(String(e)));
