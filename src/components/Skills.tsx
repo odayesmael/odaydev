@@ -7,7 +7,7 @@ import { useMessages } from "@/i18n";
 gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
-  { value: "9+", label: "Years building for the web" },
+  { value: String(new Set(projects.map((p) => p.category)).size), label: "Industries served" },
   { value: String(projects.length), label: "Projects shipped & maintained" },
   { value: "3", label: "Platforms — Web, iOS, Android" },
   { value: "3", label: "Working languages — EN, AR, TR" },

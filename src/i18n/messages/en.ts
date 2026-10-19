@@ -6,9 +6,9 @@ const en = {
   meta: {
     homeTitle: "Oday — Full-Stack Web & Mobile Developer",
     homeDescription:
-      "Oday — Full-Stack Web & Mobile Developer with 9 years of experience building corporate sites, online stores, custom platforms and iOS & Android apps, with an AI-assisted workflow. Based in the Netherlands, working worldwide.",
+      "Oday — Full-Stack Web & Mobile Developer building corporate sites, online stores, custom platforms and iOS & Android apps, with an AI-assisted workflow. Based in the Netherlands, working worldwide.",
     ogDescription:
-      "9 years crafting fast, custom websites and mobile apps — front-end, back-end, SEO and UI/UX, with an AI-assisted workflow.",
+      "Fast, custom websites and mobile apps — front-end, back-end, SEO and UI/UX, with an AI-assisted workflow.",
     portfolioTitle: "Portfolio — Oday",
     portfolioDescription:
       "The full portfolio of Oday — corporate websites, platforms, online stores and mobile apps designed, built and maintained end to end.",
@@ -32,15 +32,15 @@ const en = {
     label: "FULL-STACK WEB & MOBILE DEVELOPER",
     line1: "Building Full-Stack",
     line2: "Web & App Experiences",
-    desc: "9 years turning ideas into fast, reliable products — corporate sites, online stores, custom platforms and, now, iOS & Android apps. Front-end to back-end. Based in the Netherlands, working worldwide.",
+    desc: "Turning ideas into fast, reliable products — corporate sites, online stores, custom platforms and, now, iOS & Android apps. Front-end to back-end. Based in the Netherlands, working worldwide.",
   },
-  marquee: "9 YEARS · WEB & MOBILE · AI-ASSISTED WORKFLOW · NETHERLANDS",
+  marquee: "FULL-STACK · WEB & MOBILE · AI-ASSISTED WORKFLOW · NETHERLANDS",
   approach: {
     eyebrow: "Know me more — a developer who ships",
     items: [
       {
-        title: "9 years of experience",
-        body: "Nearly a decade building and maintaining products of every size — from single-page brochures to e-commerce, multi-site platforms and a live iOS app handling real users.",
+        title: "End to end, start to finish",
+        body: "I design, build, launch and maintain products of every size — from single-page brochures to e-commerce, multi-site platforms and a live iOS app handling real users.",
       },
       {
         title: "Custom, not off-the-shelf",
@@ -94,10 +94,10 @@ const en = {
   },
   skills: {
     eyebrow: "04 / SKILLS",
-    title: ["Tools I trust,", "sharpened over 9 years."] as [string, string],
+    title: ["Tools I trust,", "sharpened on real projects."] as [string, string],
     sub: "Front-end craft, back-end logic, mobile apps and the platforms in between — everything I need to take a product from blank canvas to launch.",
     stats: [
-      "Years building for the web",
+      "Industries served",
       "Projects shipped & maintained",
       "Platforms — Web, iOS, Android",
       "Working languages — EN, AR, TR",
@@ -158,7 +158,7 @@ const en = {
   portfolio: {
     eyebrow: "PORTFOLIO · {n} PROJECTS",
     title: ["All my", "work."] as [string, string],
-    sub: "Nine years of corporate websites, platforms, online stores and now mobile apps — designed, built and maintained end to end. Filter by type below.",
+    sub: "Corporate websites, platforms, online stores and now mobile apps — designed, built and maintained end to end. Filter by type below.",
     filterLabel: "Filter projects by category",
     all: "All",
     typeLabel: "Type",

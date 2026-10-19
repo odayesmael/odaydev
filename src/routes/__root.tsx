@@ -65,7 +65,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Full-Stack Web & Mobile Developer with 9 years of experience building fast, custom websites, online stores, platforms and iOS & Android apps, with an AI-assisted workflow.",
+          "Full-Stack Web & Mobile Developer building fast, custom websites, online stores, platforms and iOS & Android apps, with an AI-assisted workflow.",
       },
       { name: "author", content: "Oday" },
       { name: "theme-color", content: "#050F05" },
@@ -74,14 +74,14 @@ export const Route = createRootRoute({
       {
         property: "og:description",
         content:
-          "9 years crafting fast, custom websites and mobile apps — front-end, back-end, SEO and UI/UX, with an AI-assisted workflow.",
+          "Fast, custom websites and mobile apps — front-end, back-end, SEO and UI/UX, with an AI-assisted workflow.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: `${SITE_URL}/og-image.png` },
+      { property: "og:image", content: `${SITE_URL}/og/en/home.jpg` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: `${SITE_URL}/og-image.png` },
+      { name: "twitter:image", content: `${SITE_URL}/og/en/home.jpg` },
     ],
     links: [
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },

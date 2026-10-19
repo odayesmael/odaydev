@@ -57,7 +57,7 @@ const jsonLd = (locale: Locale, jobTitle: string, description: string) => ({
       "@id": `${SITE_URL}/#service`,
       name: "Oday — Web & Mobile Development",
       url: SITE_URL,
-      image: `${SITE_URL}/og-image.png`,
+      image: `${SITE_URL}/og/en/home.jpg`,
       founder: { "@id": `${SITE_URL}/#person` },
       areaServed: "Worldwide",
       address: { "@type": "PostalAddress", addressCountry: "NL" },

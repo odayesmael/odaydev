@@ -4,9 +4,9 @@ const nl: Messages = {
   meta: {
     homeTitle: "Oday — Full-stack web- & mobile developer",
     homeDescription:
-      "Oday — full-stack web- en mobile developer met 9 jaar ervaring in bedrijfswebsites, webshops, maatwerkplatforms en iOS- en Android-apps, met een AI-ondersteunde werkwijze. Gevestigd in Nederland, werkt wereldwijd.",
+      "Oday — full-stack web- en mobile developer voor bedrijfswebsites, webshops, maatwerkplatforms en iOS- en Android-apps, met een AI-ondersteunde werkwijze. Gevestigd in Nederland, werkt wereldwijd.",
     ogDescription:
-      "9 jaar snelle websites en mobiele apps op maat — front-end, back-end, SEO en UI/UX, met een AI-ondersteunde werkwijze.",
+      "Snelle websites en mobiele apps op maat — front-end, back-end, SEO en UI/UX, met een AI-ondersteunde werkwijze.",
     portfolioTitle: "Portfolio — Oday",
     portfolioDescription:
       "Het volledige portfolio van Oday — bedrijfswebsites, platforms, webshops en mobiele apps, van ontwerp tot bouw en onderhoud.",
@@ -30,15 +30,15 @@ const nl: Messages = {
     label: "FULL-STACK WEB- & MOBILE DEVELOPER",
     line1: "Full-stack bouwen",
     line2: "voor web & apps",
-    desc: "9 jaar ideeën omzetten in snelle, betrouwbare producten — bedrijfswebsites, webshops, maatwerkplatforms en nu ook iOS- en Android-apps. Van front-end tot back-end. Gevestigd in Nederland, werkt wereldwijd.",
+    desc: "Ideeën omzetten in snelle, betrouwbare producten — bedrijfswebsites, webshops, maatwerkplatforms en nu ook iOS- en Android-apps. Van front-end tot back-end. Gevestigd in Nederland, werkt wereldwijd.",
   },
-  marquee: "9 JAAR · WEB & MOBILE · AI-ONDERSTEUNDE WERKWIJZE · NEDERLAND",
+  marquee: "FULL-STACK · WEB & MOBILE · AI-ONDERSTEUNDE WERKWIJZE · NEDERLAND",
   approach: {
     eyebrow: "Leer me kennen — een developer die oplevert",
     items: [
       {
-        title: "9 jaar ervaring",
-        body: "Bijna tien jaar producten bouwen en onderhouden van elk formaat — van eenvoudige websites tot webshops, multisite-platforms en een live iOS-app met echte gebruikers.",
+        title: "Van idee tot lancering",
+        body: "Ik ontwerp, bouw, lanceer en onderhoud producten van elk formaat — van eenvoudige websites tot webshops, multisite-platforms en een live iOS-app met echte gebruikers.",
       },
       {
         title: "Maatwerk, geen standaardthema",
@@ -92,10 +92,10 @@ const nl: Messages = {
   },
   skills: {
     eyebrow: "04 / SKILLS",
-    title: ["Tools die ik vertrouw,", "aangescherpt in 9 jaar."],
+    title: ["Tools die ik vertrouw,", "aangescherpt in echte projecten."],
     sub: "Front-end vakmanschap, back-end logica, mobiele apps en alles daartussen — alles wat nodig is om een product van leeg canvas tot lancering te brengen.",
     stats: [
-      "Jaar bouwen voor het web",
+      "Branches bediend",
       "Projecten opgeleverd & onderhouden",
       "Platforms — web, iOS, Android",
       "Werktalen — EN, AR, TR",
@@ -156,7 +156,7 @@ const nl: Messages = {
   portfolio: {
     eyebrow: "PORTFOLIO · {n} PROJECTEN",
     title: ["Al mijn", "werk."],
-    sub: "Negen jaar bedrijfswebsites, platforms, webshops en nu ook mobiele apps — ontworpen, gebouwd en onderhouden van begin tot eind. Filter hieronder op type.",
+    sub: "Bedrijfswebsites, platforms, webshops en nu ook mobiele apps — ontworpen, gebouwd en onderhouden van begin tot eind. Filter hieronder op type.",
     filterLabel: "Filter projecten op categorie",
     all: "Alles",
     typeLabel: "Type",
