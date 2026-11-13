@@ -4,11 +4,11 @@
  */
 const en = {
   meta: {
-    homeTitle: "Oday — Full-Stack Web & Mobile Developer",
+    homeTitle: "Oday — Full-Stack Developer & AI Engineer",
     homeDescription:
-      "Oday — Full-Stack Web & Mobile Developer building corporate sites, online stores, custom platforms and iOS & Android apps, with an AI-assisted workflow. Based in the Netherlands, working worldwide.",
+      "Oday — Full-Stack Developer and AI Engineer building AI-powered products on the OpenAI, Claude and Gemini APIs, alongside corporate sites, online stores and iOS & Android apps. Based in Rotterdam, working worldwide.",
     ogDescription:
-      "Fast, custom websites and mobile apps — front-end, back-end, SEO and UI/UX, with an AI-assisted workflow.",
+      "AI-powered products, websites and mobile apps — LLM integration, automation, front-end, back-end and SEO.",
     portfolioTitle: "Portfolio — Oday",
     portfolioDescription:
       "The full portfolio of Oday — corporate websites, platforms, online stores and mobile apps designed, built and maintained end to end.",
@@ -29,12 +29,12 @@ const en = {
   },
   nav: { home: "Home", work: "Work", skills: "Skills", contact: "Contact" },
   hero: {
-    label: "FULL-STACK WEB & MOBILE DEVELOPER",
-    line1: "Building Full-Stack",
-    line2: "Web & App Experiences",
-    desc: "Turning ideas into fast, reliable products — corporate sites, online stores, custom platforms and, now, iOS & Android apps. Front-end to back-end. Based in the Netherlands, working worldwide.",
+    label: "FULL-STACK DEVELOPER · AI ENGINEER",
+    line1: "Building AI-Powered",
+    line2: "Web & App Products",
+    desc: "Turning ideas into fast, reliable products — from an automated news platform and an AI stylist app to corporate sites, online stores and custom platforms. Front-end, back-end and the AI layer on top. Based in Rotterdam, working worldwide.",
   },
-  marquee: "FULL-STACK · WEB & MOBILE · AI-ASSISTED WORKFLOW · NETHERLANDS",
+  marquee: "FULL-STACK · AI ENGINEER · WEB, APPS & AUTOMATION · ROTTERDAM",
   approach: {
     eyebrow: "Know me more — a developer who ships",
     items: [
@@ -116,7 +116,7 @@ const en = {
     sub: "Have a website or an app in mind, or a site that needs care and speed? Available for freelance projects, long-term collaborations and full-time roles in the Netherlands.",
     email: "EMAIL",
     location: "LOCATION",
-    locationValue: "Netherlands",
+    locationValue: "Rotterdam, Netherlands",
     linkedin: "LINKEDIN",
     brief: {
       legend: "WHAT ARE YOU PLANNING?",
@@ -152,7 +152,7 @@ const en = {
     shustyle: "ShuStyle case study",
     contact: "Contact",
     blog: "Notes & articles",
-    role: "Full-Stack Web & Mobile Developer",
+    role: "Full-Stack Developer & AI Engineer",
     rights: "All rights reserved.",
   },
   portfolio: {
@@ -165,10 +165,12 @@ const en = {
     stackLabel: "Built with",
     stackFilterLabel: "Filter projects by technology",
     allStacks: "Any stack",
-    stacks: { wordpress: "WordPress", shopify: "Shopify", react: "React", app: "Mobile app" } as Record<
-      string,
-      string
-    >,
+    stacks: {
+      wordpress: "WordPress",
+      shopify: "Shopify",
+      react: "React",
+      app: "Mobile app",
+    } as Record<string, string>,
     search: "Search projects",
     searchPlaceholder: "Search by name, industry or tech…",
     showing: "{n} of {total} projects",
@@ -176,6 +178,7 @@ const en = {
     reset: "Clear filters",
   },
   categories: {
+    "AI Platform": "AI Platform",
     "Mobile App": "Mobile App",
     Industrial: "Industrial",
     "E-Learning": "E-Learning",

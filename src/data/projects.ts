@@ -40,6 +40,16 @@ export const projects: Project[] = [
     caseStudy: true,
   },
   {
+    slug: "anatolia-press",
+    title: "Anatolia Press",
+    category: "AI Platform",
+    domain: "anatoliapress.com",
+    url: "https://www.anatoliapress.com/",
+    body: "Automated news platform: cron jobs pull stories from verified sources every 10 minutes and process them with the OpenAI API, with imagery auto-sourced from Wikipedia and Unsplash, an editor admin panel and automated social publishing.",
+    tags: ["OpenAI", "Automation", "PHP", "Cron"],
+    featured: true,
+  },
+  {
     slug: "solechem-europe",
     title: "SoleChem Europe",
     category: "Industrial",

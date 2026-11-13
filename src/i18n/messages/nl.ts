@@ -2,11 +2,11 @@ import type { Messages } from "./en";
 
 const nl: Messages = {
   meta: {
-    homeTitle: "Oday — Full-stack web- & mobile developer",
+    homeTitle: "Oday — Full-stack developer & AI-engineer",
     homeDescription:
-      "Oday — full-stack web- en mobile developer voor bedrijfswebsites, webshops, maatwerkplatforms en iOS- en Android-apps, met een AI-ondersteunde werkwijze. Gevestigd in Nederland, werkt wereldwijd.",
+      "Oday — full-stack developer en AI-engineer die AI-gedreven producten bouwt op de OpenAI-, Claude- en Gemini-API's, naast bedrijfswebsites, webshops en iOS- en Android-apps. Gevestigd in Rotterdam, werkt wereldwijd.",
     ogDescription:
-      "Snelle websites en mobiele apps op maat — front-end, back-end, SEO en UI/UX, met een AI-ondersteunde werkwijze.",
+      "AI-gedreven producten, websites en mobiele apps — LLM-integratie, automatisering, front-end, back-end en SEO.",
     portfolioTitle: "Portfolio — Oday",
     portfolioDescription:
       "Het volledige portfolio van Oday — bedrijfswebsites, platforms, webshops en mobiele apps, van ontwerp tot bouw en onderhoud.",
@@ -27,12 +27,12 @@ const nl: Messages = {
   },
   nav: { home: "Home", work: "Werk", skills: "Skills", contact: "Contact" },
   hero: {
-    label: "FULL-STACK WEB- & MOBILE DEVELOPER",
-    line1: "Full-stack bouwen",
-    line2: "voor web & apps",
-    desc: "Ideeën omzetten in snelle, betrouwbare producten — bedrijfswebsites, webshops, maatwerkplatforms en nu ook iOS- en Android-apps. Van front-end tot back-end. Gevestigd in Nederland, werkt wereldwijd.",
+    label: "FULL-STACK DEVELOPER · AI-ENGINEER",
+    line1: "AI-gedreven producten",
+    line2: "voor web & apps bouwen",
+    desc: "Ideeën omzetten in snelle, betrouwbare producten — van een geautomatiseerd nieuwsplatform en een AI-stylist-app tot bedrijfswebsites, webshops en maatwerkplatforms. Front-end, back-end en de AI-laag daarbovenop. Gevestigd in Rotterdam, werkt wereldwijd.",
   },
-  marquee: "FULL-STACK · WEB & MOBILE · AI-ONDERSTEUNDE WERKWIJZE · NEDERLAND",
+  marquee: "FULL-STACK · AI-ENGINEER · WEB, APPS & AUTOMATISERING · ROTTERDAM",
   approach: {
     eyebrow: "Leer me kennen — een developer die oplevert",
     items: [
@@ -114,7 +114,7 @@ const nl: Messages = {
     sub: "Heb je een website of app in gedachten, of een site die zorg en snelheid nodig heeft? Beschikbaar voor freelanceprojecten, langdurige samenwerkingen en vaste functies in Nederland.",
     email: "E-MAIL",
     location: "LOCATIE",
-    locationValue: "Nederland",
+    locationValue: "Rotterdam, Nederland",
     linkedin: "LINKEDIN",
     brief: {
       legend: "WAT BEN JE VAN PLAN?",
@@ -150,7 +150,7 @@ const nl: Messages = {
     shustyle: "ShuStyle case study",
     contact: "Contact",
     blog: "Notities & artikelen",
-    role: "Full-stack web- & mobile developer",
+    role: "Full-stack developer & AI-engineer",
     rights: "Alle rechten voorbehouden.",
   },
   portfolio: {
@@ -171,6 +171,7 @@ const nl: Messages = {
     reset: "Filters wissen",
   },
   categories: {
+    "AI Platform": "AI-platform",
     "Mobile App": "Mobiele app",
     Industrial: "Industrie",
     "E-Learning": "E-learning",
@@ -217,7 +218,8 @@ const nl: Messages = {
     title: ["Wat ik leerde", "van echte projecten."],
     sub: "Praktische verslagen uit klantwerk — meertalige sites, WordPress-snelheid, app-releases en beveiliging. Geen opvulling, alleen wat werkte.",
     metaTitle: "Notities & artikelen — Oday",
-    metaDescription: "Praktische artikelen van Oday over meertalige en RTL-websites, WordPress-prestaties, het lanceren van mobiele apps en websitebeveiliging.",
+    metaDescription:
+      "Praktische artikelen van Oday over meertalige en RTL-websites, WordPress-prestaties, het lanceren van mobiele apps en websitebeveiliging.",
     homeEyebrow: "05 / SCHRIJVEN",
     homeTitle: ["Notities van", "de werkbank."],
     readAll: "Alle artikelen",
@@ -233,7 +235,8 @@ const nl: Messages = {
     copyLink: "Link kopiëren",
     linkCopied: "Link gekopieerd ✓",
     ctaTitle: "Wil je dit voor jouw site?",
-    ctaBody: "Ik bouw en repareer precies dit soort dingen voor klanten. Vertel me wat je nodig hebt.",
+    ctaBody:
+      "Ik bouw en repareer precies dit soort dingen voor klanten. Vertel me wat je nodig hebt.",
     ctaButton: "Start een project",
   },
   langSuggest: {

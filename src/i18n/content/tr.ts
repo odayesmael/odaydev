@@ -4,6 +4,8 @@ const tr: LocalizedContent = {
   projects: {
     shustyle:
       "iPhone ve Android için, sahip olduğunuz kıyafetlerden hava durumuna ve etkinliğe uygun kombinler oluşturan, manken üzerinde 360° deneme sunan yapay zekâ stilist uygulaması. Ayrıca 5 dilli web sitesi.",
+    "anatolia-press":
+      "Otomatik haber platformu: cron görevleri her 10 dakikada bir doğrulanmış kaynaklardan haber çekip OpenAI API ile işliyor; görseller Wikipedia ve Unsplash'ten otomatik alınıyor, editör paneli ve otomatik sosyal medya paylaşımı mevcut.",
     "solechem-europe":
       "Avrupalı bir kimyasal hammadde tedarikçisi için çok dilli B2B platformu — 4.500+ ürünlük aranabilir katalog, sektör sayfaları ve teklif akışları.",
     "jurcom-academy":

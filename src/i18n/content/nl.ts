@@ -4,6 +4,8 @@ const nl: LocalizedContent = {
   projects: {
     shustyle:
       "AI-stylistapp voor iPhone en Android die outfits samenstelt uit de kleding die je al hebt — afgestemd op het weer en de gelegenheid, met een 360°-paskamer op een model. Plus de bijbehorende website in 5 talen.",
+    "anatolia-press":
+      "Geautomatiseerd nieuwsplatform: cronjobs halen elke 10 minuten berichten op uit geverifieerde bronnen en verwerken die met de OpenAI-API, met beeld automatisch uit Wikipedia en Unsplash, een redactiepaneel en automatische publicatie op social media.",
     "solechem-europe":
       "Meertalig B2B-platform voor een Europese leverancier van chemische grondstoffen — een doorzoekbare catalogus met 4.500+ producten, sectorpagina's en offertetrajecten.",
     "jurcom-academy":

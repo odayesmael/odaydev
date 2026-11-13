@@ -2,11 +2,11 @@ import type { Messages } from "./en";
 
 const tr: Messages = {
   meta: {
-    homeTitle: "Oday — Full-Stack Web & Mobil Geliştirici",
+    homeTitle: "Oday — Full-Stack Geliştirici & Yapay Zekâ Mühendisi",
     homeDescription:
-      "Oday — kurumsal siteler, e-ticaret mağazaları, özel platformlar ve iOS & Android uygulamaları geliştiren, yapay zekâ destekli çalışan full-stack web ve mobil geliştirici. Hollanda'da yaşıyor, dünya genelinde çalışıyor.",
+      "Oday — OpenAI, Claude ve Gemini API'leri üzerinde yapay zekâ destekli ürünler geliştiren; ayrıca kurumsal siteler, e-ticaret mağazaları ve iOS & Android uygulamaları yapan full-stack geliştirici ve yapay zekâ mühendisi. Rotterdam'da yaşıyor, dünya genelinde çalışıyor.",
     ogDescription:
-      "Hızlı, özel web siteleri ve mobil uygulamalar — front-end, back-end, SEO ve UI/UX, yapay zekâ destekli bir iş akışıyla.",
+      "Yapay zekâ destekli ürünler, web siteleri ve mobil uygulamalar — LLM entegrasyonu, otomasyon, front-end, back-end ve SEO.",
     portfolioTitle: "Portfolyo — Oday",
     portfolioDescription:
       "Oday'in tüm portfolyosu — baştan sona tasarlanan, geliştirilen ve bakımı yapılan kurumsal siteler, platformlar, e-ticaret mağazaları ve mobil uygulamalar.",
@@ -27,12 +27,12 @@ const tr: Messages = {
   },
   nav: { home: "Ana sayfa", work: "İşler", skills: "Yetenekler", contact: "İletişim" },
   hero: {
-    label: "FULL-STACK WEB & MOBİL GELİŞTİRİCİ",
-    line1: "Full-stack geliştirilen",
-    line2: "web & uygulama deneyimleri",
-    desc: "Fikirleri hızlı ve güvenilir ürünlere dönüştürüyorum — kurumsal siteler, e-ticaret mağazaları, özel platformlar ve artık iOS & Android uygulamaları. Front-end'den back-end'e. Hollanda'da yaşıyor, dünya genelinde çalışıyorum.",
+    label: "FULL-STACK GELİŞTİRİCİ · YAPAY ZEKÂ MÜHENDİSİ",
+    line1: "Yapay zekâ destekli",
+    line2: "web & uygulama ürünleri",
+    desc: "Fikirleri hızlı ve güvenilir ürünlere dönüştürüyorum — otomatik bir haber platformundan yapay zekâ destekli bir stil asistanı uygulamasına, kurumsal sitelerden e-ticaret mağazalarına. Front-end, back-end ve üzerindeki yapay zekâ katmanı. Rotterdam'da yaşıyor, dünya genelinde çalışıyorum.",
   },
-  marquee: "FULL-STACK · WEB & MOBİL · YAPAY ZEKÂ DESTEKLİ İŞ AKIŞI · HOLLANDA",
+  marquee: "FULL-STACK · YAPAY ZEKÂ MÜHENDİSİ · WEB, UYGULAMA & OTOMASYON · ROTTERDAM",
   approach: {
     eyebrow: "Beni daha yakından tanıyın — işi teslim eden bir geliştirici",
     items: [
@@ -114,7 +114,7 @@ const tr: Messages = {
     sub: "Aklınızda bir web sitesi ya da uygulama mı var, veya özen ve hız isteyen bir site mi? Serbest projelere, uzun vadeli iş birliklerine ve Hollanda'da tam zamanlı pozisyonlara açığım.",
     email: "E-POSTA",
     location: "KONUM",
-    locationValue: "Hollanda",
+    locationValue: "Rotterdam, Hollanda",
     linkedin: "LINKEDIN",
     brief: {
       legend: "NE PLANLIYORSUNUZ?",
@@ -150,7 +150,7 @@ const tr: Messages = {
     shustyle: "ShuStyle vaka çalışması",
     contact: "İletişim",
     blog: "Notlar & yazılar",
-    role: "Full-Stack Web & Mobil Geliştirici",
+    role: "Full-Stack Geliştirici & Yapay Zekâ Mühendisi",
     rights: "Tüm hakları saklıdır.",
   },
   portfolio: {
@@ -171,6 +171,7 @@ const tr: Messages = {
     reset: "Filtreleri temizle",
   },
   categories: {
+    "AI Platform": "Yapay Zekâ Platformu",
     "Mobile App": "Mobil uygulama",
     Industrial: "Endüstriyel",
     "E-Learning": "E-öğrenme",
@@ -217,7 +218,8 @@ const tr: Messages = {
     title: ["Gerçek projelerden", "öğrendiklerim."],
     sub: "Müşteri işlerinden pratik yazılar — çok dilli siteler, WordPress performansı, uygulama yayınlama ve güvenlik. Laf kalabalığı yok, sadece işe yarayanlar.",
     metaTitle: "Notlar & yazılar — Oday",
-    metaDescription: "Oday'den çok dilli ve RTL web siteleri, WordPress performansı, mobil uygulama yayınlama ve web güvenliği üzerine pratik yazılar.",
+    metaDescription:
+      "Oday'den çok dilli ve RTL web siteleri, WordPress performansı, mobil uygulama yayınlama ve web güvenliği üzerine pratik yazılar.",
     homeEyebrow: "05 / YAZILAR",
     homeTitle: ["Atölyeden", "notlar."],
     readAll: "Tüm yazılar",
@@ -233,7 +235,8 @@ const tr: Messages = {
     copyLink: "Bağlantıyı kopyala",
     linkCopied: "Bağlantı kopyalandı ✓",
     ctaTitle: "Bunu sitenizde mi istiyorsunuz?",
-    ctaBody: "Müşterilerim için tam olarak bu tür işleri yapıyor ve düzeltiyorum. Neye ihtiyacınız olduğunu anlatın.",
+    ctaBody:
+      "Müşterilerim için tam olarak bu tür işleri yapıyor ve düzeltiyorum. Neye ihtiyacınız olduğunu anlatın.",
     ctaButton: "Proje başlat",
   },
   langSuggest: {

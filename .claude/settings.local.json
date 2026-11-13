@@ -18,7 +18,19 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/portfolio)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/dgdf)",
-      "Bash(curl -s http://localhost:8080/dgdf)"
+      "Bash(curl -s http://localhost:8080/dgdf)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git fetch *)",
+      "Bash(git rev-list *)",
+      "Bash(git stash *)",
+      "Bash(git pull *)",
+      "Bash(python3 -I /private/tmp/claude-501/-Users-oday-Desktop-neon-veil-web-main/7ac6fd7c-1dd3-426e-b4a0-5623ffec07d1/scratchpad/reposition.py)",
+      "Bash(python3 -I /private/tmp/claude-501/-Users-oday-Desktop-neon-veil-web-main/7ac6fd7c-1dd3-426e-b4a0-5623ffec07d1/scratchpad/add_experience_msgs.py)",
+      "Read(//Users/oday/Desktop/neon-veil-web-main/src/routes/{-\\\\$locale}/**)",
+      "Bash(python3 -I -)",
+      "Bash(git check-ignore *)"
     ]
   }
 }
