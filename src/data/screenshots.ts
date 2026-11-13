@@ -4,6 +4,7 @@
  */
 export const SCREENSHOTS: Record<string, { desktop?: boolean; mobile?: boolean }> = {
   "akhadia-holding": { desktop: true, mobile: true },
+  "anatolia-press": { desktop: true, mobile: true },
   "amal-glass": { desktop: true, mobile: true },
   "chefs-equipment": { desktop: true, mobile: true },
   dposphere: { desktop: true, mobile: true },
