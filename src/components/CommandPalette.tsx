@@ -105,6 +105,13 @@ export default function CommandPalette({
             <Row icon="✎">{t.footer.blog}</Row>
           </Command.Item>
           <Command.Item
+            value="skill"
+            keywords={[t.footer.skill, "claude", "skill", "app", "playbook"]}
+            onSelect={() => go("/skill", "skill")}
+          >
+            <Row icon="◆">{t.footer.skill}</Row>
+          </Command.Item>
+          <Command.Item
             value="contact"
             keywords={[t.nav.contact, tp.contact, "email", "hire"]}
             onSelect={() => go("/#contact", "contact")}

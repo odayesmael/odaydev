@@ -35,6 +35,9 @@ export function SiteFooter() {
               <LocaleLink to="/blog">{t.footer.blog}</LocaleLink>
             </li>
             <li>
+              <LocaleLink to="/skill">{t.footer.skill}</LocaleLink>
+            </li>
+            <li>
               <a href={`${home}#contact`}>{t.footer.contact}</a>
             </li>
           </ul>

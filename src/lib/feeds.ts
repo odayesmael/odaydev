@@ -4,7 +4,10 @@ import { SITE_URL } from "@/lib/site";
 import { LOCALES, localePath, type Locale } from "@/i18n/config";
 
 const esc = (s: string) =>
-  s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;" })[c]!);
+  s.replace(
+    /[&<>"']/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;" })[c]!,
+  );
 
 type Entry = { path: string; locales: readonly Locale[]; lastmod: string; priority: string };
 
@@ -20,6 +23,7 @@ export function sitemapXml(today = new Date().toISOString().slice(0, 10)) {
       lastmod: today,
       priority: "0.8",
     })),
+    { path: "/skill", locales: LOCALES, lastmod: today, priority: "0.8" },
     { path: "/blog", locales: LOCALES, lastmod: posts[0]?.date ?? today, priority: "0.7" },
     ...posts.map((p) => ({
       path: `/blog/${p.slug}`,

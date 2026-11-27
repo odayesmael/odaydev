@@ -3,7 +3,8 @@ import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { localeParam, useLocale } from "@/i18n";
 
-type Target = "/" | "/portfolio" | "/work/shustyle" | "/work/$slug" | "/blog" | "/blog/$slug";
+type Target =
+  "/" | "/portfolio" | "/skill" | "/work/shustyle" | "/work/$slug" | "/blog" | "/blog/$slug";
 
 /** An internal link that keeps the visitor's language (adds /ar, /nl or /tr). */
 export function LocaleLink({

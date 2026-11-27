@@ -15,6 +15,7 @@ import { Route as Char123LocaleChar125RouteRouteImport } from './routes/{-$local
 import { Route as ApiContactRouteImport } from './routes/api/contact'
 import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$locale}/index'
 import { Route as Char123LocaleChar125PortfolioRouteImport } from './routes/{-$locale}/portfolio'
+import { Route as Char123LocaleChar125SkillRouteImport } from './routes/{-$locale}/skill'
 import { Route as Char123LocaleChar125BlogIndexRouteImport } from './routes/{-$locale}/blog.index'
 import { Route as Char123LocaleChar125BlogSlugRouteImport } from './routes/{-$locale}/blog.$slug'
 import { Route as Char123LocaleChar125WorkSlugRouteImport } from './routes/{-$locale}/work.$slug'
@@ -53,6 +54,12 @@ const Char123LocaleChar125PortfolioRoute =
     path: '/portfolio',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
+const Char123LocaleChar125SkillRoute =
+  Char123LocaleChar125SkillRouteImport.update({
+    id: '/skill',
+    path: '/skill',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
 const Char123LocaleChar125BlogIndexRoute =
   Char123LocaleChar125BlogIndexRouteImport.update({
     id: '/blog/',
@@ -84,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/contact': typeof ApiContactRoute
   '/{-$locale}/portfolio': typeof Char123LocaleChar125PortfolioRoute
+  '/{-$locale}/skill': typeof Char123LocaleChar125SkillRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
   '/{-$locale}/blog/$slug': typeof Char123LocaleChar125BlogSlugRoute
   '/{-$locale}/work/$slug': typeof Char123LocaleChar125WorkSlugRoute
@@ -95,6 +103,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/contact': typeof ApiContactRoute
   '/{-$locale}/portfolio': typeof Char123LocaleChar125PortfolioRoute
+  '/{-$locale}/skill': typeof Char123LocaleChar125SkillRoute
   '/{-$locale}': typeof Char123LocaleChar125IndexRoute
   '/{-$locale}/blog/$slug': typeof Char123LocaleChar125BlogSlugRoute
   '/{-$locale}/work/$slug': typeof Char123LocaleChar125WorkSlugRoute
@@ -108,6 +117,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/contact': typeof ApiContactRoute
   '/{-$locale}/portfolio': typeof Char123LocaleChar125PortfolioRoute
+  '/{-$locale}/skill': typeof Char123LocaleChar125SkillRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
   '/{-$locale}/blog/$slug': typeof Char123LocaleChar125BlogSlugRoute
   '/{-$locale}/work/$slug': typeof Char123LocaleChar125WorkSlugRoute
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/api/contact'
     | '/{-$locale}/portfolio'
+    | '/{-$locale}/skill'
     | '/{-$locale}/'
     | '/{-$locale}/blog/$slug'
     | '/{-$locale}/work/$slug'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/api/contact'
     | '/{-$locale}/portfolio'
+    | '/{-$locale}/skill'
     | '/{-$locale}'
     | '/{-$locale}/blog/$slug'
     | '/{-$locale}/work/$slug'
@@ -145,6 +157,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/api/contact'
     | '/{-$locale}/portfolio'
+    | '/{-$locale}/skill'
     | '/{-$locale}/'
     | '/{-$locale}/blog/$slug'
     | '/{-$locale}/work/$slug'
@@ -203,6 +216,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LocaleChar125PortfolioRouteImport
       parentRoute: typeof Char123LocaleChar125RouteRoute
     }
+    '/{-$locale}/skill': {
+      id: '/{-$locale}/skill'
+      path: '/skill'
+      fullPath: '/{-$locale}/skill'
+      preLoaderRoute: typeof Char123LocaleChar125SkillRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
     '/{-$locale}/blog/': {
       id: '/{-$locale}/blog/'
       path: '/blog'
@@ -236,6 +256,7 @@ declare module '@tanstack/react-router' {
 
 interface Char123LocaleChar125RouteRouteChildren {
   Char123LocaleChar125PortfolioRoute: typeof Char123LocaleChar125PortfolioRoute
+  Char123LocaleChar125SkillRoute: typeof Char123LocaleChar125SkillRoute
   Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
   Char123LocaleChar125BlogSlugRoute: typeof Char123LocaleChar125BlogSlugRoute
   Char123LocaleChar125WorkSlugRoute: typeof Char123LocaleChar125WorkSlugRoute
@@ -246,6 +267,7 @@ interface Char123LocaleChar125RouteRouteChildren {
 const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChildren =
   {
     Char123LocaleChar125PortfolioRoute: Char123LocaleChar125PortfolioRoute,
+    Char123LocaleChar125SkillRoute: Char123LocaleChar125SkillRoute,
     Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
     Char123LocaleChar125BlogSlugRoute: Char123LocaleChar125BlogSlugRoute,
     Char123LocaleChar125WorkSlugRoute: Char123LocaleChar125WorkSlugRoute,
