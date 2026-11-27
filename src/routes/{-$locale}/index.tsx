@@ -9,6 +9,7 @@ import { Starfield } from "@/components/Starfield";
 import { Skills } from "@/components/Skills";
 import { Tools } from "@/components/Tools";
 import { Projects } from "@/components/Projects";
+import { SkillSpotlight } from "@/components/SkillSpotlight";
 import { AppSpotlight } from "@/components/AppSpotlight";
 import { SITE_URL } from "@/lib/site";
 import { localeFromParam, localePath, messagesFor, type Locale } from "@/i18n";
@@ -122,6 +123,7 @@ function Index() {
         <Services />
         <AppSpotlight />
         <Projects />
+        <SkillSpotlight />
         <Skills />
         <Testimonials />
         <LatestPosts />

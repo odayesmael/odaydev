@@ -121,6 +121,9 @@ const en = {
     intro:
       "I built and shipped ShuStyle — an AI stylist app on iOS and Android, in five languages, with subscriptions — on my own, working with an AI coding agent. Everything that cost me days is written down here so it costs you minutes. Install it once and Claude follows the playbook whenever you ask it to build an app.",
     repoCta: "View on GitHub",
+    homeCta: "How to install it",
+    homeBody:
+      "I packaged everything I learned shipping an app solo into a Claude skill. Install it, describe the app you want, and Claude works through it with you — stack, security, store review, pricing, marketing.",
     licence: "MIT licensed — free to use, fork and adapt.",
     insideHeading: "What's inside",
     inside: [

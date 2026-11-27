@@ -119,6 +119,9 @@ const tr: Messages = {
     intro:
       "ShuStyle'ı tek başıma, bir yapay zekâ kodlama asistanıyla birlikte geliştirip yayınladım — iOS ve Android için, beş dilde, abonelikli bir yapay zekâ stil asistanı. Bana günlere mal olan her şey burada yazılı, size dakikalara mal olsun diye. Bir kez kurun; uygulama yapmasını istediğinizde Claude rehberi kendiliğinden takip etsin.",
     repoCta: "GitHub'da görüntüle",
+    homeCta: "Nasıl kurulur",
+    homeBody:
+      "Tek başıma uygulama yayınlarken öğrendiğim her şeyi bir Claude skill'ine koydum. Kurun, nasıl bir uygulama istediğinizi anlatın; Claude sizinle birlikte ilerlesin — yığın, güvenlik, mağaza incelemesi, fiyatlandırma, pazarlama.",
     licence: "MIT lisanslı — özgürce kullanın, çatallayın ve uyarlayın.",
     insideHeading: "İçinde ne var",
     inside: [

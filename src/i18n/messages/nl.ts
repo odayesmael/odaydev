@@ -119,6 +119,9 @@ const nl: Messages = {
     intro:
       "Ik heb ShuStyle gebouwd en gelanceerd — een AI-stylist-app voor iOS en Android, in vijf talen, met abonnementen — in m'n eentje, samen met een AI-coding-agent. Alles wat mij dagen kostte staat hier opgeschreven, zodat het jou minuten kost. Eén keer installeren en Claude volgt het playbook zodra je vraagt om een app te bouwen.",
     repoCta: "Bekijk op GitHub",
+    homeCta: "Zo installeer je het",
+    homeBody:
+      "Alles wat ik leerde door in m'n eentje een app te lanceren, verpakt als Claude-skill. Installeren, vertellen welke app je wilt, en Claude loopt het met je door — stack, security, store-review, prijzen, marketing.",
     licence: "MIT-licentie — vrij te gebruiken, forken en aanpassen.",
     insideHeading: "Wat erin zit",
     inside: [
